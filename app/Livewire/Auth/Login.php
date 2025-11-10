@@ -13,6 +13,7 @@ class Login extends Component
 {
     public $email = '';
     public $password = '';
+    public $showPassword = false;
 
  public function login()
 {
@@ -29,6 +30,10 @@ class Login extends Component
     }
 
     session()->flash('error', 'Email atau password salah.');
+}
+public function togglePassword()
+{
+    $this->showPassword = !$this->showPassword;
 }
 
     public function render()

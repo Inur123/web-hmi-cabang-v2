@@ -16,6 +16,7 @@ class Register extends Component
     public $email = '';
     public $password = '';
     public $password_confirmation = '';
+    public $showPassword = false;
 
     protected $rules = [
         'name' => 'required|min:3',
@@ -23,21 +24,22 @@ class Register extends Component
         'password' => 'required|min:6|same:password_confirmation',
     ];
 
+    public function togglePassword()
+    {
+        $this->showPassword = !$this->showPassword;
+    }
+
     public function register()
     {
         $this->validate();
 
-        // Buat user baru
         User::create([
             'name' => $this->name,
             'email' => $this->email,
             'password' => Hash::make($this->password),
         ]);
 
-        // Notifikasi sukses
         session()->flash('success', 'Akun berhasil dibuat! Silakan login.');
-
-        // SPA redirect ke halaman login tanpa reload
         return $this->redirectRoute('login', navigate: true);
     }
 
