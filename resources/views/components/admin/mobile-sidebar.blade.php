@@ -17,7 +17,7 @@
         <!-- Logo -->
         <div class="flex items-center justify-between p-4 h-[77px] border-b border-gray-200">
             <div class="flex items-center space-x-3">
-                <i class="fas fa-building text-2xl text-blue-600"></i>
+                <i class="fas fa-building text-2xl text-teal-600"></i>
                 <span class="text-lg font-bold text-gray-800">Hmi Cabang Ponorogo</span>
             </div>
             <button @click="sidebarOpen = false" class="text-gray-600 hover:text-gray-800 p-2">
@@ -29,38 +29,49 @@
         <nav class="p-4 space-y-2 overflow-y-auto h-[calc(100vh-77px)]">
 
             <!-- Dashboard -->
-            <div class="w-full flex items-center space-x-3 px-4 py-3 rounded-lg bg-blue-600 text-white">
+            <button type="button"
+                @click="Livewire.navigate('{{ route('admin.dashboard') }}'); sidebarOpen = false"
+                class="w-full text-left flex items-center space-x-3 px-4 py-3 rounded-lg transition {{ request()->routeIs('admin.dashboard') ? 'bg-teal-600 text-white' : 'text-gray-700 hover:bg-gray-100' }}">
                 <i class="fas fa-home text-lg w-6"></i>
                 <span class="text-base font-medium">Dashboard</span>
-            </div>
+            </button>
 
             <!-- Kegiatan -->
-            <div class="w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100">
+            <button type="button"
+                @click="Livewire.navigate('#'); sidebarOpen = false"
+                class="w-full text-left flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100">
                 <i class="fas fa-tasks text-lg w-6"></i>
                 <span class="text-base font-medium">Kegiatan</span>
-            </div>
+            </button>
 
             <!-- Manajemen Posts Dropdown -->
-            <div x-data="{ open: false }">
+            <div x-data="{ open: {{ request()->routeIs('admin.categories') ? 'true' : 'false' }} }">
                 <button type="button" @click="open = !open"
-                    class="w-full flex items-center justify-between px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100">
+                    class="w-full flex items-center justify-between px-4 py-3 rounded-lg transition {{ request()->routeIs('admin.categories') ? 'bg-teal-600 text-white' : 'text-gray-700 hover:bg-gray-100' }}">
                     <div class="flex items-center space-x-3">
                         <i class="fas fa-newspaper text-lg w-6"></i>
                         <span class="text-base font-medium">Manajemen Posts</span>
                     </div>
                     <i :class="open ? 'fa-chevron-down' : 'fa-chevron-right'" class="fas text-sm"></i>
                 </button>
+
+                <!-- Submenu -->
                 <div x-show="open" x-transition class="ml-0 mt-2 space-y-1">
-                    <div
+                    <!-- Posts -->
+                    <button type="button"
+                        @click="Livewire.navigate('#'); sidebarOpen = false"
                         class="w-full flex items-center pl-14 pr-4 py-2.5 space-x-3 rounded-lg text-gray-600 hover:bg-gray-100 cursor-pointer">
                         <i class="fas fa-circle text-xs w-4"></i>
                         <span class="text-base">Posts</span>
-                    </div>
-                    <div
-                        class="w-full flex items-center pl-14 pr-4 py-2.5 space-x-3 rounded-lg text-gray-600 hover:bg-gray-100 cursor-pointer">
+                    </button>
+
+                    <!-- Category -->
+                    <button type="button"
+                        @click="Livewire.navigate('{{ route('admin.categories') }}'); sidebarOpen = false"
+                        class="w-full flex items-center pl-14 pr-4 py-2.5 space-x-3 rounded-lg transition {{ request()->routeIs('admin.categories') ? 'bg-teal-500 text-white' : 'text-gray-600 hover:bg-gray-100' }}">
                         <i class="fas fa-circle text-xs w-4"></i>
                         <span class="text-base">Category</span>
-                    </div>
+                    </button>
                 </div>
             </div>
 

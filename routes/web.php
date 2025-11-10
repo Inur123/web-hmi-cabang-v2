@@ -1,12 +1,13 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Livewire\Auth\Login;
+use Illuminate\Http\Request;
 use App\Livewire\Auth\Register;
 use Illuminate\Support\Facades\Auth;
-use App\Livewire\Admin\Dashboard as AdminDashboard;
+use Illuminate\Support\Facades\Route;
+use App\Livewire\Admin\Posts\Category;
 use App\Livewire\User\Home as UserHome;
-use Illuminate\Http\Request;
+use App\Livewire\Admin\Dashboard as AdminDashboard;
 
 Route::get('/', UserHome::class)->name('home');
 
@@ -19,4 +20,5 @@ Route::get('/register', Register::class)->name('register');
 Route::middleware('auth')->group(function () {
     // Admin dashboard
     Route::get('dashboard', AdminDashboard::class)->name('admin.dashboard');
+    Route::get('categories',Category::class)->name('admin.categories');
 });

@@ -10,8 +10,9 @@
             <div x-data="{ profileOpen: false }" class="relative">
                 <button @click="profileOpen = !profileOpen"
                     class="flex items-center space-x-1 md:space-x-2 p-1 cursor-pointer">
-                    <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&background=16a34a&color=fff"
-                        alt="Profile" class="w-8 h-8 md:w-9 md:h-9 rounded-full" />
+                   <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&background=14b8a6&color=fff"
+    alt="Profile" class="w-8 h-8 md:w-9 md:h-9 rounded-full" />
+
                     <span class="hidden md:block text-sm font-medium text-gray-700">{{ Auth::user()->name }}</span>
                     <i :class="profileOpen ? 'fa-chevron-up' : 'fa-chevron-down'" class="fas text-xs text-gray-600"></i>
                 </button>

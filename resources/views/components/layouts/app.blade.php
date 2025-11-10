@@ -25,7 +25,7 @@
     </style>
 </head>
 <body class="bg-gray-100" x-data="{ sidebarOpen: window.innerWidth >= 1024 }" x-cloak>
-    <livewire:components.flash-message />
+     <livewire:components.flash-message />
     {{-- Sidebar --}}
     <x-admin.sidebar />
     <x-admin.mobile-sidebar />
