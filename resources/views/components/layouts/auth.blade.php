@@ -13,7 +13,8 @@
     @livewireStyles
 </head>
 
-<body class="bg-gradient-to-br from-blue-100 via-indigo-100 to-purple-100 min-h-screen flex items-center justify-center">
+<body
+    class="bg-gradient-to-br from-blue-100 via-indigo-100 to-purple-100 min-h-screen flex items-center justify-center">
     <!-- Flash Message -->
     <livewire:components.flash-message />
 

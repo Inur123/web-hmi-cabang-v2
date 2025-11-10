@@ -1,8 +1,8 @@
-<div>
-  <button wire:click="logout"
-    class="flex items-center gap-2 text-sm font-medium text-red-600 hover:text-red-700 transition">
-    <i class="fas fa-sign-out-alt"></i>
-    Keluar
+<button
+    wire:click="logout"
+    type="button"
+    class="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100 transition-colors"
+>
+    <i class="fas fa-sign-out-alt text-xs mr-2"></i>
+    Logout
 </button>
-
-</div>
