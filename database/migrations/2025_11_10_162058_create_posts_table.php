@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('thumbnail')->nullable();
             $table->text('content')->nullable();
             $table->date('post_date')->nullable();
+            $table->unsignedBigInteger('view')->default(0);
             $table->timestamps();
 
             $table->foreign('category_id')->references('id')->on('categories')->cascadeOnDelete();

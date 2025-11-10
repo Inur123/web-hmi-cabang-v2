@@ -96,15 +96,19 @@ class Category extends Component
     }
 
     /** Delete category */
-    public function delete($id)
-    {
-        $category = CategoryModel::find($id);
-        if ($category) {
-            $category->delete();
-            session()->flash('success', 'Kategori berhasil dihapus!');
+   public function delete($id)
+{
+    $category = CategoryModel::find($id);
+    if ($category) {
+        if ($category->posts()->count() > 0) {
+            session()->flash('warning', 'Kategori tidak bisa dihapus karena masih digunakan oleh artikel.');
             return $this->redirectRoute('admin.categories', navigate: true);
         }
+        $category->delete();
+        session()->flash('success', 'Kategori berhasil dihapus!');
+        return $this->redirectRoute('admin.categories', navigate: true);
     }
+}
 
     /** Back to index */
     public function back()

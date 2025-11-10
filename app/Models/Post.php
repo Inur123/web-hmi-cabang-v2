@@ -22,7 +22,10 @@ class Post extends Model
         'thumbnail',
         'content',
         'post_date',
+        'view',
     ];
+
+
 
     // Otomatis generate slug ketika creating/updating
     protected static function booted()

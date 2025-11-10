@@ -9,6 +9,7 @@ use App\Livewire\Admin\Posts\Category;
 use App\Livewire\User\Home as UserHome;
 use App\Livewire\Admin\Posts\PostComponent;
 use App\Livewire\Admin\Dashboard as AdminDashboard;
+use App\Livewire\Admin\Activities\ActivityComponent;
 
 
 
@@ -26,4 +27,5 @@ Route::middleware('auth')->group(function () {
     Route::get('dashboard', AdminDashboard::class)->name('admin.dashboard');
     Route::get('categories',Category::class)->name('admin.categories');
     Route::get('posts', PostComponent::class)->name('admin.posts');
+    Route::get('activities', ActivityComponent::class)->name('admin.activities');
 });

@@ -4,32 +4,30 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ $title ?? 'Dashboard - Hmi Cabang Ponorogo' }}</title>
+    <title>{{ $title ?? 'Dashboard - HMI Cabang Ponorogo' }}</title>
 
-  <link rel="icon" type="image/png" href="{{ asset('images/logo-web.png') }}?v={{ time() }}" />
+    <link rel="icon" type="image/png" href="{{ asset('images/logo-web.png') }}?v={{ time() }}" />
     <link rel="shortcut icon" type="image/png" href="{{ asset('images/logo-web.png') }}?v={{ time() }}" />
 
     @vite(['resources/css/app.css'])
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @livewireStyles
-    <style>
-        [x-cloak] {
-            display: none !important;
-        }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-        }
+    <style>
+        [x-cloak] { display: none !important; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
     </style>
 </head>
+
 <body class="bg-gray-100" x-data="{ sidebarOpen: window.innerWidth >= 1024 }" x-cloak>
-     <livewire:components.flash-message />
+    <livewire:components.flash-message />
+
     {{-- Sidebar --}}
     <x-admin.sidebar />
     <x-admin.mobile-sidebar />
 
-   <div :class="sidebarOpen ? 'lg:ml-64' : 'lg:ml-20'" class="transition-all duration-300">
+    <div :class="sidebarOpen ? 'lg:ml-64' : 'lg:ml-20'" class="transition-all duration-300">
         {{-- Header --}}
         <x-admin.header />
 
@@ -42,7 +40,8 @@
         <x-admin.footer />
     </div>
 
-    @livewireScripts
+    {{-- AKTIFKAN SPA NAVIGATION --}}
+    @livewireScripts(['navigate'])
 </body>
 
 </html>

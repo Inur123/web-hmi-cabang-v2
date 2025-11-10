@@ -23,14 +23,14 @@
         </button>
 
         <!-- Kegiatan -->
-        <button type="button" @click="Livewire.navigate('#')"
-            class="w-full flex items-center rounded-lg transition cursor-pointer {{ request()->routeIs('admin.kegiatan') ? 'bg-teal-600 text-white hover:bg-teal-700' : 'text-gray-700 hover:bg-gray-100' }}"
-            :class="sidebarOpen ? 'px-4 py-3 space-x-3' : 'justify-center p-3'">
-            <i class="fas fa-tasks text-lg" :class="sidebarOpen && 'w-6'"></i>
-            <span x-show="sidebarOpen" x-transition.opacity class="text-base font-medium">Kegiatan</span>
-        </button>
+        <button type="button" @click="Livewire.navigate('{{ route('admin.activities') }}')"
+    class="w-full flex items-center rounded-lg transition cursor-pointer {{ request()->routeIs('admin.activities') ? 'bg-teal-600 text-white hover:bg-teal-700' : 'text-gray-700 hover:bg-gray-100' }}"
+    :class="sidebarOpen ? 'px-4 py-3 space-x-3' : 'justify-center p-3'">
+    <i class="fas fa-tasks text-lg" :class="sidebarOpen && 'w-6'"></i>
+    <span x-show="sidebarOpen" x-transition.opacity class="text-base font-medium">Kegiatan</span>
+</button>
 
-        <!-- Manajemen Posts Dropdown -->
+
         <!-- Manajemen Posts Dropdown -->
         <div x-data="{ open: {{ request()->routeIs('admin.posts') || request()->routeIs('admin.categories') ? 'true' : 'false' }} }">
             <button type="button" @click="sidebarOpen && (open = !open)"

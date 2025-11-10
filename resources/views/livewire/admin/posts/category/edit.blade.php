@@ -5,9 +5,6 @@
             <h1 class="text-2xl md:text-3xl font-bold text-gray-800">Edit Kategori</h1>
            <p class="text-sm text-gray-600 mt-1">Edit data kategori {{ $category?->name }}</p>
         </div>
-        <button wire:click="back" class="text-gray-600 hover:text-gray-800 self-start sm:self-center">
-            <i class="fas fa-arrow-left mr-2"></i>Kembali
-        </button>
     </div>
 
     <!-- Form -->
