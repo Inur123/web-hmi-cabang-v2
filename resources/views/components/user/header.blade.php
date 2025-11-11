@@ -1,18 +1,11 @@
-<nav id="popup" x-data="{ mobileMenuOpen: false }"
+<nav id="popup" x-data="{
+        mobileMenuOpen: false,
+        isActive(path) {
+            return window.location.pathname === path;
+        }
+    }"
     class="flex items-center justify-between px-6 py-4 border-b border-white dark:border-gray-700 sticky top-0 z-50 bg-white dark:bg-gray-800 shadow-md">
 
-    {{-- JS: Deteksi URL real-time --}}
-
-    <script>
-        function isActive(path) {
-            const current = window.location.pathname;
-            if (path === '/') return current === '/';
-            return current.startsWith(path);
-        }
-    </script>
-
-
-    {{-- DESKTOP NAV --}}
     <div class="hidden md:flex items-center justify-between w-full">
         <div class="flex items-center space-x-2 flex-1">
             <a href="/" wire:navigate>
@@ -83,11 +76,9 @@
             </div>
         </div>
 
-        <div class="flex items-center justify-end flex-1">
-            <button class="p-2 rounded-full bg-gray-100 dark:bg-gray-700 transition-colors">
-                <i class="fas fa-sun text-yellow-500 text-lg"></i>
-            </button>
-        </div>
+         <div class="flex items-center justify-end flex-1">
+            <!-- Tombol dark mode dihapus -->
+         </div>
     </div>
 
     {{-- MOBILE NAV --}}
@@ -101,9 +92,7 @@
         </div>
 
         <div class="flex gap-3 items-center">
-            <button class="p-2 rounded-full bg-gray-100 dark:bg-gray-700 transition-colors">
-                <i class="fas fa-sun text-yellow-500 text-lg"></i>
-            </button>
+            <!-- Tombol dark mode dihapus -->
             <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-gray-600 dark:text-gray-300">
                 <i x-show="!mobileMenuOpen" class="fas fa-bars text-xl"></i>
                 <i x-show="mobileMenuOpen" class="fas fa-times text-xl"></i>
