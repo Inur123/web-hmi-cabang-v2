@@ -2,14 +2,14 @@
     class="fixed inset-y-0 left-0 z-50 bg-white shadow-lg transition-all duration-300 hidden lg:block">
 
     <!-- Logo -->
-    <div class="flex items-center justify-center p-4 h-[77px] border-b border-gray-200">
-        <div class="flex items-center space-x-2" :class="!sidebarOpen && 'justify-center w-full'">
-            <i class="fas fa-building text-2xl text-teal-600"></i>
-            <span x-show="sidebarOpen" x-transition.opacity class="text-lg font-bold text-gray-800">
-                Hmi Cabang Ponorogo
-            </span>
-        </div>
+<div class="flex items-center justify-center p-4 h-[77px] border-b border-gray-200">
+    <div class="flex items-center space-x-2" :class="!sidebarOpen && 'justify-center w-full'">
+        <img src="{{ asset('images/logo-web.png') }}" alt="Logo HMI" class="h-8 w-auto rounded-full">
+        <span x-show="sidebarOpen" x-transition.opacity class="text-l font-bold text-gray-800">
+            HMI Cabang Ponorogo
+        </span>
     </div>
+</div>
 
     <!-- Menu -->
     <nav class="p-3 space-y-2 overflow-y-auto h-[calc(100vh-77px)]">

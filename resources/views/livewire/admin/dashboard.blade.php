@@ -8,7 +8,8 @@
     <!-- Statistik Cards -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         <!-- Total Views -->
-        <div class="bg-gradient-to-br from-teal-500 to-teal-600 text-white rounded-xl shadow-lg p-6 transform transition hover:scale-105 hover:shadow-xl">
+        <div
+            class="bg-gradient-to-br from-teal-500 to-teal-600 text-white rounded-xl shadow-lg p-6 transform transition hover:scale-105 hover:shadow-xl">
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-teal-100 text-sm font-medium">Total Views</p>
@@ -21,7 +22,8 @@
         </div>
 
         <!-- Total Artikel -->
-        <div class="bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-xl shadow-lg p-6 transform transition hover:scale-105 hover:shadow-xl">
+        <div
+            class="bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-xl shadow-lg p-6 transform transition hover:scale-105 hover:shadow-xl">
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-blue-100 text-sm font-medium">Total Artikel</p>
@@ -34,7 +36,8 @@
         </div>
 
         <!-- Total Kategori -->
-        <div class="bg-gradient-to-br from-amber-500 to-amber-600 text-white rounded-xl shadow-lg p-6 transform transition hover:scale-105 hover:shadow-xl">
+        <div
+            class="bg-gradient-to-br from-amber-500 to-amber-600 text-white rounded-xl shadow-lg p-6 transform transition hover:scale-105 hover:shadow-xl">
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-amber-100 text-sm font-medium">Kategori</p>
@@ -47,7 +50,8 @@
         </div>
 
         <!-- Total Kegiatan -->
-        <div class="bg-gradient-to-br from-emerald-500 to-emerald-600 text-white rounded-xl shadow-lg p-6 transform transition hover:scale-105 hover:shadow-xl">
+        <div
+            class="bg-gradient-to-br from-emerald-500 to-emerald-600 text-white rounded-xl shadow-lg p-6 transform transition hover:scale-105 hover:shadow-xl">
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-emerald-100 text-sm font-medium">Kegiatan</p>
@@ -91,7 +95,8 @@
                                 <img src="{{ asset('storage/' . $post->thumbnail) }}"
                                     class="w-12 h-12 object-cover rounded-lg border border-gray-200 shadow-sm">
                             @else
-                                <div class="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center text-gray-400 border">
+                                <div
+                                    class="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center text-gray-400 border">
                                     <i class="fas fa-image"></i>
                                 </div>
                             @endif
@@ -131,7 +136,8 @@
                             <img src="{{ asset('storage/' . $activity->image) }}"
                                 class="w-12 h-12 object-cover rounded-lg border border-gray-200 shadow-sm">
                         @else
-                            <div class="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center text-gray-400 border">
+                            <div
+                                class="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center text-gray-400 border">
                                 <i class="fas fa-image"></i>
                             </div>
                         @endif
@@ -213,11 +219,21 @@
                 options: {
                     responsive: true,
                     plugins: {
-                        legend: { position: 'top' },
-                        tooltip: { mode: 'index', intersect: false }
+                        legend: {
+                            position: 'top'
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false
+                        }
                     },
                     scales: {
-                        y: { beginAtZero: true, ticks: { stepSize: 500 } }
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 500
+                            }
+                        }
                     }
                 }
             });
@@ -245,11 +261,19 @@
                 options: {
                     responsive: true,
                     plugins: {
-                        legend: { display: false },
-                        tooltip: { callbacks: { label: ctx => `${ctx.parsed.y} views` } }
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: ctx => `${ctx.parsed.y} views`
+                            }
+                        }
                     },
                     scales: {
-                        y: { beginAtZero: true }
+                        y: {
+                            beginAtZero: true
+                        }
                     }
                 }
             });

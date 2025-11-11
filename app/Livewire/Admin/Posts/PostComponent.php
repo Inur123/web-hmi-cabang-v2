@@ -27,7 +27,7 @@ class PostComponent extends Component
     public $status = 'inactive';
     public $thumbnailTemp;
     public $thumbnail;
-    public $content;
+    public $content = ''; // Inisialisasi dengan string kosong
     public $tags = [];
     public $tagsString = '';
     public $galleries = [];
@@ -70,7 +70,24 @@ class PostComponent extends Component
 
     private function resetForm()
     {
-        $this->reset(['title', 'category_id', 'status', 'content', 'tags', 'tagsString', 'thumbnail', 'thumbnailTemp', 'galleries', 'galleryInputs', 'postId', 'post_date', 'removedGalleries']);
+        $this->reset([
+            'title',
+            'category_id',
+            'status',
+            'content',
+            'tags',
+            'tagsString',
+            'thumbnail',
+            'thumbnailTemp',
+            'galleries',
+            'galleryInputs',
+            'postId',
+            'post_date',
+            'removedGalleries'
+        ]);
+
+        // Reset content ke string kosong
+        $this->content = '';
     }
 
     public function create()
@@ -86,7 +103,7 @@ class PostComponent extends Component
         $this->title = $post->title;
         $this->category_id = $post->category_id;
         $this->status = $post->status;
-        $this->content = $post->content;
+        $this->content = $post->content ?? ''; // Pastikan tidak null
         $this->tags = $post->tags->pluck('name')->toArray();
         $this->tagsString = implode(', ', $this->tags);
         $this->galleries = $post->galleries->pluck('image')->toArray();
@@ -131,7 +148,9 @@ class PostComponent extends Component
         $tagsArray = array_filter(array_map('trim', explode(',', $this->tagsString)));
 
         if ($this->thumbnailTemp) {
-            if ($post->thumbnail) Storage::disk('public')->delete($post->thumbnail);
+            if ($post->thumbnail) {
+                Storage::disk('public')->delete($post->thumbnail);
+            }
             $post->thumbnail = $this->thumbnailTemp->store('posts/thumbnails', 'public');
         }
 
@@ -177,7 +196,9 @@ class PostComponent extends Component
     private function removeSelectedGalleries($post)
     {
         foreach ($this->removedGalleries as $path) {
-            $gallery = PostGallery::where('post_id', $post->id)->where('image', $path)->first();
+            $gallery = PostGallery::where('post_id', $post->id)
+                                 ->where('image', $path)
+                                 ->first();
             if ($gallery) {
                 Storage::disk('public')->delete($gallery->image);
                 $gallery->delete();
@@ -209,6 +230,7 @@ class PostComponent extends Component
     private function getFilteredPosts()
     {
         $query = Post::latest()->get();
+
         if ($this->search) {
             $searchLower = strtolower($this->search);
             $query = $query->filter(fn($p) => str_contains(strtolower($p->title), $searchLower));
@@ -219,52 +241,61 @@ class PostComponent extends Component
         $total = $query->count();
         $items = $query->slice(($currentPage - 1) * $perPage, $perPage)->values();
 
-        return new LengthAwarePaginator($items, $total, $perPage, $currentPage, ['path' => request()->url()]);
+        return new LengthAwarePaginator(
+            $items,
+            $total,
+            $perPage,
+            $currentPage,
+            ['path' => request()->url()]
+        );
     }
 
+    public function delete($id)
+    {
+        $post = Post::with('tags', 'galleries')->findOrFail($id);
+
+        // Hapus relasi tag di pivot table
+        $tags = $post->tags;
+        $post->tags()->detach();
+
+        // Hapus tag yang tidak dimiliki post lain
+        foreach ($tags as $tag) {
+            if ($tag->posts()->count() === 0) {
+                $tag->delete();
+            }
+        }
+
+        // Hapus gallery terkait
+        foreach ($post->galleries as $gallery) {
+            Storage::disk('public')->delete($gallery->image);
+            $gallery->delete();
+        }
+
+        // Hapus thumbnail jika ada
+        if ($post->thumbnail) {
+            Storage::disk('public')->delete($post->thumbnail);
+        }
+
+        // Hapus post
+        $post->delete();
+
+        session()->flash('success', 'Post berhasil dihapus!');
+        return $this->redirectRoute('admin.posts', navigate: true);
+    }
 
     public function render()
     {
         return match ($this->action) {
             'create' => view('livewire.admin.posts.create'),
-            'edit' => view('livewire.admin.posts.edit', ['post' => Post::with('tags', 'galleries')->findOrFail($this->postId)]),
-            'show' => view('livewire.admin.posts.show', ['post' => Post::with('tags', 'galleries', 'category')->findOrFail($this->postId)]),
-            default => view('livewire.admin.posts.index', ['posts' => $this->getFilteredPosts()])
+            'edit' => view('livewire.admin.posts.edit', [
+                'post' => Post::with('tags', 'galleries')->findOrFail($this->postId)
+            ]),
+            'show' => view('livewire.admin.posts.show', [
+                'post' => Post::with('tags', 'galleries', 'category')->findOrFail($this->postId)
+            ]),
+            default => view('livewire.admin.posts.index', [
+                'posts' => $this->getFilteredPosts()
+            ])
         };
     }
-   public function delete($id)
-{
-    $post = Post::with('tags', 'galleries')->findOrFail($id);
-
-    // Hapus relasi tag di pivot table
-    $tags = $post->tags;
-    $post->tags()->detach();
-
-    // Hapus tag yang tidak dimiliki post lain
-    foreach ($tags as $tag) {
-        if ($tag->posts()->count() === 0) {
-            $tag->delete();
-        }
-    }
-
-    // Hapus gallery terkait
-    foreach ($post->galleries as $gallery) {
-        Storage::disk('public')->delete($gallery->image);
-        $gallery->delete();
-    }
-
-    // Hapus thumbnail jika ada
-    if ($post->thumbnail) {
-        Storage::disk('public')->delete($post->thumbnail);
-    }
-
-    // Hapus post
-    $post->delete();
-
-    // Flash message & redirect sama seperti save()
-    session()->flash('success', 'Post  berhasil dihapus!');
-    return $this->redirectRoute('admin.posts', navigate: true);
-}
-
-
 }

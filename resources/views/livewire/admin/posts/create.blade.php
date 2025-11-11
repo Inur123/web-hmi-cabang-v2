@@ -3,17 +3,17 @@
     <div class="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
             <h1 class="text-2xl md:text-3xl font-bold text-gray-800">
-                {{ $action === 'create' ? 'Tambah Post Baru' : 'Edit Post' }}
+                Tambah Post Baru
             </h1>
             <p class="text-sm text-gray-600 mt-1">
-                {{ $action === 'create' ? 'Tambahkan post baru' : 'Perbarui informasi post' }}
+                Tambahkan post baru
             </p>
         </div>
     </div>
 
     <!-- Form -->
     <div class="bg-white rounded-lg shadow-sm p-4 sm:p-6 lg:p-8">
-        <form wire:submit.prevent="{{ $action === 'create' ? 'save' : 'update' }}">
+        <form wire:submit.prevent="save">
             <!-- Grid Layout for Form Fields -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
 
@@ -90,15 +90,14 @@
                     @enderror
                 </div>
 
-                <!-- Konten Post - Full Width -->
+                <!-- Konten Post with TinyMCE - Full Width -->
                 <div class="w-full lg:col-span-2">
                     <label class="block text-sm font-medium text-gray-700 mb-2">
                         Konten <span class="text-red-500">*</span>
                     </label>
-                    <textarea wire:model="content"
-                        rows="6"
-                        class="w-full px-3 sm:px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent text-sm sm:text-base transition resize-y"
-                        placeholder="Tulis konten post di sini..."></textarea>
+                    <div wire:ignore x-data="tinyMCEComponent(@entangle('content'))" x-init="initEditor('tinymce-editor-new')">
+                        <textarea id="tinymce-editor-new" class="w-full"></textarea>
+                    </div>
                     @error('content')
                         <p class="text-red-500 text-xs sm:text-sm mt-1.5">{{ $message }}</p>
                     @enderror
@@ -124,14 +123,6 @@
                                 <img src="{{ $thumbnailTemp->temporaryUrl() }}"
                                     class="w-32 h-32 sm:w-40 sm:h-40 object-cover rounded-lg border-2 border-gray-200 shadow-sm">
                                 <span class="absolute -top-2 -right-2 bg-green-500 text-white text-xs px-2 py-0.5 rounded-full">Preview</span>
-                            </div>
-                        </div>
-                    @elseif($thumbnail)
-                        <div class="mt-4">
-                            <div class="relative inline-block">
-                                <img src="{{ asset('storage/' . $thumbnail) }}"
-                                    class="w-32 h-32 sm:w-40 sm:h-40 object-cover rounded-lg border-2 border-gray-200 shadow-sm">
-                                <span class="absolute -top-2 -right-2 bg-blue-500 text-white text-xs px-2 py-0.5 rounded-full">Current</span>
                             </div>
                         </div>
                     @endif
@@ -200,7 +191,7 @@
                 <button type="submit"
                     class="w-full sm:w-auto px-6 py-2.5 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition text-sm sm:text-base font-medium inline-flex items-center justify-center shadow-sm">
                     <i class="fas fa-save mr-2"></i>
-                    {{ $action === 'create' ? 'Simpan Post' : 'Update Post' }}
+                    Simpan Post
                 </button>
             </div>
 

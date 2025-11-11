@@ -86,14 +86,14 @@
                     @enderror
                 </div>
 
-                <!-- Konten Post - Full Width -->
+                <!-- Konten Post with TinyMCE - Full Width -->
                 <div class="w-full lg:col-span-2">
                     <label class="block text-sm font-medium text-gray-700 mb-2">
                         Konten <span class="text-red-500">*</span>
                     </label>
-                    <textarea wire:model="content" rows="6"
-                        class="w-full px-3 sm:px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent text-sm sm:text-base transition resize-y"
-                        placeholder="Tulis konten post di sini..."></textarea>
+                    <div wire:ignore x-data="tinyMCEComponent(@entangle('content'))" x-init="initEditor('tinymce-editor-{{ $postId }}')">
+                        <textarea id="tinymce-editor-{{ $postId }}" class="w-full"></textarea>
+                    </div>
                     @error('content')
                         <p class="text-red-500 text-xs sm:text-sm mt-1.5">{{ $message }}</p>
                     @enderror
@@ -139,7 +139,6 @@
                 </div>
 
                 <!-- Existing Gallery - Full Width -->
-                <!-- Existing Gallery -->
                 @if (count($galleries) > 0)
                     <div class="w-full lg:col-span-2">
                         <label class="block text-sm font-medium text-gray-700 mb-3">

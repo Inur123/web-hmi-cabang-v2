@@ -47,35 +47,45 @@
                         <tr class="hover:bg-gray-50 transition-colors">
                             <td class="py-3 px-4 text-sm text-gray-700">{{ $posts->firstItem() + $index }}</td>
                             <td class="py-3 px-4">
-    @if($post->thumbnail)
-        <img src="{{ asset('storage/'.$post->thumbnail) }}" alt="Thumbnail" class="w-12 h-12 object-cover rounded">
-    @else
-        <div class="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center text-gray-400 border">
-            <i class="fas fa-image"></i>
-        </div>
-    @endif
-</td>
+                                @if ($post->thumbnail)
+                                    <img src="{{ asset('storage/' . $post->thumbnail) }}" alt="Thumbnail"
+                                        class="w-12 h-12 object-cover rounded">
+                                @else
+                                    <div
+                                        class="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center text-gray-400 border">
+                                        <i class="fas fa-image"></i>
+                                    </div>
+                                @endif
+                            </td>
                             <td class="py-3 px-4 text-sm font-medium text-gray-800">{{ $post->title }}</td>
                             <td class="py-3 px-4 text-sm text-gray-700">{{ $post->category->name ?? '-' }}</td>
                             <td class="py-3 px-4 text-sm">
-                                @if($post->status === 'active')
+                                @if ($post->status === 'active')
                                     <span class="text-white bg-teal-600 px-2 py-1 rounded text-xs">Active</span>
                                 @else
                                     <span class="text-gray-700 bg-gray-200 px-2 py-1 rounded text-xs">Inactive</span>
                                 @endif
                             </td>
-                           <td class="py-3 px-4 text-sm text-gray-700">
-    {{ $post->post_date ? \Carbon\Carbon::parse($post->post_date)->format('d M Y') : '-' }}
-</td>
+                            <td class="py-3 px-4 text-sm text-gray-700">
+                                {{ $post->post_date ? \Carbon\Carbon::parse($post->post_date)->format('d M Y') : '-' }}
+                            </td>
                             <td class="py-3 px-4 text-sm text-gray-700">{{ $post->view }}</td>
                             <td class="py-3 px-4">
                                 <div class="flex items-center gap-2">
+                                    <!-- Show Button -->
+                                    <button wire:click="show('{{ $post->id }}')"
+                                        class="text-blue-600 hover:text-blue-800 transition" title="Lihat Detail">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+
+                                    <!-- Edit Button -->
                                     <button wire:click="edit('{{ $post->id }}')"
                                         class="text-yellow-600 hover:text-yellow-800 transition" title="Edit">
                                         <i class="fas fa-edit"></i>
                                     </button>
-                                    <button
-                                        onclick="confirmDeletePost('{{ $post->id }}', '{{ $post->title }}')"
+
+                                    <!-- Delete Button -->
+                                    <button onclick="confirmDeletePost('{{ $post->id }}', '{{ addslashes($post->title) }}')"
                                         class="text-red-600 hover:text-red-800 transition" title="Hapus">
                                         <i class="fas fa-trash"></i>
                                     </button>
@@ -84,7 +94,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="7" class="py-8 px-4 text-center text-gray-500">
+                            <td colspan="8" class="py-8 px-4 text-center text-gray-500">
                                 <i class="fas fa-inbox text-4xl mb-2 block"></i>
                                 <p>Belum ada post</p>
                             </td>

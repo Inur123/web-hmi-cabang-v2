@@ -29,3 +29,5 @@ Route::middleware('auth')->group(function () {
     Route::get('posts', PostComponent::class)->name('admin.posts');
     Route::get('activities', ActivityComponent::class)->name('admin.activities');
 });
+
+
