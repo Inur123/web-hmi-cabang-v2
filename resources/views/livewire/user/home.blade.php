@@ -326,89 +326,124 @@
 
 
     {{-- ARTIKEL TERBARU (Font Awesome Icons) --}}
-    <div class="container mx-auto px-4 sm:px-6 py-12 sm:py-16 bg-gradient-to-br from-gray-900 to-gray-800 text-white rounded-2xl"
-        x-data="latestPosts({{ $posts->toJson() }})" x-init="init()">
+    <div class="container mx-auto px-4 sm:px-6 py-12 sm:py-16
+            bg-gradient-to-br from-gray-50 to-gray-100
+            dark:from-gray-900 dark:to-gray-800
+            text-gray-900 dark:text-white
+            rounded-2xl transition-all duration-500"
+     x-data="latestPosts({{ $posts->toJson() }})"
+     x-init="init(); watchTheme()">
 
-        <div class="flex flex-col md:flex-row justify-between items-center mb-8 sm:mb-12 gap-4" data-aos="fade-up">
-            <div class="text-center md:text-left">
-                <h2 class="text-3xl sm:text-4xl font-bold mb-2">Artikel Terbaru</h2>
-                <p class="text-sm sm:text-base opacity-80">Berita dan artikel terkini dari HMI Cabang Ponorogo</p>
-            </div>
-          <a href="{{ route('blog') }}"
-   wire:navigate
-   class="inline-flex items-center px-5 py-2.5 bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600 text-white text-sm sm:text-base font-semibold rounded-full shadow-lg transform hover:scale-105 transition-all duration-300">
-    Lihat Semua
-    <i class="fas fa-arrow-right ml-2"></i>
-</a>
-
+    <div class="flex flex-col md:flex-row justify-between items-center mb-8 sm:mb-12 gap-4" data-aos="fade-up">
+        <div class="text-center md:text-left">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-2 text-gray-900 dark:text-white">
+                Artikel Terbaru
+            </h2>
+            <p class="text-sm sm:text-base opacity-80 text-gray-600 dark:text-gray-300">
+                Berita dan artikel terkini dari HMI Cabang Ponorogo
+            </p>
         </div>
-
-        <!-- Jika ADA data -->
-        <template x-if="posts.length > 0">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                <template x-for="(post, i) in posts" :key="i">
-                    <article
-                        class="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500"
-                        data-aos="zoom-in" :data-aos-delay="i * 100">
-                         <a :href="`/blog/${post.slug}`" wire:navigate class="block">
-                            <!-- Thumbnail -->
-                            <div class="relative h-48 sm:h-56 overflow-hidden">
-                                <template x-if="post.thumbnail">
-                                    <img :src="`/storage/${post.thumbnail}`"
-                                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                                </template>
-                                <template x-if="!post.thumbnail">
-                                    <div
-                                        class="w-full h-full flex items-center justify-center bg-gradient-to-br from-teal-400 to-green-600">
-                                        <i class="fas fa-newspaper text-6xl text-white/80"></i>
-                                    </div>
-                                </template>
-                            </div>
-
-                            <!-- Tanggal -->
-                            <div class="flex items-center gap-3 px-4 pt-4 pb-2">
-                                <div
-                                    class="w-8 h-8 rounded-full bg-gradient-to-r from-green-600 to-teal-600 flex items-center justify-center text-white font-bold text-xs">
-                                    <span x-text="post.title.charAt(0).toUpperCase()"></span>
-                                </div>
-                                <div>
-                                  <div class="text-sm font-medium text-gray-900 dark:text-white">Admin</div>
-
-                                    <div class="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1">
-                                        <i class="far fa-calendar-alt text-xs"></i>
-                                        <span x-text="formatDate(post.post_date)"></span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Konten -->
-                            <div class="px-4 pb-4">
-                                <h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2 line-clamp-2"
-                                    x-text="post.title"></h3>
-                                <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 line-clamp-3 mb-3"
-                                    x-text="stripHtml(post.content).substring(0, 120) + '...'"></p>
-                                <div
-                                    class="flex items-center text-green-600 dark:text-green-400 text-sm font-semibold group-hover:gap-2 transition-all duration-300">
-                                    <span>Baca Selengkapnya</span>
-                                    <i
-                                        class="fas fa-arrow-right transform group-hover:translate-x-2 transition-transform duration-300"></i>
-                                </div>
-                            </div>
-                        </a>
-                    </article>
-                </template>
-            </div>
-        </template>
-
-        <!-- Jika KOSONG -->
-        <template x-if="posts.length === 0">
-            <div class="flex flex-col items-center justify-center py-20 text-center">
-                <i class="fas fa-clipboard-list text-7xl text-gray-400 mb-6"></i>
-                <h3 class="text-2xl font-bold text-gray-100 mb-2">Belum Ada Artikel</h3>
-                <p class="text-gray-400 text-base">Artikel akan segera ditambahkan</p>
-            </div>
-        </template>
+        <a href="{{ route('blog') }}" wire:navigate
+           class="inline-flex items-center px-5 py-2.5
+                  bg-gradient-to-r from-green-500 to-teal-500
+                  hover:from-green-600 hover:to-teal-600
+                  text-white text-sm sm:text-base font-semibold
+                  rounded-full shadow-lg
+                  transform hover:scale-105
+                  transition-all duration-300">
+            Lihat Semua
+            <i class="fas fa-arrow-right ml-2"></i>
+        </a>
     </div>
+
+    <!-- Jika ADA data -->
+    <template x-if="posts.length > 0">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            <template x-for="(post, i) in posts" :key="i">
+                <article class="group bg-white dark:bg-gray-800
+                                rounded-2xl overflow-hidden
+                                shadow-lg hover:shadow-2xl
+                                transition-all duration-500
+                                border border-gray-200 dark:border-gray-700"
+                         data-aos="zoom-in" :data-aos-delay="i * 100">
+                    <a :href="`/blog/${post.slug}`" wire:navigate class="block">
+                        <!-- Thumbnail -->
+                        <div class="relative h-48 sm:h-56 overflow-hidden bg-gray-100 dark:bg-gray-700">
+                            <template x-if="post.thumbnail">
+                                <img :src="`/storage/${post.thumbnail}`"
+                                     class="w-full h-full object-cover
+                                            group-hover:scale-105
+                                            transition-transform duration-500">
+                            </template>
+                            <template x-if="!post.thumbnail">
+                                <div class="w-full h-full flex items-center justify-center
+                                            bg-gradient-to-br from-teal-400 to-green-600
+                                            dark:from-teal-600 dark:to-green-700">
+                                    <i class="fas fa-newspaper text-6xl text-white/80"></i>
+                                </div>
+                            </template>
+                        </div>
+
+                        <!-- Meta: Avatar + Tanggal -->
+                        <div class="flex items-center gap-3 px-4 pt-4 pb-2">
+                            <div class="w-8 h-8 rounded-full
+                                        bg-gradient-to-r from-green-600 to-teal-600
+                                        flex items-center justify-center
+                                        text-white font-bold text-xs">
+                                <span x-text="post.title.charAt(0).toUpperCase()"></span>
+                            </div>
+                            <div>
+                                <div class="text-sm font-medium text-gray-800 dark:text-gray-100">
+                                    Admin
+                                </div>
+                                <div class="text-xs text-gray-500 dark:text-gray-400
+                                            flex items-center gap-1">
+                                    <i class="far fa-calendar-alt text-xs"></i>
+                                    <span x-text="formatDate(post.post_date)"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Konten -->
+                        <div class="px-4 pb-4">
+                            <h3 class="text-lg sm:text-xl font-bold
+                                       text-gray-900 dark:text-white
+                                       mb-2 line-clamp-2"
+                                x-text="post.title"></h3>
+                            <p class="text-sm sm:text-base
+                                     text-gray-600 dark:text-gray-300
+                                     line-clamp-3 mb-3"
+                               x-text="stripHtml(post.content).substring(0, 120) + '...'"></p>
+                            <div class="flex items-center
+                                        text-green-600 dark:text-green-400
+                                        text-sm font-semibold
+                                        group-hover:gap-2
+                                        transition-all duration-300">
+                                <span>Baca Selengkapnya</span>
+                                <i class="fas fa-arrow-right
+                                          transform group-hover:translate-x-2
+                                          transition-transform duration-300"></i>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+            </template>
+        </div>
+    </template>
+
+    <!-- Jika KOSONG -->
+    <template x-if="posts.length === 0">
+        <div class="flex flex-col items-center justify-center py-20 text-center">
+            <i class="fas fa-clipboard-list text-7xl text-gray-400 dark:text-gray-600 mb-6"></i>
+            <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">
+                Belum Ada Artikel
+            </h3>
+            <p class="text-gray-500 dark:text-gray-400 text-base">
+                Artikel akan segera ditambahkan
+            </p>
+        </div>
+    </template>
+</div>
 
 
     {{-- Alpine.js Logic --}}

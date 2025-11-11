@@ -1,10 +1,16 @@
-{{-- Menambahkan x-data untuk mengelola menu mobile --}}
-@php
-    $categories = App\Models\Category::withCount('posts')->get();
-@endphp
-<nav id="popup"
-     x-data="{ mobileMenuOpen: false }"
-     class="flex items-center justify-between px-6 py-4 border-b border-white dark:border-gray-700 sticky top-0 z-50 bg-white dark:bg-gray-800 shadow-md">
+<nav id="popup" x-data="{ mobileMenuOpen: false }"
+    class="flex items-center justify-between px-6 py-4 border-b border-white dark:border-gray-700 sticky top-0 z-50 bg-white dark:bg-gray-800 shadow-md">
+
+    {{-- JS: Deteksi URL real-time --}}
+
+    <script>
+        function isActive(path) {
+            const current = window.location.pathname;
+            if (path === '/') return current === '/';
+            return current.startsWith(path);
+        }
+    </script>
+
 
     {{-- DESKTOP NAV --}}
     <div class="hidden md:flex items-center justify-between w-full">
@@ -21,59 +27,62 @@
 
         <div class="flex space-x-8 flex-1 justify-center">
             <a href="/" wire:navigate
-               class="{{ request()->is('/') ? 'text-green-600 dark:text-green-400 font-bold' : 'text-gray-600 dark:text-gray-300' }}">
+                x-bind:class="isActive('/') ? 'text-green-600 dark:text-green-400 font-bold' : 'text-gray-600 dark:text-gray-300'">
                 Home
             </a>
 
             {{-- Dropdown Blog --}}
             <div class="relative" x-data="{ openBlog: false }">
                 <span @click="openBlog = !openBlog"
-                      class="{{ request()->is('blog*') ? 'text-green-600 dark:text-green-400 font-bold' : 'text-gray-600 dark:text-gray-300' }} flex items-center cursor-pointer">
+                    x-bind:class="isActive('/blog') || isActive('/categories/') ? 'text-green-600 dark:text-green-400 font-bold' : 'text-gray-600 dark:text-gray-300'"
+                    class="flex items-center cursor-pointer">
                     Blog
-                    <i :class="{ 'rotate-180': openBlog }"
-                       class="fas fa-chevron-down ml-2 text-xs transition-transform"></i>
+                    <i :class="{ 'rotate-180': openBlog }" class="fas fa-chevron-down ml-2 text-xs transition-transform"></i>
                 </span>
 
                 <div x-show="openBlog" x-cloak @click.away="openBlog = false"
-                     class="absolute left-0 mt-2 w-56 bg-white border rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700 z-50 max-h-96 overflow-y-auto">
-
-                    {{-- Semua Artikel → ke /blog --}}
-                   <a href="{{ route('blog') }}" wire:navigate
-                       class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-t-lg font-semibold border-b dark:border-gray-600">
+                    class="absolute left-0 mt-2 w-56 bg-white border rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700 z-50 max-h-96 overflow-y-auto">
+                    <a href="{{ route('blog') }}" wire:navigate
+                        class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-t-lg font-semibold border-b dark:border-gray-600">
                         Semua Artikel
                     </a>
-
-                    {{-- Loop kategori dinamis --}}
-                   @foreach($categories as $category)
-    <a href="{{ route('categories.show', $category->slug) }}" wire:navigate
-       class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 {{ $loop->last ? 'rounded-b-lg' : '' }}">
-        <div class="flex items-center justify-between">
-            <span>{{ $category->name }}</span>
-            <span class="text-xs bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 px-2 py-0.5 rounded-full">{{ $category->posts_count }}</span>
-        </div>
-    </a>
-@endforeach
+                    @foreach ($categories as $category)
+                        <a href="{{ route('categories.show', $category->slug) }}" wire:navigate
+                            class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 {{ $loop->last ? 'rounded-b-lg' : '' }}">
+                            <div class="flex items-center justify-between">
+                                <span>{{ $category->name }}</span>
+                                <span class="text-xs bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 px-2 py-0.5 rounded-full">
+                                    {{ $category->posts_count }}
+                                </span>
+                            </div>
+                        </a>
+                    @endforeach
                 </div>
             </div>
 
             {{-- Dropdown Profile --}}
             <div class="relative" x-data="{ openProfile: false }">
                 <span @click="openProfile = !openProfile"
-                      class="{{ request()->is('profile*') ? 'text-green-600 dark:text-green-400 font-bold' : 'text-gray-600 dark:text-gray-300' }} flex items-center cursor-pointer">
+                    x-bind:class="isActive('/profile') ? 'text-green-600 dark:text-green-400 font-bold' : 'text-gray-600 dark:text-gray-300'"
+                    class="flex items-center cursor-pointer">
                     Profile
-                    <i :class="{ 'rotate-180': openProfile }"
-                       class="fas fa-chevron-down ml-2 text-xs transition-transform"></i>
+                    <i :class="{ 'rotate-180': openProfile }" class="fas fa-chevron-down ml-2 text-xs transition-transform"></i>
                 </span>
 
                 <div x-show="openProfile" x-cloak @click.away="openProfile = false"
-                     class="absolute left-0 mt-2 w-56 bg-white border rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700 z-50">
-                    <a href="#" wire:navigate class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-t-lg">Sejarah</a>
-                    <a href="#" wire:navigate class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-b-lg">Susunan Kepengurusan</a>
+                    class="absolute left-0 mt-2 w-56 bg-white border rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700 z-50">
+                    <a href="{{ route('profile.sejarah') }}" wire:navigate
+                        class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-t-lg">
+                        Sejarah
+                    </a>
+                    <a href="{{ route('profile.kepengurusan') }}" wire:navigate
+                        class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-b-lg">
+                        Susunan Kepengurusan
+                    </a>
                 </div>
             </div>
         </div>
 
-        {{-- Dark Mode Placeholder --}}
         <div class="flex items-center justify-end flex-1">
             <button class="p-2 rounded-full bg-gray-100 dark:bg-gray-700 transition-colors">
                 <i class="fas fa-sun text-yellow-500 text-lg"></i>
@@ -95,9 +104,7 @@
             <button class="p-2 rounded-full bg-gray-100 dark:bg-gray-700 transition-colors">
                 <i class="fas fa-sun text-yellow-500 text-lg"></i>
             </button>
-
-            <button @click="mobileMenuOpen = !mobileMenuOpen"
-                    class="text-gray-600 dark:text-gray-300">
+            <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-gray-600 dark:text-gray-300">
                 <i x-show="!mobileMenuOpen" class="fas fa-bars text-xl"></i>
                 <i x-show="mobileMenuOpen" class="fas fa-times text-xl"></i>
             </button>
@@ -105,37 +112,57 @@
     </div>
 
     {{-- MOBILE MENU --}}
-    <div x-show="mobileMenuOpen" x-cloak
-         @click.away="mobileMenuOpen = false"
-         class="md:hidden absolute top-16 left-0 w-full bg-white dark:bg-gray-800 shadow-lg border-t dark:border-gray-700 z-40">
+    <div x-show="mobileMenuOpen" x-cloak @click.away="mobileMenuOpen = false"
+        class="md:hidden absolute top-16 left-0 w-full bg-white dark:bg-gray-800 shadow-lg border-t dark:border-gray-700 z-40">
 
         <a href="/" wire:navigate
-           class="{{ request()->is('/') ? 'text-green-600 dark:text-green-400 font-bold' : 'text-gray-600 dark:text-gray-300' }} block p-4 border-b dark:border-gray-700">
+            x-bind:class="isActive('/') ? 'text-green-600 dark:text-green-400 font-bold' : 'text-gray-600 dark:text-gray-300'"
+            class="block p-4 border-b dark:border-gray-700">
             Home
         </a>
 
-        {{-- Blog Mobile Dropdown --}}
         <div class="border-b dark:border-gray-700" x-data="{ openBlogMobile: false }">
             <span @click="openBlogMobile = !openBlogMobile"
-                  class="{{ request()->is('blog*') ? 'text-green-600 dark:text-green-400 font-bold' : 'text-gray-600 dark:text-gray-300' }} flex items-center justify-between p-4 cursor-pointer">
+                x-bind:class="isActive('/blog') || isActive('/categories/') ? 'text-green-600 dark:text-green-400 font-bold' : 'text-gray-600 dark:text-gray-300'"
+                class="flex items-center justify-between p-4 cursor-pointer">
                 Blog
                 <i :class="{ 'rotate-180': openBlogMobile }" class="fas fa-chevron-down text-xs transition-transform"></i>
             </span>
             <div x-show="openBlogMobile" x-cloak class="bg-gray-50 dark:bg-gray-700 max-h-64 overflow-y-auto">
-               <a href="{{ route('blog') }}" wire:navigate
-                   class="block px-8 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 font-semibold border-b dark:border-gray-600">
+                <a href="{{ route('blog') }}" wire:navigate
+                    class="block px-8 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 font-semibold border-b dark:border-gray-600">
                     Semua Artikel
                 </a>
-                {{-- Loop kategori dinamis --}}
-               @foreach($categories as $category)
-    <a href="{{ route('categories.show', $category->slug) }}" wire:navigate
-       class="block px-8 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600">
-        <div class="flex items-center justify-between">
-            <span>{{ $category->name }}</span>
-            <span class="text-xs bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 px-2 py-0.5 rounded-full">{{ $category->posts_count }}</span>
+                @foreach ($categories as $category)
+                    <a href="{{ route('categories.show', $category->slug) }}" wire:navigate
+                        class="block px-8 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600">
+                        <div class="flex items-center justify-between">
+                            <span>{{ $category->name }}</span>
+                            <span class="text-xs bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 px-2 py-0.5 rounded-full">
+                                {{ $category->posts_count }}
+                            </span>
+                        </div>
+                    </a>
+                @endforeach
+            </div>
         </div>
-    </a>
-@endforeach
+
+        <div class="border-b dark:border-gray-700" x-data="{ openProfileMobile: false }">
+            <span @click="openProfileMobile = !openProfileMobile"
+                x-bind:class="isActive('/profile') ? 'text-green-600 dark:text-green-400 font-bold' : 'text-gray-600 dark:text-gray-300'"
+                class="flex items-center justify-between p-4 cursor-pointer">
+                Profile
+                <i :class="{ 'rotate-180': openProfileMobile }" class="fas fa-chevron-down text-xs transition-transform"></i>
+            </span>
+            <div x-show="openProfileMobile" x-cloak class="bg-gray-50 dark:bg-gray-700 max-h-64 overflow-y-auto">
+                <a href="{{ route('profile.sejarah') }}" wire:navigate
+                    class="block px-8 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 font-semibold border-b dark:border-gray-600">
+                    Sejarah
+                </a>
+                <a href="{{ route('profile.kepengurusan') }}" wire:navigate
+                    class="block px-8 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 font-semibold">
+                    Susunan Kepengurusan
+                </a>
             </div>
         </div>
     </div>

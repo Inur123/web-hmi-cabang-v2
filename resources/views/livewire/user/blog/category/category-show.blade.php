@@ -1,7 +1,7 @@
 <div>
     <div class="container mx-auto px-6 py-12">
         <!-- Header Section -->
-       <div class="mb-12">
+        <div class="mb-12">
             <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
                 {{ $category->name ?? 'Kategori' }}
             </h1>
@@ -15,7 +15,7 @@
             @forelse ($posts as $post)
                 <article
                     class="group relative bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl border border-gray-200 dark:border-gray-700 hover:border-green-500 dark:hover:border-green-500 transform hover:-translate-y-2 transition-all duration-500">
-                  <a href="{{ route('blog.show', $post->slug) }}" wire:navigate class="block">
+                    <a href="{{ route('blog.show', $post->slug) }}" wire:navigate class="block">
 
                         <!-- Image -->
                         <div class="relative h-56 overflow-hidden">
@@ -84,35 +84,35 @@
 
         <!-- Custom SPA Pagination -->
         <!-- Custom SPA Pagination -->
-@if ($posts->total() > 0)
-    <div class="flex justify-center mt-12 space-x-2">
-        {{-- Previous --}}
-        @if ($posts->onFirstPage())
-            <span class="px-4 py-2 rounded-lg bg-gray-200 text-gray-500 cursor-not-allowed">&laquo;</span>
-        @else
-            <button wire:click="gotoPage({{ $posts->currentPage() - 1 }})"
-                class="px-4 py-2 rounded-lg bg-green-500 text-white hover:bg-green-600 transition">&laquo;</button>
-        @endif
+        @if ($posts->total() > 0)
+            <div class="flex justify-center mt-12 space-x-2">
+                {{-- Previous --}}
+                @if ($posts->onFirstPage())
+                    <span class="px-4 py-2 rounded-lg bg-gray-200 text-gray-500 cursor-not-allowed">&laquo;</span>
+                @else
+                    <button wire:click="gotoPage({{ $posts->currentPage() - 1 }})"
+                        class="px-4 py-2 rounded-lg bg-green-500 text-white hover:bg-green-600 transition">&laquo;</button>
+                @endif
 
-        {{-- Page Numbers --}}
-        @foreach (range(1, $posts->lastPage()) as $page)
-            @if ($page === $posts->currentPage())
-                <span class="px-4 py-2 rounded-lg bg-green-500 text-white">{{ $page }}</span>
-            @else
-                <button wire:click="gotoPage({{ $page }})"
-                    class="px-4 py-2 rounded-lg bg-white text-gray-700 border border-gray-300 hover:bg-green-100 transition">{{ $page }}</button>
-            @endif
-        @endforeach
+                {{-- Page Numbers --}}
+                @foreach (range(1, $posts->lastPage()) as $page)
+                    @if ($page === $posts->currentPage())
+                        <span class="px-4 py-2 rounded-lg bg-green-500 text-white">{{ $page }}</span>
+                    @else
+                        <button wire:click="gotoPage({{ $page }})"
+                            class="px-4 py-2 rounded-lg bg-white text-gray-700 border border-gray-300 hover:bg-green-100 transition">{{ $page }}</button>
+                    @endif
+                @endforeach
 
-        {{-- Next --}}
-        @if ($posts->hasMorePages())
-            <button wire:click="gotoPage({{ $posts->currentPage() + 1 }})"
-                class="px-4 py-2 rounded-lg bg-green-500 text-white hover:bg-green-600 transition">&raquo;</button>
-        @else
-            <span class="px-4 py-2 rounded-lg bg-gray-200 text-gray-500 cursor-not-allowed">&raquo;</span>
+                {{-- Next --}}
+                @if ($posts->hasMorePages())
+                    <button wire:click="gotoPage({{ $posts->currentPage() + 1 }})"
+                        class="px-4 py-2 rounded-lg bg-green-500 text-white hover:bg-green-600 transition">&raquo;</button>
+                @else
+                    <span class="px-4 py-2 rounded-lg bg-gray-200 text-gray-500 cursor-not-allowed">&raquo;</span>
+                @endif
+            </div>
         @endif
-    </div>
-@endif
 
 
     </div>
