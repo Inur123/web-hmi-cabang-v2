@@ -23,8 +23,8 @@
     </style>
 
     {{-- HERO SECTION + SLIDER (Alpine.js) --}}
-    <div class="container mx-auto px-4 sm:px-6 py-8 sm:py-12 grid md:grid-cols-2 gap-8 sm:gap-12 items-center"
-        data-aos="zoom-in" x-data="{
+    <div class="container mx-auto  sm:px-6 sm:py-12 grid md:grid-cols-2 gap-8 sm:gap-12 items-center" data-aos="zoom-in"
+        x-data="{
             images: [
                 { src: '{{ asset('images/d-2.jpeg') }}', alt: 'HMI Members' },
                 { src: '{{ asset('images/d-1.jpeg') }}', alt: 'HMI Activities' }
@@ -43,8 +43,14 @@
                     <span class="text-green-700 dark:text-green-300 font-semibold text-xs sm:text-sm">Organisasi
                         Mahasiswa Islam</span>
                 </div>
-                <h1
-                    class="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight bg-gradient-to-r from-green-600 to-teal-600 bg-clip-text text-transparent">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight bg-gradient-to-r from-green-600 to-teal-600 bg-clip-text text-transparent
+           [--gradient-from:#16a34a] [--gradient-to:#0d9488]"
+                    style="
+        background-image: linear-gradient(to right, var(--gradient-from, #16a34a), var(--gradient-to, #0d9488));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    ">
                     HMI CABANG PONOROGO
                 </h1>
             </div>
@@ -83,11 +89,11 @@
     </div>
 
     {{-- SAMBUTAN KETUA UMUM --}}
-    <div class="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
+    <div class="container mx-auto py-8  sm:px-6  sm:py-12">
         <div class="text-center mb-8 sm:mb-12" data-aos="fade-up">
             <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">Sambutan Ketua Umum</h2>
-            <div
-                class="w-20 sm:w-24 h-1 bg-gradient-to-r from-green-500 via-teal-600 to-emerald-600 mx-auto rounded-full">
+            <div class="w-20 sm:w-24 h-1 mx-auto rounded-full"
+                style="background: linear-gradient(to right, #16a34a, #0d9488);">
             </div>
         </div>
         <div
@@ -95,14 +101,16 @@
             <div class="flex flex-col lg:flex-row items-center">
                 <div class="relative flex-shrink-0 p-6 sm:p-8 lg:p-12 w-full lg:w-auto" data-aos="fade-right">
                     <div class="relative">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-br from-green-500 via-teal-600 to-emerald-600 rounded-full blur-2xl opacity-20 animate-pulse">
+                        <div class="absolute inset-0 rounded-full blur-2xl opacity-20 animate-pulse pointer-events-none"
+                            style="
+        background: linear-gradient(to bottom right, #16a34a, #0d9488, #059669);
+    ">
                         </div>
                         <div class="relative flex justify-center">
                             <img src="{{ asset('images/nanda-2.png') }}" alt="Ketua Umum HMI"
                                 class="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-full border-4 sm:border-8 border-white dark:border-gray-700 shadow-2xl object-cover relative z-10" />
-                            <div
-                                class="absolute bottom-2 sm:bottom-4 right-2 sm:right-4 bg-gradient-to-r from-green-600 to-teal-600 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-lg text-xs sm:text-sm font-bold z-20">
+                            <div class="absolute bottom-2 sm:bottom-4 right-2 sm:right-4 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-lg text-xs sm:text-sm font-bold z-20"
+                                style="background: linear-gradient(to right, #16a34a, #0d9488);">
                                 Ketua Umum
                             </div>
                         </div>
@@ -180,7 +188,7 @@
     </div>
 
     {{-- TENTANG KAMI --}}
-    <div class="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
+    <div class="container mx-auto sm:px-6 py-8 sm:py-12">
         <div class="text-center mb-8 sm:mb-12" data-aos="fade-up">
             <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">Tentang Kami</h2>
             <div
@@ -191,8 +199,8 @@
             class="flex flex-col lg:flex-row items-center gap-8 sm:gap-12 bg-white dark:bg-gray-800 rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden p-6 sm:p-8 lg:p-12">
             <div class="flex-shrink-0 w-full lg:w-auto" data-aos="fade-right">
                 <div class="relative flex justify-center lg:justify-start">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-br from-green-500 to-teal-600 rounded-3xl blur-3xl opacity-20 animate-pulse">
+                    <div class="absolute inset-0 rounded-3xl blur-3xl opacity-20 animate-pulse pointer-events-none"
+                        style="background: linear-gradient(to bottom right, #16a34a, #0d9488);">
                     </div>
                     <img src="{{ asset('images/logo-hmi.png') }}" alt="HMI Logo"
                         class="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 relative z-10 object-contain" />
@@ -215,8 +223,9 @@
                     Organisasi ini berkomitmen untuk memperjuangkan nilai-nilai Islam sebagai pedoman universal dalam
                     kehidupan bermasyarakat, berbangsa, dan bernegara.
                 </p>
-                <a href=""
-                    class="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-green-600 to-teal-600 text-white text-sm sm:text-base font-semibold rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+                <a href="#"
+                    class="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 text-white text-sm sm:text-base font-semibold rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                    style="background: linear-gradient(to right, #16a34a, #0d9488);">
                     Selengkapnya
                     <i class="fas fa-arrow-right ml-1"></i>
                 </a>
@@ -244,8 +253,8 @@
                     </button>
                 </div>
             </div>
-            <div
-                class="w-20 sm:w-24 h-1 bg-gradient-to-r from-green-500 via-teal-600 to-emerald-600 mx-auto rounded-full">
+            <div class="w-20 sm:w-24 h-1 mx-auto rounded-full"
+                style="background: linear-gradient(to right, #16a34a, #0d9488);">
             </div>
         </div>
 
@@ -296,8 +305,8 @@
                                 </div>
 
                                 <!-- GARIS HIJAU -->
-                                <div
-                                    class="h-1 bg-gradient-to-r from-green-500 via-teal-600 to-emerald-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left">
+                                <div class="h-1 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left rounded-full"
+                                    style="background: linear-gradient(to right, #16a34a, #0d9488);">
                                 </div>
                             </article>
                         </template>
@@ -326,10 +335,7 @@
 
 
     {{-- ARTIKEL TERBARU (Font Awesome Icons) --}}
-    <div class="container mx-auto px-4 sm:px-6 py-12 sm:py-16
-            bg-gradient-to-br from-gray-50 to-gray-100
-            dark:from-gray-900 dark:to-gray-800
-            text-gray-900 dark:text-white
+    <div class="container mx-auto  sm:px-6 py-12 sm:py-16
             rounded-2xl transition-all duration-500"
         x-data="latestPosts({{ $posts->toJson() }})" x-init="init()">
 
@@ -343,13 +349,13 @@
                 </p>
             </div>
             <a href="{{ route('blog') }}" wire:navigate
-                class="inline-flex items-center px-5 py-2.5
-                  bg-gradient-to-r from-green-500 to-teal-500
-                  hover:from-green-600 hover:to-teal-600
-                  text-white text-sm sm:text-base font-semibold
-                  rounded-full shadow-lg
-                  transform hover:scale-105
-                  transition-all duration-300">
+                class="inline-flex items-center px-5 py-2.5 text-white text-sm sm:text-base font-semibold rounded-full shadow-lg transform transition-all duration-300 hover:scale-105"
+                style="
+        background: linear-gradient(to right, #16a34a, #0d9488);
+        transition: all 0.3s ease;
+    "
+                onmouseover="this.style.background='linear-gradient(to right, #15803d, #0f766e)'"
+                onmouseout="this.style.background='linear-gradient(to right, #16a34a, #0d9488)'">
                 Lihat Semua
                 <i class="fas fa-arrow-right ml-2"></i>
             </a>
@@ -390,11 +396,8 @@
 
                             <!-- Meta: Avatar + Tanggal -->
                             <div class="flex items-center gap-3 px-4 pt-4 pb-2">
-                                <div
-                                    class="w-8 h-8 rounded-full
-                                        bg-gradient-to-r from-green-600 to-teal-600
-                                        flex items-center justify-center
-                                        text-white font-bold text-xs">
+                                <div class="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-xs"
+                                    style="background: linear-gradient(to right, #16a34a, #0d9488);">
                                     <span x-text="post.title.charAt(0).toUpperCase()"></span>
                                 </div>
                                 <div>

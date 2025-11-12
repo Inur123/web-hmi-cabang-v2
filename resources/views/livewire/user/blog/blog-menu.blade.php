@@ -1,5 +1,5 @@
 <div>
-    <div class="container mx-auto px-6 py-12">
+    <div class="container mx-auto">
         <!-- Header Section -->
         <div class="mb-12">
             <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
@@ -29,22 +29,24 @@
 
                             <div class="absolute top-4 right-4">
                                 <span
-                                    class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-bold bg-gradient-to-r from-green-600 to-teal-600 text-white shadow-lg transform group-hover:scale-110 transition-transform duration-300">
+                                    class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-bold text-white shadow-lg transform group-hover:scale-110 transition-transform duration-300"
+                                    style="background: linear-gradient(to right, #16a34a, #0d9488);">
                                     {{ $post->category->name }}
                                 </span>
                             </div>
+
                         </div>
 
                         <!-- Content -->
                         <div class="p-6">
-                            <!-- Admin Badge -->
                             <!-- Admin Badge + Tanggal -->
                             <div class="flex items-center gap-2 mb-3">
                                 <!-- Badge -->
-                                <div
-                                    class="w-8 h-8 rounded-full bg-gradient-to-r from-green-600 to-teal-600 flex items-center justify-center text-white font-bold text-xs shadow-md">
+                                <div class="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-xs shadow-md"
+                                    style="background: linear-gradient(to right, #16a34a, #0d9488);">
                                     A
                                 </div>
+
                                 <!-- Admin -->
                                 <span class="font-medium text-gray-900 dark:text-white">Admin</span>
                                 <!-- Tanggal -->

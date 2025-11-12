@@ -1,5 +1,5 @@
 <div>
-    <div class="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
+    <div class="container mx-auto sm:px-6 sm:py-12">
         <div class="grid lg:grid-cols-3 gap-6 lg:gap-12">
             <!-- Main Content -->
             <div class="lg:col-span-2">
@@ -7,8 +7,8 @@
                 <div
                     class="bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 p-4 sm:p-6 lg:p-8 mb-6 sm:mb-8">
                     <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
-                        <div
-                            class="w-12 h-12 sm:w-16 sm:h-16 rounded-lg sm:rounded-xl bg-gradient-to-r from-green-600 to-teal-600 flex items-center justify-center text-white shadow-lg flex-shrink-0">
+                        <div class="w-12 h-12 sm:w-16 sm:h-16 rounded-lg sm:rounded-xl flex items-center justify-center text-white shadow-lg flex-shrink-0"
+                            style="background: linear-gradient(to right, #16a34a, #0d9488);">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 sm:h-8 sm:w-8" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -30,8 +30,8 @@
                     <!-- Ketua Umum -->
                     <div
                         class="bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden group hover:shadow-2xl transition-all duration-300">
-                        <div
-                            class="relative h-36 sm:h-40 md:h-48 bg-gradient-to-br from-green-600 to-teal-600 flex items-center justify-center overflow-hidden">
+                        <div class="relative h-36 sm:h-40 md:h-48 flex items-center justify-center overflow-hidden"
+                            style="background: linear-gradient(to bottom right, #16a34a, #0d9488);">
                             <div
                                 class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-300">
                             </div>
@@ -70,8 +70,8 @@
                     <!-- Sekretaris Umum -->
                     <div
                         class="bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden group hover:shadow-2xl transition-all duration-300">
-                        <div
-                            class="relative h-36 sm:h-40 md:h-48 bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center overflow-hidden">
+                        <div class="relative h-36 sm:h-40 md:h-48 flex items-center justify-center overflow-hidden"
+                            style="background: linear-gradient(to bottom right, #2563eb, #4f46e5);">
                             <div
                                 class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-300">
                             </div>
@@ -109,8 +109,8 @@
                     <!-- Bendahara -->
                     <div
                         class="bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden group hover:shadow-2xl transition-all duration-300">
-                        <div
-                            class="relative h-36 sm:h-40 md:h-48 bg-gradient-to-br from-yellow-500 to-orange-500 flex items-center justify-center overflow-hidden">
+                        <div class="relative h-36 sm:h-40 md:h-48 flex items-center justify-center overflow-hidden"
+                            style="background: linear-gradient(to bottom right, #f59e0b, #f97316);">
                             <div
                                 class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-300">
                             </div>
@@ -161,8 +161,8 @@
                         <div
                             class="border border-gray-200 dark:border-gray-700 rounded-lg sm:rounded-xl p-4 sm:p-6 hover:border-green-500 dark:hover:border-green-400 transition-all duration-300">
                             <div class="flex items-start gap-3 sm:gap-4 mb-4">
-                                <div
-                                    class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 flex items-center justify-center text-white flex-shrink-0 shadow-md">
+                                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center text-white flex-shrink-0 shadow-md"
+                                    style="background: linear-gradient(to right, #9333ea, #ec4899);">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6" fill="none"
                                         viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -182,8 +182,7 @@
                                             </svg>
                                             <div class="flex-1">
                                                 <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Ketua
-                                                    Bidang
-                                                </p>
+                                                    Bidang</p>
                                                 <p
                                                     class="text-sm sm:text-base font-semibold text-gray-900 dark:text-white">
                                                     Ahmad Fauzi</p>
@@ -213,8 +212,8 @@
                         <div
                             class="border border-gray-200 dark:border-gray-700 rounded-lg sm:rounded-xl p-4 sm:p-6 hover:border-green-500 dark:hover:border-green-400 transition-all duration-300">
                             <div class="flex items-start gap-3 sm:gap-4 mb-4">
-                                <div
-                                    class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-r from-orange-600 to-red-600 flex items-center justify-center text-white flex-shrink-0 shadow-md">
+                                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center text-white flex-shrink-0 shadow-md"
+                                    style="background: linear-gradient(to right, #ea580c, #dc2626);">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6"
                                         fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -223,8 +222,7 @@
                                 </div>
                                 <div class="flex-1 min-w-0">
                                     <h3 class="text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-3">
-                                        Bidang
-                                        Pembinaan Aparatur Organisasi</h3>
+                                        Bidang Pembinaan Aparatur Organisasi</h3>
                                     <div class="space-y-2">
                                         <div class="flex items-start gap-2">
                                             <svg xmlns="http://www.w3.org/2000/svg"
@@ -235,8 +233,7 @@
                                             </svg>
                                             <div class="flex-1">
                                                 <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Ketua
-                                                    Bidang
-                                                </p>
+                                                    Bidang</p>
                                                 <p
                                                     class="text-sm sm:text-base font-semibold text-gray-900 dark:text-white">
                                                     Rizki Pratama</p>
@@ -266,8 +263,8 @@
                         <div
                             class="border border-gray-200 dark:border-gray-700 rounded-lg sm:rounded-xl p-4 sm:p-6 hover:border-green-500 dark:hover:border-green-400 transition-all duration-300">
                             <div class="flex items-start gap-3 sm:gap-4 mb-4">
-                                <div
-                                    class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-r from-cyan-600 to-blue-600 flex items-center justify-center text-white flex-shrink-0 shadow-md">
+                                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center text-white flex-shrink-0 shadow-md"
+                                    style="background: linear-gradient(to right, #0891b2, #3b82f6);">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6"
                                         fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path d="M12 14l9-5-9-5-9 5 9 5z" />
@@ -279,8 +276,7 @@
                                 </div>
                                 <div class="flex-1 min-w-0">
                                     <h3 class="text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-3">
-                                        Bidang
-                                        Perguruan Tinggi, Kemahasiswaan Dan Kepemudaan</h3>
+                                        Bidang Perguruan Tinggi, Kemahasiswaan Dan Kepemudaan</h3>
                                     <div class="space-y-2">
                                         <div class="flex items-start gap-2">
                                             <svg xmlns="http://www.w3.org/2000/svg"
@@ -291,8 +287,7 @@
                                             </svg>
                                             <div class="flex-1">
                                                 <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Ketua
-                                                    Bidang
-                                                </p>
+                                                    Bidang</p>
                                                 <p
                                                     class="text-sm sm:text-base font-semibold text-gray-900 dark:text-white">
                                                     Muhammad Iqbal</p>
@@ -322,8 +317,8 @@
                         <div
                             class="border border-gray-200 dark:border-gray-700 rounded-lg sm:rounded-xl p-4 sm:p-6 hover:border-green-500 dark:hover:border-green-400 transition-all duration-300">
                             <div class="flex items-start gap-3 sm:gap-4 mb-4">
-                                <div
-                                    class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-r from-yellow-600 to-orange-600 flex items-center justify-center text-white flex-shrink-0 shadow-md">
+                                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center text-white flex-shrink-0 shadow-md"
+                                    style="background: linear-gradient(to right, #d97706, #ea580c);">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6"
                                         fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -332,8 +327,7 @@
                                 </div>
                                 <div class="flex-1 min-w-0">
                                     <h3 class="text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-3">
-                                        Bidang
-                                        Kewirausahaan Dan Pengembangan Profesi</h3>
+                                        Bidang Kewirausahaan Dan Pengembangan Profesi</h3>
                                     <div class="space-y-2">
                                         <div class="flex items-start gap-2">
                                             <svg xmlns="http://www.w3.org/2000/svg"
@@ -344,8 +338,7 @@
                                             </svg>
                                             <div class="flex-1">
                                                 <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Ketua
-                                                    Bidang
-                                                </p>
+                                                    Bidang</p>
                                                 <p
                                                     class="text-sm sm:text-base font-semibold text-gray-900 dark:text-white">
                                                     Andi Wijaya</p>
@@ -375,8 +368,8 @@
                         <div
                             class="border border-gray-200 dark:border-gray-700 rounded-lg sm:rounded-xl p-4 sm:p-6 hover:border-green-500 dark:hover:border-green-400 transition-all duration-300">
                             <div class="flex items-start gap-3 sm:gap-4 mb-4">
-                                <div
-                                    class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-r from-pink-600 to-purple-600 flex items-center justify-center text-white flex-shrink-0 shadow-md">
+                                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center text-white flex-shrink-0 shadow-md"
+                                    style="background: linear-gradient(to right, #ec4899, #a855f7);">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6"
                                         fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -385,8 +378,7 @@
                                 </div>
                                 <div class="flex-1 min-w-0">
                                     <h3 class="text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-3">
-                                        Bidang
-                                        Pemberdayaan Perempuan</h3>
+                                        Bidang Pemberdayaan Perempuan</h3>
                                     <div class="space-y-2">
                                         <div class="flex items-start gap-2">
                                             <svg xmlns="http://www.w3.org/2000/svg"
@@ -397,8 +389,7 @@
                                             </svg>
                                             <div class="flex-1">
                                                 <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Ketua
-                                                    Bidang
-                                                </p>
+                                                    Bidang</p>
                                                 <p
                                                     class="text-sm sm:text-base font-semibold text-gray-900 dark:text-white">
                                                     Nurul Hidayah</p>
@@ -428,8 +419,8 @@
                         <div
                             class="border border-gray-200 dark:border-gray-700 rounded-lg sm:rounded-xl p-4 sm:p-6 hover:border-green-500 dark:hover:border-green-400 transition-all duration-300">
                             <div class="flex items-start gap-3 sm:gap-4 mb-4">
-                                <div
-                                    class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-r from-green-600 to-teal-600 flex items-center justify-center text-white flex-shrink-0 shadow-md">
+                                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center text-white flex-shrink-0 shadow-md"
+                                    style="background: linear-gradient(to right, #16a34a, #0d9488);">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6"
                                         fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -438,8 +429,7 @@
                                 </div>
                                 <div class="flex-1 min-w-0">
                                     <h3 class="text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-3">
-                                        Bidang
-                                        Partisipasi Pembangunan Daerah</h3>
+                                        Bidang Partisipasi Pembangunan Daerah</h3>
                                     <div class="space-y-2">
                                         <div class="flex items-start gap-2">
                                             <svg xmlns="http://www.w3.org/2000/svg"
@@ -450,8 +440,7 @@
                                             </svg>
                                             <div class="flex-1">
                                                 <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Ketua
-                                                    Bidang
-                                                </p>
+                                                    Bidang</p>
                                                 <p
                                                     class="text-sm sm:text-base font-semibold text-gray-900 dark:text-white">
                                                     Budi Santoso</p>
@@ -481,8 +470,8 @@
                         <div
                             class="border border-gray-200 dark:border-gray-700 rounded-lg sm:rounded-xl p-4 sm:p-6 hover:border-green-500 dark:hover:border-green-400 transition-all duration-300">
                             <div class="flex items-start gap-3 sm:gap-4 mb-4">
-                                <div
-                                    class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-r from-indigo-600 to-blue-600 flex items-center justify-center text-white flex-shrink-0 shadow-md">
+                                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center text-white flex-shrink-0 shadow-md"
+                                    style="background: linear-gradient(to right, #4f46e5, #3b82f6);">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6"
                                         fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -491,8 +480,7 @@
                                 </div>
                                 <div class="flex-1 min-w-0">
                                     <h3 class="text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-3">
-                                        Bidang
-                                        Digitalisasi Dan Inovasi</h3>
+                                        Bidang Digitalisasi Dan Inovasi</h3>
                                     <div class="space-y-2">
                                         <div class="flex items-start gap-2">
                                             <svg xmlns="http://www.w3.org/2000/svg"
@@ -503,8 +491,7 @@
                                             </svg>
                                             <div class="flex-1">
                                                 <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Ketua
-                                                    Bidang
-                                                </p>
+                                                    Bidang</p>
                                                 <p
                                                     class="text-sm sm:text-base font-semibold text-gray-900 dark:text-white">
                                                     Farhan Maulana</p>
@@ -534,8 +521,8 @@
                         <div
                             class="border border-gray-200 dark:border-gray-700 rounded-lg sm:rounded-xl p-4 sm:p-6 hover:border-green-500 dark:hover:border-green-400 transition-all duration-300">
                             <div class="flex items-start gap-3 sm:gap-4 mb-4">
-                                <div
-                                    class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-r from-teal-600 to-cyan-600 flex items-center justify-center text-white flex-shrink-0 shadow-md">
+                                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center text-white flex-shrink-0 shadow-md"
+                                    style="background: linear-gradient(to right, #0d9488, #06b6d4);">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6"
                                         fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -544,8 +531,7 @@
                                 </div>
                                 <div class="flex-1 min-w-0">
                                     <h3 class="text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-3">
-                                        Bidang
-                                        Kelautan Dan Agraria</h3>
+                                        Bidang Kelautan Dan Agraria</h3>
                                     <div class="space-y-2">
                                         <div class="flex items-start gap-2">
                                             <svg xmlns="http://www.w3.org/2000/svg"
@@ -556,8 +542,7 @@
                                             </svg>
                                             <div class="flex-1">
                                                 <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Ketua
-                                                    Bidang
-                                                </p>
+                                                    Bidang</p>
                                                 <p
                                                     class="text-sm sm:text-base font-semibold text-gray-900 dark:text-white">
                                                     Agung Nugroho</p>
@@ -587,8 +572,8 @@
                         <div
                             class="border border-gray-200 dark:border-gray-700 rounded-lg sm:rounded-xl p-4 sm:p-6 hover:border-green-500 dark:hover:border-green-400 transition-all duration-300">
                             <div class="flex items-start gap-3 sm:gap-4 mb-4">
-                                <div
-                                    class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-r from-red-600 to-pink-600 flex items-center justify-center text-white flex-shrink-0 shadow-md">
+                                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center text-white flex-shrink-0 shadow-md"
+                                    style="background: linear-gradient(to right, #dc2626, #ec4899);">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6"
                                         fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -597,8 +582,7 @@
                                 </div>
                                 <div class="flex-1 min-w-0">
                                     <h3 class="text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-3">
-                                        Bidang
-                                        Hukum Dan HAM</h3>
+                                        Bidang Hukum Dan HAM</h3>
                                     <div class="space-y-2">
                                         <div class="flex items-start gap-2">
                                             <svg xmlns="http://www.w3.org/2000/svg"
@@ -609,8 +593,7 @@
                                             </svg>
                                             <div class="flex-1">
                                                 <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Ketua
-                                                    Bidang
-                                                </p>
+                                                    Bidang</p>
                                                 <p
                                                     class="text-sm sm:text-base font-semibold text-gray-900 dark:text-white">
                                                     Hendra Saputra</p>
@@ -640,8 +623,8 @@
                         <div
                             class="border border-gray-200 dark:border-gray-700 rounded-lg sm:rounded-xl p-4 sm:p-6 hover:border-green-500 dark:hover:border-green-400 transition-all duration-300">
                             <div class="flex items-start gap-3 sm:gap-4 mb-4">
-                                <div
-                                    class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 flex items-center justify-center text-white flex-shrink-0 shadow-md">
+                                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center text-white flex-shrink-0 shadow-md"
+                                    style="background: linear-gradient(to right, #7c3aed, #4f46e5);">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6"
                                         fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -650,8 +633,7 @@
                                 </div>
                                 <div class="flex-1 min-w-0">
                                     <h3 class="text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-3">
-                                        Bidang
-                                        Kajian Ilmiah Dan Riset</h3>
+                                        Bidang Kajian Ilmiah Dan Riset</h3>
                                     <div class="space-y-2">
                                         <div class="flex items-start gap-2">
                                             <svg xmlns="http://www.w3.org/2000/svg"
@@ -662,8 +644,7 @@
                                             </svg>
                                             <div class="flex-1">
                                                 <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Ketua
-                                                    Bidang
-                                                </p>
+                                                    Bidang</p>
                                                 <p
                                                     class="text-sm sm:text-base font-semibold text-gray-900 dark:text-white">
                                                     Yoga Pradana</p>
@@ -693,8 +674,8 @@
                         <div
                             class="border border-gray-200 dark:border-gray-700 rounded-lg sm:rounded-xl p-4 sm:p-6 hover:border-green-500 dark:hover:border-green-400 transition-all duration-300">
                             <div class="flex items-start gap-3 sm:gap-4 mb-4">
-                                <div
-                                    class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-r from-green-600 to-lime-600 flex items-center justify-center text-white flex-shrink-0 shadow-md">
+                                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center text-white flex-shrink-0 shadow-md"
+                                    style="background: linear-gradient(to right, #16a34a, #84cc16);">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6"
                                         fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -703,8 +684,7 @@
                                 </div>
                                 <div class="flex-1 min-w-0">
                                     <h3 class="text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-3">
-                                        Bidang
-                                        Pengelolaan SDA Dan Lingkungan Hidup</h3>
+                                        Bidang Pengelolaan SDA Dan Lingkungan Hidup</h3>
                                     <div class="space-y-2">
                                         <div class="flex items-start gap-2">
                                             <svg xmlns="http://www.w3.org/2000/svg"
@@ -715,8 +695,7 @@
                                             </svg>
                                             <div class="flex-1">
                                                 <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Ketua
-                                                    Bidang
-                                                </p>
+                                                    Bidang</p>
                                                 <p
                                                     class="text-sm sm:text-base font-semibold text-gray-900 dark:text-white">
                                                     Arif Rahman</p>
@@ -745,12 +724,11 @@
                 </div>
 
                 <!-- Contact CTA -->
-                <div
-                    class="bg-gradient-to-r from-green-600 to-teal-600 rounded-xl sm:rounded-2xl p-6 sm:p-8 text-white text-center shadow-lg mt-6 sm:mt-8">
+                <div class="rounded-xl sm:rounded-2xl p-6 sm:p-8 text-white text-center shadow-lg mt-6 sm:mt-8"
+                    style="background: linear-gradient(to right, #16a34a, #0d9488);">
                     <h3 class="text-xl sm:text-2xl font-bold mb-2 sm:mb-3">Ingin Bergabung?</h3>
                     <p class="text-sm sm:text-base mb-4 sm:mb-6 opacity-90">Jadilah bagian dari keluarga besar HMI
-                        Cabang
-                        Ponorogo</p>
+                        Cabang Ponorogo</p>
                     <a href="#"
                         class="inline-flex items-center gap-2 px-6 sm:px-8 py-2 sm:py-3 bg-white text-green-600 text-sm sm:text-base font-bold rounded-full hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-lg">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5" fill="none"
@@ -761,6 +739,7 @@
                         Hubungi Kami
                     </a>
                 </div>
+
             </div>
 
             <!-- Sidebar -->

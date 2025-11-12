@@ -62,11 +62,12 @@
 
     <!-- Tombol Scroll to Top -->
     <button id="scrollToTop"
-        class="hidden fixed bottom-8 right-8 w-12 h-12 bg-gradient-to-r from-green-600 to-teal-600 text-white rounded-full shadow-lg transform transition-all duration-300 flex items-center justify-center z-50 group cursor-pointer">
-        <svg class="w-6 h-6 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
-        </svg>
-    </button>
+    class="hidden fixed bottom-8 right-8 w-12 h-12 text-white rounded-full shadow-lg transform transition-all duration-300 flex items-center justify-center z-50 group cursor-pointer overflow-hidden"
+    style="background: linear-gradient(to right, #16a34a, #0d9488);">
+    <svg class="w-6 h-6 transition-transform group-hover:-translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+    </svg>
+</button>
 
     @livewireScripts
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

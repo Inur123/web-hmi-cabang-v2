@@ -1,5 +1,5 @@
 <div>
-    <div class="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
+    <div class="container mx-auto sm:px-6 sm:py-12">
         <div class="grid lg:grid-cols-3 gap-6 lg:gap-12">
             <!-- Main Content -->
             <div class="lg:col-span-2">
@@ -7,8 +7,8 @@
                 <div
                     class="bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 p-4 sm:p-6 lg:p-8 mb-6 sm:mb-8">
                     <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
-                        <div
-                            class="w-12 h-12 sm:w-16 sm:h-16 rounded-lg sm:rounded-xl bg-gradient-to-r from-green-600 to-teal-600 flex items-center justify-center text-white shadow-lg flex-shrink-0">
+                        <div class="w-12 h-12 sm:w-16 sm:h-16 rounded-lg sm:rounded-xl flex items-center justify-center text-white shadow-lg flex-shrink-0"
+                            style="background: linear-gradient(to right, #16a34a, #0d9488);">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 sm:h-8 sm:w-8" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -46,8 +46,8 @@
                         class="relative border-l-2 sm:border-l-4 border-green-600 dark:border-green-400 ml-2 sm:ml-4 space-y-6 sm:space-y-10">
                         <!-- Timeline Item 1 -->
                         <div class="ml-6 sm:ml-8 relative">
-                            <div
-                                class="absolute -left-9 sm:-left-12 w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gradient-to-r from-green-600 to-teal-600 border-2 sm:border-4 border-white dark:border-gray-800 shadow-lg flex items-center justify-center">
+                            <div class="absolute -left-9 sm:-left-12 w-6 h-6 sm:w-8 sm:h-8 rounded-full border-2 sm:border-4 border-white dark:border-gray-800 shadow-lg flex items-center justify-center"
+                                style="background: linear-gradient(to right, #16a34a, #0d9488);">
                                 <span class="text-white font-bold text-[10px] sm:text-xs">1</span>
                             </div>
                             <div
@@ -69,8 +69,8 @@
 
                         <!-- Timeline Item 2 -->
                         <div class="ml-6 sm:ml-8 relative">
-                            <div
-                                class="absolute -left-9 sm:-left-12 w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gradient-to-r from-green-600 to-teal-600 border-2 sm:border-4 border-white dark:border-gray-800 shadow-lg flex items-center justify-center">
+                            <div class="absolute -left-9 sm:-left-12 w-6 h-6 sm:w-8 sm:h-8 rounded-full border-2 sm:border-4 border-white dark:border-gray-800 shadow-lg flex items-center justify-center"
+                                style="background: linear-gradient(to right, #16a34a, #0d9488);">
                                 <span class="text-white font-bold text-[10px] sm:text-xs">2</span>
                             </div>
                             <div
@@ -92,8 +92,8 @@
 
                         <!-- Timeline Item 3 -->
                         <div class="ml-6 sm:ml-8 relative">
-                            <div
-                                class="absolute -left-9 sm:-left-12 w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gradient-to-r from-green-600 to-teal-600 border-2 sm:border-4 border-white dark:border-gray-800 shadow-lg flex items-center justify-center">
+                            <div class="absolute -left-9 sm:-left-12 w-6 h-6 sm:w-8 sm:h-8 rounded-full border-2 sm:border-4 border-white dark:border-gray-800 shadow-lg flex items-center justify-center"
+                                style="background: linear-gradient(to right, #16a34a, #0d9488);">
                                 <span class="text-white font-bold text-[10px] sm:text-xs">3</span>
                             </div>
                             <div
@@ -116,8 +116,8 @@
 
                         <!-- Timeline Item 4 -->
                         <div class="ml-6 sm:ml-8 relative">
-                            <div
-                                class="absolute -left-9 sm:-left-12 w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gradient-to-r from-green-600 to-teal-600 border-2 sm:border-4 border-white dark:border-gray-800 shadow-lg flex items-center justify-center">
+                            <div class="absolute -left-9 sm:-left-12 w-6 h-6 sm:w-8 sm:h-8 rounded-full border-2 sm:border-4 border-white dark:border-gray-800 shadow-lg flex items-center justify-center"
+                                style="background: linear-gradient(to right, #16a34a, #0d9488);">
                                 <span class="text-white font-bold text-[10px] sm:text-xs">4</span>
                             </div>
                             <div
@@ -144,8 +144,8 @@
                     <div
                         class="bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 p-4 sm:p-6">
                         <div class="flex items-center gap-3 mb-3 sm:mb-4">
-                            <div
-                                class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 flex items-center justify-center text-white shadow-lg flex-shrink-0">
+                            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl flex items-center justify-center text-white shadow-lg flex-shrink-0"
+                                style="background: linear-gradient(to right, #16a34a, #0d9488);">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -167,8 +167,8 @@
                     <div
                         class="bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 p-4 sm:p-6">
                         <div class="flex items-center gap-3 mb-3 sm:mb-4">
-                            <div
-                                class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 flex items-center justify-center text-white shadow-lg flex-shrink-0">
+                            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl flex items-center justify-center text-white shadow-lg flex-shrink-0"
+                                style="background: linear-gradient(to right, #16a34a, #0d9488);">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
