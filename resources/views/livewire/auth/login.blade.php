@@ -8,6 +8,19 @@
         </p>
     </div>
 
+    <!-- Pesan sukses atau error -->
+    @if (session()->has('success'))
+        <div class="mb-4 p-3 rounded-lg bg-green-100 text-green-700 text-sm border border-green-300">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @if (session()->has('error'))
+        <div class="mb-4 p-3 rounded-lg bg-red-100 text-red-700 text-sm border border-red-300">
+            {{ session('error') }}
+        </div>
+    @endif
+
     <form wire:submit.prevent="login" class="space-y-5">
         <div>
             <label class="block text-gray-700 mb-1">Email</label>
@@ -39,26 +52,20 @@
             @enderror
         </div>
 
-
         <button type="submit" wire:loading.attr="disabled" wire:target="login"
             class="group relative w-full flex justify-center items-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-teal-600 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 transition-all duration-300 disabled:opacity-75 disabled:cursor-not-allowed cursor-pointer">
-
-            <!-- Teks normal -->
             <span wire:loading.remove wire:target="login">Masuk</span>
-
-            <!-- Saat loading -->
             <span wire:loading wire:target="login" class="flex items-center space-x-2">
                 <i class="fa-solid fa-spinner fa-spin"></i>
                 <span>Loading...</span>
             </span>
         </button>
 
-
-        <p class="text-center text-sm text-gray-600 mt-4">
+        {{-- <p class="text-center text-sm text-gray-600 mt-4">
             Belum punya akun?
             <a wire:navigate href="{{ route('register') }}" class="text-teal-600 font-semibold hover:underline">
                 Daftar Sekarang
             </a>
-        </p>
+        </p> --}}
     </form>
 </div>

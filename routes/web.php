@@ -32,7 +32,7 @@ Route::get('/profile/sejarah', Sejarah::class)->name('profile.sejarah');
 Route::get('/profile/kepengurusan', Kepengurusan::class)->name('profile.kepengurusan');
 
 Route::get('/login', Login::class)->name('login');
-Route::get('/register', Register::class)->name('register');
+// Route::get('/register', Register::class)->name('register');
 
 
 
