@@ -2,6 +2,13 @@
         mobileMenuOpen: false,
         isActive(path) {
             return window.location.pathname === path;
+        },
+        isBlogActive() {
+            return window.location.pathname.startsWith('/blog') ||
+                   window.location.pathname.startsWith('/categories');
+        },
+        isProfileActive() {
+            return window.location.pathname.startsWith('/profile');
         }
     }"
     class="flex items-center justify-between px-6 py-4 border-b border-white dark:border-gray-700 sticky top-0 z-50 bg-white dark:bg-gray-800 shadow-md">
@@ -27,7 +34,7 @@
             {{-- Dropdown Blog --}}
             <div class="relative" x-data="{ openBlog: false }">
                 <span @click="openBlog = !openBlog"
-                    x-bind:class="isActive('/blog') || isActive('/categories/') ? 'text-green-600 dark:text-green-400 font-bold' : 'text-gray-600 dark:text-gray-300'"
+                    x-bind:class="isBlogActive() ? 'text-green-600 dark:text-green-400 font-bold' : 'text-gray-600 dark:text-gray-300'"
                     class="flex items-center cursor-pointer">
                     Blog
                     <i :class="{ 'rotate-180': openBlog }" class="fas fa-chevron-down ml-2 text-xs transition-transform"></i>
@@ -36,11 +43,13 @@
                 <div x-show="openBlog" x-cloak @click.away="openBlog = false"
                     class="absolute left-0 mt-2 w-56 bg-white border rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700 z-50 max-h-96 overflow-y-auto">
                     <a href="{{ route('blog') }}" wire:navigate
+                        x-bind:class="isActive('{{ route('blog') }}') ? 'bg-green-50 dark:bg-green-900' : ''"
                         class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-t-lg font-semibold border-b dark:border-gray-600">
                         Semua Artikel
                     </a>
-                    @foreach ($categories as $category)
+                    @foreach ($allCategories as $category)
                         <a href="{{ route('categories.show', $category->slug) }}" wire:navigate
+                            x-bind:class="isActive('{{ route('categories.show', $category->slug) }}') ? 'bg-green-50 dark:bg-green-900' : ''"
                             class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 {{ $loop->last ? 'rounded-b-lg' : '' }}">
                             <div class="flex items-center justify-between">
                                 <span>{{ $category->name }}</span>
@@ -56,7 +65,7 @@
             {{-- Dropdown Profile --}}
             <div class="relative" x-data="{ openProfile: false }">
                 <span @click="openProfile = !openProfile"
-                    x-bind:class="isActive('/profile') ? 'text-green-600 dark:text-green-400 font-bold' : 'text-gray-600 dark:text-gray-300'"
+                    x-bind:class="isProfileActive() ? 'text-green-600 dark:text-green-400 font-bold' : 'text-gray-600 dark:text-gray-300'"
                     class="flex items-center cursor-pointer">
                     Profile
                     <i :class="{ 'rotate-180': openProfile }" class="fas fa-chevron-down ml-2 text-xs transition-transform"></i>
@@ -65,10 +74,12 @@
                 <div x-show="openProfile" x-cloak @click.away="openProfile = false"
                     class="absolute left-0 mt-2 w-56 bg-white border rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700 z-50">
                     <a href="{{ route('profile.sejarah') }}" wire:navigate
+                        x-bind:class="isActive('{{ route('profile.sejarah') }}') ? 'bg-green-50 dark:bg-green-900' : ''"
                         class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-t-lg">
                         Sejarah
                     </a>
                     <a href="{{ route('profile.kepengurusan') }}" wire:navigate
+                        x-bind:class="isActive('{{ route('profile.kepengurusan') }}') ? 'bg-green-50 dark:bg-green-900' : ''"
                         class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-b-lg">
                         Susunan Kepengurusan
                     </a>
@@ -112,18 +123,20 @@
 
         <div class="border-b dark:border-gray-700" x-data="{ openBlogMobile: false }">
             <span @click="openBlogMobile = !openBlogMobile"
-                x-bind:class="isActive('/blog') || isActive('/categories/') ? 'text-green-600 dark:text-green-400 font-bold' : 'text-gray-600 dark:text-gray-300'"
+                x-bind:class="isBlogActive() ? 'text-green-600 dark:text-green-400 font-bold' : 'text-gray-600 dark:text-gray-300'"
                 class="flex items-center justify-between p-4 cursor-pointer">
                 Blog
                 <i :class="{ 'rotate-180': openBlogMobile }" class="fas fa-chevron-down text-xs transition-transform"></i>
             </span>
             <div x-show="openBlogMobile" x-cloak class="bg-gray-50 dark:bg-gray-700 max-h-64 overflow-y-auto">
                 <a href="{{ route('blog') }}" wire:navigate
+                    x-bind:class="isActive('{{ route('blog') }}') ? 'bg-green-100 dark:bg-green-800' : ''"
                     class="block px-8 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 font-semibold border-b dark:border-gray-600">
                     Semua Artikel
                 </a>
-                @foreach ($categories as $category)
+                @foreach ($allCategories as $category)
                     <a href="{{ route('categories.show', $category->slug) }}" wire:navigate
+                        x-bind:class="isActive('{{ route('categories.show', $category->slug) }}') ? 'bg-green-100 dark:bg-green-800' : ''"
                         class="block px-8 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600">
                         <div class="flex items-center justify-between">
                             <span>{{ $category->name }}</span>
@@ -138,17 +151,19 @@
 
         <div class="border-b dark:border-gray-700" x-data="{ openProfileMobile: false }">
             <span @click="openProfileMobile = !openProfileMobile"
-                x-bind:class="isActive('/profile') ? 'text-green-600 dark:text-green-400 font-bold' : 'text-gray-600 dark:text-gray-300'"
+                x-bind:class="isProfileActive() ? 'text-green-600 dark:text-green-400 font-bold' : 'text-gray-600 dark:text-gray-300'"
                 class="flex items-center justify-between p-4 cursor-pointer">
                 Profile
                 <i :class="{ 'rotate-180': openProfileMobile }" class="fas fa-chevron-down text-xs transition-transform"></i>
             </span>
             <div x-show="openProfileMobile" x-cloak class="bg-gray-50 dark:bg-gray-700 max-h-64 overflow-y-auto">
                 <a href="{{ route('profile.sejarah') }}" wire:navigate
+                    x-bind:class="isActive('{{ route('profile.sejarah') }}') ? 'bg-green-100 dark:bg-green-800' : ''"
                     class="block px-8 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 font-semibold border-b dark:border-gray-600">
                     Sejarah
                 </a>
                 <a href="{{ route('profile.kepengurusan') }}" wire:navigate
+                    x-bind:class="isActive('{{ route('profile.kepengurusan') }}') ? 'bg-green-100 dark:bg-green-800' : ''"
                     class="block px-8 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 font-semibold">
                     Susunan Kepengurusan
                 </a>

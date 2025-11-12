@@ -14,7 +14,7 @@ use Livewire\Attributes\Layout;
 use Illuminate\Support\Facades\Storage;
 
 #[Layout('components.layouts.app')]
-#[Title('Pos')]
+#[Title('Post')]
 class PostComponent extends Component
 {
     use WithFileUploads;

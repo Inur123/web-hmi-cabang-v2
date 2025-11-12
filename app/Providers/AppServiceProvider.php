@@ -19,10 +19,10 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
-    public function boot(): void
-    {
-        View::composer('*', function ($view) {
-        $view->with('categories', Category::withCount('posts')->get());
+   public function boot(): void
+{
+    View::composer('*', function ($view) {
+        $view->with('allCategories', Category::withCount('posts')->get());
     });
-    }
+}
 }
