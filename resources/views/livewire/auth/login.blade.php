@@ -26,7 +26,7 @@
                     class="w-full px-4 py-2 border border-gray-300 rounded-xl bg-white text-gray-800 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition"
                     placeholder="••••••••" required>
                 <button type="button" wire:click="togglePassword"
-                    class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500 hover:text-gray-700">
+                    class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500 hover:text-gray-700 cursor-pointer">
                     @if ($showPassword)
                         <i class="fas fa-eye-slash"></i>
                     @else
@@ -41,7 +41,7 @@
 
 
         <button type="submit" wire:loading.attr="disabled" wire:target="login"
-            class="group relative w-full flex justify-center items-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-teal-600 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 transition-all duration-300 disabled:opacity-75 disabled:cursor-not-allowed">
+            class="group relative w-full flex justify-center items-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-teal-600 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 transition-all duration-300 disabled:opacity-75 disabled:cursor-not-allowed cursor-pointer">
 
             <!-- Teks normal -->
             <span wire:loading.remove wire:target="login">Masuk</span>

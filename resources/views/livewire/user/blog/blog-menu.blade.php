@@ -19,8 +19,14 @@
 
                         <!-- Image -->
                         <div class="relative h-56 overflow-hidden">
-                            <img src="{{ asset('storage/' . $post->thumbnail) }}" alt="{{ $post->title }}"
-                                class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700">
+                            @if ($post->thumbnail)
+                                <img src="{{ asset('storage/' . $post->thumbnail) }}" alt="{{ $post->title }}"
+                                    class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700">
+                            @else
+                                <img src="{{ asset('images/no-foto.png') }}" alt="{{ $post->title }}"
+                                    class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700">
+                            @endif
+
                             <div class="absolute top-4 right-4">
                                 <span
                                     class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-bold bg-gradient-to-r from-green-600 to-teal-600 text-white shadow-lg transform group-hover:scale-110 transition-transform duration-300">

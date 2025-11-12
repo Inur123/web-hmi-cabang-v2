@@ -150,7 +150,7 @@
                                     <img src="{{ asset('storage/' . $galleryPath) }}"
                                         class="w-full h-28 sm:h-32 object-cover rounded-lg border-2 border-gray-200 shadow-sm">
                                     <button type="button" wire:click="removeGalleryExisting({{ $index }})"
-                                        class="absolute top-2 right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+                                        class="absolute top-2 right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center opacity-0 group-hover:opacity-100 transition cursor-pointer">
                                         <i class="fas fa-times text-xs"></i>
                                     </button>
                                 </div>
@@ -186,7 +186,7 @@
 
                                 <!-- Remove Button -->
                                 <button type="button" wire:click="removeGalleryInput({{ $index }})"
-                                    class="flex-shrink-0 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition text-sm font-medium inline-flex items-center justify-center w-full sm:w-auto">
+                                    class="flex-shrink-0 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition text-sm font-medium inline-flex items-center justify-center w-full sm:w-auto cursor-pointer">
                                     <i class="fas fa-trash-alt mr-2"></i>
                                     Hapus
                                 </button>
@@ -196,7 +196,7 @@
 
                     <!-- Add Gallery Button -->
                     <button type="button" wire:click="addGalleryInput"
-                        class="mt-3 px-4 py-2.5 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition text-sm font-medium inline-flex items-center">
+                        class="mt-3 px-4 py-2.5 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition text-sm font-medium inline-flex items-center cursor-pointer">
                         <i class="fas fa-plus mr-2"></i>
                         Tambah Gambar Baru
                     </button>
@@ -212,12 +212,12 @@
             <!-- Action Buttons - Outside Grid -->
             <div class="flex flex-col sm:flex-row justify-end gap-3 mt-8 pt-6 border-t border-gray-200">
                 <button type="button" wire:click="back"
-                    class="w-full sm:w-auto px-6 py-2.5 border border-gray-300 rounded-lg hover:bg-gray-50 transition text-sm sm:text-base font-medium text-gray-700 inline-flex items-center justify-center">
+                    class="w-full sm:w-auto px-6 py-2.5 border border-gray-300 rounded-lg hover:bg-gray-50 transition text-sm sm:text-base font-medium text-gray-700 inline-flex items-center justify-center cursor-pointer">
                     <i class="fas fa-times mr-2"></i>
                     Batal
                 </button>
                 <button type="submit"
-                    class="w-full sm:w-auto px-6 py-2.5 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition text-sm sm:text-base font-medium inline-flex items-center justify-center shadow-sm">
+                    class="w-full sm:w-auto px-6 py-2.5 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition text-sm sm:text-base font-medium inline-flex items-center justify-center shadow-sm cursor-pointer">
                     <i class="fas fa-save mr-2"></i>
                     Update Post
                 </button>

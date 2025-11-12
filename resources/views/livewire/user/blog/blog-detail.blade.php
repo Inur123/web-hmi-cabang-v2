@@ -15,9 +15,15 @@
                     class="bg-white dark:bg-gray-800 rounded-lg md:rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
                     <!-- Thumbnail -->
                     <div class="w-full">
-                        <img src="{{ asset('storage/' . $post->thumbnail) }}" alt="{{ $post->title }}"
-                            class="w-full h-auto" />
+                        @if ($post->thumbnail)
+                            <img src="{{ asset('storage/' . $post->thumbnail) }}" alt="{{ $post->title }}"
+                                class="w-full h-auto" />
+                        @else
+                            <img src="{{ asset('images/no-foto.png') }}" alt="{{ $post->title }}"
+                                class="w-full h-auto" />
+                        @endif
                     </div>
+
 
                     <!-- Article Content -->
                     <div class="p-4 md:p-6 lg:p-10">
@@ -119,7 +125,7 @@
                                         <!-- WhatsApp -->
                                         <a href="https://wa.me/?text={{ urlencode(url()->current()) }}" target="_blank"
                                             class="group relative w-12 h-12 rounded-xl bg-white dark:bg-gray-700 shadow-md hover:shadow-xl transform hover:scale-110 transition-all duration-300 flex items-center justify-center border border-gray-200 dark:border-gray-600">
-                                            <i class="fab fa-whatsapp text-green-500 text-lg"></i>
+                                            <i class="fab fa-whatsapp text-green-500 text-3xl"></i>
                                             <span
                                                 class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap z-10">
                                                 WhatsApp
@@ -130,7 +136,7 @@
                                         <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current()) }}"
                                             target="_blank"
                                             class="group relative w-12 h-12 rounded-xl bg-white dark:bg-gray-700 shadow-md hover:shadow-xl transform hover:scale-110 transition-all duration-300 flex items-center justify-center border border-gray-200 dark:border-gray-600">
-                                            <i class="fab fa-facebook-f text-blue-600 text-lg"></i>
+                                            <i class="fab fa-facebook-f text-blue-600 text-2xl"></i>
                                             <span
                                                 class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap z-10">
                                                 Facebook
@@ -141,17 +147,27 @@
                                         <a href="https://twitter.com/intent/tweet?url={{ urlencode(url()->current()) }}"
                                             target="_blank"
                                             class="group relative w-12 h-12 rounded-xl bg-white dark:bg-gray-700 shadow-md hover:shadow-xl transform hover:scale-110 transition-all duration-300 flex items-center justify-center border border-gray-200 dark:border-gray-600">
-                                            <i class="fab fa-twitter text-blue-400 text-lg"></i>
+
+                                            <!-- X (Twitter Baru) ICON -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1227"
+                                                fill="currentColor"
+                                                class="w-6 h-6 text-black dark:text-white transition-colors duration-300">
+                                                <path
+                                                    d="M714.163 519.284 1160.89 0H1056.9L667.137 450.887 365.225 0H0l468.531 681.821L0 1226.37h104.005l409.383-474.164 320.53 474.164h365.225L714.137 519.284Zm-144.64 168.9-47.495-68.13L141.375 79.694h162.917l305.36 438.24 47.495 68.13 418.1 600.243H912.33L569.523 688.184Z" />
+                                            </svg>
+
+                                            <!-- Tooltip -->
                                             <span
                                                 class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap z-10">
-                                                Twitter
+                                                X (Twitter)
                                             </span>
                                         </a>
+
 
                                         <!-- Copy Link -->
                                         <button onclick="copyToClipboard('{{ url()->current() }}')"
                                             class="group relative w-12 h-12 rounded-xl bg-white dark:bg-gray-700 shadow-md hover:shadow-xl transform hover:scale-110 transition-all duration-300 flex items-center justify-center border border-gray-200 dark:border-gray-600">
-                                            <i class="fas fa-link text-gray-700 dark:text-gray-300 text-lg"></i>
+                                            <i class="fas fa-link text-gray-700 dark:text-gray-300 text-xl"></i>
                                             <span
                                                 class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap z-10">
                                                 Copy Link

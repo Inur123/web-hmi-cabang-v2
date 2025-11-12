@@ -15,7 +15,7 @@
             </div>
             <div class="flex items-end">
                 <button wire:click="create"
-                    class="w-full bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition text-sm">
+                    class="w-full bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition text-sm cursor-pointer">
                     <i class="fas fa-plus mr-2"></i>Tambah Kegiatan
                 </button>
             </div>
@@ -50,8 +50,9 @@
                                 {{ \Illuminate\Support\Str::limit($activity->description, 50) }}
                             </td>
                             <td class="py-3 px-4">
-                                @if($activity->image)
-                                    <img src="{{ asset('storage/' . $activity->image) }}" alt="Gambar" class="w-16 h-16 object-cover rounded">
+                                @if ($activity->image)
+                                    <img src="{{ asset('storage/' . $activity->image) }}" alt="Gambar"
+                                        class="w-16 h-16 object-cover rounded">
                                 @else
                                     <span class="text-xs text-gray-400">Tidak ada gambar</span>
                                 @endif
@@ -62,12 +63,14 @@
                             <td class="py-3 px-4">
                                 <div class="flex items-center gap-2">
                                     <button wire:click="edit('{{ $activity->id }}')"
-                                        class="text-yellow-600 hover:text-yellow-800 transition" title="Edit">
+                                        class="text-yellow-600 hover:text-yellow-800 transition cursor-pointer"
+                                        title="Edit">
                                         <i class="fas fa-edit"></i>
                                     </button>
                                     <button
                                         onclick="confirmDeleteActivity('{{ $activity->id }}', '{{ $activity->name }}')"
-                                        class="text-red-600 hover:text-red-800 transition" title="Hapus">
+                                        class="text-red-600 hover:text-red-800 transition cursor-pointer"
+                                        title="Hapus">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </div>
@@ -104,7 +107,7 @@
                         @else
                             <button wire:click="$set('page', {{ $activities->currentPage() - 1 }})"
                                 wire:loading.attr="disabled"
-                                class="px-3 py-2 text-sm text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition">
+                                class="px-3 py-2 text-sm text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition cursor-pointer">
                                 <i class="fas fa-chevron-left"></i>
                             </button>
                         @endif
@@ -116,7 +119,7 @@
                                 </span>
                             @else
                                 <button wire:click="$set('page', {{ $page }})" wire:loading.attr="disabled"
-                                    class="px-4 py-2 text-sm text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition">
+                                    class="px-4 py-2 text-sm text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition cursor-pointer">
                                     {{ $page }}
                                 </button>
                             @endif
@@ -125,7 +128,7 @@
                         @if ($activities->hasMorePages())
                             <button wire:click="$set('page', {{ $activities->currentPage() + 1 }})"
                                 wire:loading.attr="disabled"
-                                class="px-3 py-2 text-sm text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition">
+                                class="px-3 py-2 text-sm text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition cursor-pointer">
                                 <i class="fas fa-chevron-right"></i>
                             </button>
                         @else

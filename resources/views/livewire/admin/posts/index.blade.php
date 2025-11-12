@@ -16,7 +16,7 @@
             </div>
             <div class="flex items-end">
                 <button wire:click="create"
-                    class="w-full bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition text-sm">
+                    class="w-full bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition text-sm cursor-pointer">
                     <i class="fas fa-plus mr-2"></i>Tambah Post
                 </button>
             </div>
@@ -74,19 +74,23 @@
                                 <div class="flex items-center gap-2">
                                     <!-- Show Button -->
                                     <button wire:click="show('{{ $post->id }}')"
-                                        class="text-blue-600 hover:text-blue-800 transition" title="Lihat Detail">
+                                        class="text-blue-600 hover:text-blue-800 transition cursor-pointer"
+                                        title="Lihat Detail">
                                         <i class="fas fa-eye"></i>
                                     </button>
 
                                     <!-- Edit Button -->
                                     <button wire:click="edit('{{ $post->id }}')"
-                                        class="text-yellow-600 hover:text-yellow-800 transition" title="Edit">
+                                        class="text-yellow-600 hover:text-yellow-800 transition cursor-pointer"
+                                        title="Edit">
                                         <i class="fas fa-edit"></i>
                                     </button>
 
                                     <!-- Delete Button -->
-                                    <button onclick="confirmDeletePost('{{ $post->id }}', '{{ addslashes($post->title) }}')"
-                                        class="text-red-600 hover:text-red-800 transition" title="Hapus">
+                                    <button
+                                        onclick="confirmDeletePost('{{ $post->id }}', '{{ addslashes($post->title) }}')"
+                                        class="text-red-600 hover:text-red-800 transition cursor-pointer"
+                                        title="Hapus">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </div>
@@ -121,7 +125,7 @@
                         @else
                             <button wire:click="$set('page', {{ $posts->currentPage() - 1 }})"
                                 wire:loading.attr="disabled"
-                                class="px-3 py-2 text-sm text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition">
+                                class="px-3 py-2 text-sm text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition cursor-pointer">
                                 <i class="fas fa-chevron-left"></i>
                             </button>
                         @endif
@@ -133,7 +137,7 @@
                                 </span>
                             @else
                                 <button wire:click="$set('page', {{ $page }})" wire:loading.attr="disabled"
-                                    class="px-4 py-2 text-sm text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition">
+                                    class="px-4 py-2 text-sm text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition cursor-pointer">
                                     {{ $page }}
                                 </button>
                             @endif
@@ -142,7 +146,7 @@
                         @if ($posts->hasMorePages())
                             <button wire:click="$set('page', {{ $posts->currentPage() + 1 }})"
                                 wire:loading.attr="disabled"
-                                class="px-3 py-2 text-sm text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition">
+                                class="px-3 py-2 text-sm text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition cursor-pointer">
                                 <i class="fas fa-chevron-right"></i>
                             </button>
                         @else

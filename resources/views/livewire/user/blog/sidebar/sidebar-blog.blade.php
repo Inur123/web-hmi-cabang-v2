@@ -30,17 +30,17 @@
                 <a href="{{ route('blog.show', $popularPost->slug) }}" wire:navigate
                     class="flex items-center gap-4 p-3 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-all duration-300 group">
                     <div
-                        class="w-16 h-16 overflow-hidden rounded-lg flex-shrink-0 ring-2 ring-gray-200 dark:ring-gray-600 group-hover:ring-green-500 dark:group-hover:ring-green-400 transition-all duration-300">
+                        class="w-16 h-16 overflow-hidden rounded-lg flex-shrink-0 ring-2 ring-gray-200 dark:ring-gray-600
+           group-hover:ring-green-500 dark:group-hover:ring-green-400 transition-all duration-300">
                         @if ($popularPost->thumbnail)
                             <img src="{{ asset('storage/' . $popularPost->thumbnail) }}" alt="{{ $popularPost->title }}"
                                 class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500">
                         @else
-                            <div
-                                class="w-full h-full bg-gradient-to-br from-green-400 to-teal-500 flex items-center justify-center">
-                                <i class="fas fa-newspaper text-white text-xl"></i>
-                            </div>
+                            <img src="{{ asset('images/no-foto.png') }}" alt="{{ $popularPost->title }}"
+                                class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500">
                         @endif
                     </div>
+
                     <div class="flex-1 min-w-0">
                         <h3
                             class="font-medium text-gray-900 dark:text-white line-clamp-2 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors duration-300">

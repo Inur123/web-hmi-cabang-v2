@@ -2,9 +2,10 @@
     <!-- Back Button & Title -->
     <div class="flex items-center justify-between mb-8">
         <button wire:click="back"
-            class="flex items-center text-teal-600 hover:text-teal-800 transition text-sm font-medium">
+            class="flex items-center bg-teal-600 text-white hover:bg-teal-700 transition-all duration-300 text-sm font-medium px-3 py-1.5 rounded-lg cursor-pointer shadow-sm">
             <i class="fas fa-arrow-left mr-2"></i> Kembali ke Daftar
         </button>
+
         <div class="text-right">
             <span
                 class="inline-block px-3 py-1 text-xs font-medium rounded-full
@@ -130,11 +131,11 @@
             <!-- Action Buttons -->
             <div class="flex flex-col sm:flex-row gap-3 mt-10 pt-6 border-t border-gray-200">
                 <button wire:click="edit('{{ $post->id }}')"
-                    class="flex-1 sm:flex-initial px-5 py-2.5 bg-yellow-500 hover:bg-yellow-600 text-white font-medium rounded-lg transition flex items-center justify-center">
+                    class="flex-1 sm:flex-initial px-5 py-2.5 bg-yellow-500 hover:bg-yellow-600 text-white font-medium rounded-lg transition flex items-center justify-center cursor-pointer">
                     <i class="fas fa-edit mr-2"></i> Edit Post
                 </button>
                 <button onclick="confirmDeletePost('{{ $post->id }}', '{{ addslashes($post->title) }}')"
-                    class="flex-1 sm:flex-initial px-5 py-2.5 bg-red-500 hover:bg-red-600 text-white font-medium rounded-lg transition flex items-center justify-center">
+                    class="flex-1 sm:flex-initial px-5 py-2.5 bg-red-500 hover:bg-red-600 text-white font-medium rounded-lg transition flex items-center justify-center cursor-pointer">
                     <i class="fas fa-trash mr-2"></i> Hapus
                 </button>
             </div>

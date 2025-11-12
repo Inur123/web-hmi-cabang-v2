@@ -87,7 +87,7 @@
                 <h2 class="text-lg font-semibold text-gray-800">Artikel Terbaru</h2>
                 <a href="{{ route('admin.posts') }}" class="text-teal-600 text-sm hover:underline">Lihat semua</a>
             </div>
-            <div class="space-y-4">
+            <div class="space-y-4 ">
                 @forelse($recentPosts as $post)
                     <div class="flex items-center gap-3 p-3 rounded-lg hover:bg-teal-50 transition group">
                         <div class="flex-shrink-0">

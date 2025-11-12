@@ -17,7 +17,7 @@ class CategoryShow extends Component
     public ?Category $category = null; // data kategori, bisa null di awal
     public int $page = 1;              // halaman saat ini
     public string $search = '';        // search query
-    public int $perPage = 10;           // jumlah post per halaman
+    public int $perPage = 15;           // jumlah post per halaman
 
     /** Reset halaman saat search berubah */
     public function updatingSearch(): void

@@ -14,7 +14,7 @@ class BlogMenu extends Component
 {
     public $page = 1;        // halaman saat ini
     public $search = '';     // jika ingin search
-    public $perPage = 10;     // jumlah post per halaman
+    public $perPage = 15;     // jumlah post per halaman
 
     /** Reset halaman saat search berubah */
     public function updatingSearch()

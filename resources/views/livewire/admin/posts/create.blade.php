@@ -22,8 +22,7 @@
                     <label class="block text-sm font-medium text-gray-700 mb-2">
                         Judul Post <span class="text-red-500">*</span>
                     </label>
-                    <input type="text"
-                        wire:model="title"
+                    <input type="text" wire:model="title"
                         class="w-full px-3 sm:px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent text-sm sm:text-base transition"
                         placeholder="Masukkan judul post...">
                     @error('title')
@@ -36,8 +35,7 @@
                     <label class="block text-sm font-medium text-gray-700 mb-2">
                         Tanggal Kegiatan <span class="text-red-500">*</span>
                     </label>
-                    <input type="date"
-                        wire:model="post_date"
+                    <input type="date" wire:model="post_date"
                         class="w-full px-3 sm:px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent text-sm sm:text-base transition">
                     @error('post_date')
                         <p class="text-red-500 text-xs sm:text-sm mt-1.5">{{ $message }}</p>
@@ -81,9 +79,7 @@
                     <label class="block text-sm font-medium text-gray-700 mb-2">
                         Tags <span class="text-gray-500 text-xs">(pisahkan dengan koma)</span>
                     </label>
-                    <input type="text"
-                        wire:model="tagsString"
-                        placeholder="Contoh: Berita, Kegiatan, Tutorial"
+                    <input type="text" wire:model="tagsString" placeholder="Contoh: Berita, Kegiatan, Tutorial"
                         class="w-full px-3 sm:px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent text-sm sm:text-base transition">
                     @error('tags')
                         <p class="text-red-500 text-xs sm:text-sm mt-1.5">{{ $message }}</p>
@@ -108,9 +104,7 @@
                     <label class="block text-sm font-medium text-gray-700 mb-2">
                         Thumbnail
                     </label>
-                    <input type="file"
-                        wire:model="thumbnailTemp"
-                        accept="image/*"
+                    <input type="file" wire:model="thumbnailTemp" accept="image/*"
                         class="w-full text-sm text-gray-700 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-teal-50 file:text-teal-700 hover:file:bg-teal-100 border border-gray-300 rounded-lg cursor-pointer transition">
                     @error('thumbnailTemp')
                         <p class="text-red-500 text-xs sm:text-sm mt-1.5">{{ $message }}</p>
@@ -122,7 +116,8 @@
                             <div class="relative inline-block">
                                 <img src="{{ $thumbnailTemp->temporaryUrl() }}"
                                     class="w-32 h-32 sm:w-40 sm:h-40 object-cover rounded-lg border-2 border-gray-200 shadow-sm">
-                                <span class="absolute -top-2 -right-2 bg-green-500 text-white text-xs px-2 py-0.5 rounded-full">Preview</span>
+                                <span
+                                    class="absolute -top-2 -right-2 bg-green-500 text-white text-xs px-2 py-0.5 rounded-full">Preview</span>
                             </div>
                         </div>
                     @endif
@@ -136,11 +131,11 @@
 
                     <div class="space-y-3">
                         @foreach ($galleryInputs as $index => $gallery)
-                            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+                            <div
+                                class="flex flex-col sm:flex-row items-start sm:items-center gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
                                 <!-- Input File -->
                                 <div class="flex-1 w-full sm:w-auto">
-                                    <input type="file"
-                                        wire:model="galleryInputs.{{ $index }}"
+                                    <input type="file" wire:model="galleryInputs.{{ $index }}"
                                         accept="image/*"
                                         class="w-full text-sm text-gray-700 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-white file:text-teal-700 hover:file:bg-teal-50 border border-gray-300 rounded-lg cursor-pointer transition">
                                 </div>
@@ -154,9 +149,8 @@
                                 @endif
 
                                 <!-- Remove Button -->
-                                <button type="button"
-                                    wire:click="removeGalleryInput({{ $index }})"
-                                    class="flex-shrink-0 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition text-sm font-medium inline-flex items-center justify-center w-full sm:w-auto">
+                                <button type="button" wire:click="removeGalleryInput({{ $index }})"
+                                    class="flex-shrink-0 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition text-sm font-medium inline-flex items-center justify-center w-full sm:w-auto cursor-pointer">
                                     <i class="fas fa-trash-alt mr-2"></i>
                                     Hapus
                                 </button>
@@ -165,9 +159,8 @@
                     </div>
 
                     <!-- Add Gallery Button -->
-                    <button type="button"
-                        wire:click="addGalleryInput"
-                        class="mt-3 px-4 py-2.5 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition text-sm font-medium inline-flex items-center">
+                    <button type="button" wire:click="addGalleryInput"
+                        class="mt-3 px-4 py-2.5 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition text-sm font-medium inline-flex items-center cursor-pointer">
                         <i class="fas fa-plus mr-2"></i>
                         Tambah Gambar
                     </button>
@@ -182,14 +175,13 @@
 
             <!-- Action Buttons - Outside Grid -->
             <div class="flex flex-col sm:flex-row justify-end gap-3 mt-8 pt-6 border-t border-gray-200">
-                <button type="button"
-                    wire:click="back"
-                    class="w-full sm:w-auto px-6 py-2.5 border border-gray-300 rounded-lg hover:bg-gray-50 transition text-sm sm:text-base font-medium text-gray-700 inline-flex items-center justify-center">
+                <button type="button" wire:click="back"
+                    class="w-full sm:w-auto px-6 py-2.5 border border-gray-300 rounded-lg hover:bg-gray-50 transition text-sm sm:text-base font-medium text-gray-700 inline-flex items-center justify-center cursor-pointer">
                     <i class="fas fa-times mr-2"></i>
                     Batal
                 </button>
                 <button type="submit"
-                    class="w-full sm:w-auto px-6 py-2.5 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition text-sm sm:text-base font-medium inline-flex items-center justify-center shadow-sm">
+                    class="w-full sm:w-auto px-6 py-2.5 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition text-sm sm:text-base font-medium inline-flex items-center justify-center shadow-sm cursor-pointer">
                     <i class="fas fa-save mr-2"></i>
                     Simpan Post
                 </button>
