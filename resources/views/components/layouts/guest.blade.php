@@ -1,18 +1,36 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@yield('title', 'HMI Cabang Ponorogo')</title>
+
+    {{-- Dynamic Title --}}
+    <title>{{ $title ?? 'HMI Cabang Ponorogo' }}</title>
+
     <link rel="icon" type="image/png" href="{{ asset('images/logo-web.png') }}?v={{ time() }}" />
 
-    <meta property="og:title" content="{{ $post->title ?? 'Default Title' }}">
-    <meta property="og:description" content="{{ Str::limit(strip_tags($post->content ?? 'Default Description'), 150) }}">
-    <meta property="og:image"
-        content="{{ isset($post->thumbnail) ? asset('storage/' . $post->thumbnail) : asset('images/default-image.jpg') }}">
-    <meta property="og:url" content="{{ url()->current() }}">
-    <meta property="og:type" content="article">
+    {{-- Meta Tags untuk Sharing --}}
+    @if(isset($post))
+        <meta property="og:title" content="{{ $post->title }}">
+        <meta property="og:description" content="{{ Str::limit(strip_tags($post->content), 150) }}">
+        <meta property="og:image" content="{{ $post->thumbnail ? asset('storage/' . $post->thumbnail) : asset('images/logo-web.png') }}">
+        <meta property="og:url" content="{{ url()->current() }}">
+        <meta property="og:type" content="article">
+        <meta property="og:site_name" content="HMI Cabang Ponorogo">
+
+        {{-- Twitter Card --}}
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="{{ $post->title }}">
+        <meta name="twitter:description" content="{{ Str::limit(strip_tags($post->content), 150) }}">
+        <meta name="twitter:image" content="{{ $post->thumbnail ? asset('storage/' . $post->thumbnail) : asset('images/logo-web.png') }}">
+    @else
+        <meta property="og:title" content="HMI Cabang Ponorogo">
+        <meta property="og:description" content="Himpunan Mahasiswa Islam (HMI) Cabang Ponorogo adalah salah satu cabang organisasi mahasiswa Islam terbesar di Indonesia, yang berada di wilayah Ponorogo.">
+        <meta property="og:image" content="{{ asset('images/logo-web.png') }}">
+        <meta property="og:url" content="{{ url()->current() }}">
+        <meta property="og:type" content="website">
+        <meta property="og:site_name" content="HMI Cabang Ponorogo">
+    @endif
 
     <!-- Dark Mode Script -->
     <script>
@@ -45,7 +63,7 @@
     <!-- Tombol Scroll to Top -->
     <button id="scrollToTop"
         class="hidden fixed bottom-8 right-8 w-12 h-12 bg-gradient-to-r from-green-600 to-teal-600 text-white rounded-full shadow-lg transform transition-all duration-300 flex items-center justify-center z-50 group cursor-pointer">
-        <svg class="w-6 h-6  transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="w-6 h-6 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
         </svg>
     </button>
@@ -58,7 +76,6 @@
             const scrollBtn = document.getElementById('scrollToTop');
             if (!scrollBtn) return;
 
-            // Tampilkan tombol ketika discroll ke bawah
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 300) {
                     scrollBtn.classList.remove('hidden');
@@ -68,7 +85,6 @@
                 }
             });
 
-            // Klik tombol → scroll ke atas
             scrollBtn.addEventListener('click', () => {
                 window.scrollTo({
                     top: 0,
@@ -83,10 +99,9 @@
                 offset: 100,
                 once: true
             });
-            initScrollButton(); // ✅ inisialisasi pertama kali
+            initScrollButton();
         });
 
-        // ✅ Re-init tombol + AOS setelah navigasi Livewire (SPA)
         document.addEventListener('livewire:navigated', () => {
             if (localStorage.theme === 'dark') {
                 document.documentElement.classList.add('dark');
@@ -95,19 +110,16 @@
             }
 
             AOS.refresh();
-            initScrollButton(); // ✅ inisialisasi ulang tombol setelah pindah halaman
+            initScrollButton();
         });
     </script>
 
-
-    <!-- Efek fade in untuk kemunculan tombol -->
     <style>
         @keyframes fadeIn {
             from {
                 opacity: 0;
                 transform: translateY(10px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -137,7 +149,6 @@
             background: #a1a1a1;
         }
 
-        /* Firefox */
         html {
             scrollbar-width: thin;
             scrollbar-color: #c1c1c1 #f1f1f1;

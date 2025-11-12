@@ -1,242 +1,173 @@
 <div>
-    <meta property="og:title" content="{{ $post->title ?? 'Default Title' }}">
-    <meta property="og:description" content="{{ Str::limit(strip_tags($post->content ?? 'Default Description'), 150) }}">
-    <meta property="og:image"
-        content="{{ isset($post->thumbnail) ? asset('storage/' . $post->thumbnail) : asset('images/default-image.jpg') }}">
-    <meta property="og:url" content="{{ url()->current() }}">
-    <meta property="og:type" content="article">
+    <!-- Container -->
+    <div class="mx-auto px-0 md:px-6 py-0 md:py-8 max-w-7xl">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 md:gap-8">
 
-    <div class="container mx-auto px-4 md:px-6 py-6 md:py-12">
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-12">
-            <!-- Main Content -->
-            <div class="lg:col-span-2">
-                <!-- Article Card -->
-                <article
-                    class="bg-white dark:bg-gray-800 rounded-lg md:rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
-                    <!-- Thumbnail -->
-                    <div class="w-full">
+            <!-- Main Content - Full Width Mobile -->
+            <div class="lg:col-span-8">
+                <article>
+
+                    <!-- Thumbnail - Full Width Responsive -->
+                   <div class="overflow-hidden rounded-t-2xl">
                         @if ($post->thumbnail)
-                            <img src="{{ asset('storage/' . $post->thumbnail) }}" alt="{{ $post->title }}"
-                                class="w-full h-auto" />
+                            <img src="{{ asset('storage/' . $post->thumbnail) }}"
+                                 alt="{{ $post->title }}"
+                                 class="w-full h-full object-cover" />
                         @else
-                            <img src="{{ asset('images/no-foto.png') }}" alt="{{ $post->title }}"
-                                class="w-full h-auto" />
+                            <img src="{{ asset('images/no-foto.png') }}"
+                                 alt="{{ $post->title }}"
+                                 class="w-full h-full object-cover" />
                         @endif
                     </div>
 
+                    <!-- Article Content - Dengan Background di Desktop -->
+                    <div class="bg-transparent md:bg-white md:dark:bg-gray-800 md:rounded-b-lg md:shadow-md md:border md:border-t-0 md:border-gray-200 md:dark:border-gray-700">
+                        <div class="p-4 md:p-6 lg:p-8">
 
-                    <!-- Article Content -->
-                    <div class="p-4 md:p-6 lg:p-10">
-                        <!-- Title -->
-                        <h1
-                            class="text-xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 md:mb-6 text-gray-900 dark:text-white leading-tight">
-                            {{ $post->title }}
-                        </h1>
+                            <!-- Title -->
+                            <h1 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 text-gray-900 dark:text-white leading-tight">
+                                {{ $post->title }}
+                            </h1>
 
-                        <!-- Meta Information -->
-                        <div
-                            class="flex flex-col sm:flex-row sm:flex-wrap gap-4 md:gap-6 text-sm md:text-base text-gray-600 dark:text-gray-400 mb-6 md:mb-8 pb-4 md:pb-6 border-b border-gray-200 dark:border-gray-700">
-                            <div class="flex items-center gap-2">
-                                <div
-                                    class="w-10 h-10 rounded-full bg-gradient-to-r from-green-600 to-teal-600 flex items-center justify-center text-white font-bold shadow-md flex-shrink-0">
-                                    A
+                            <!-- Meta Information -->
+                            <div class="flex flex-wrap gap-3 md:gap-4 text-sm text-gray-600 dark:text-gray-400 mb-6 pb-4 border-b border-gray-200 dark:border-gray-700">
+
+                                <!-- Author -->
+                                <div class="flex items-center gap-2">
+                                    <div class="w-8 h-8 rounded-full bg-gradient-to-r from-green-600 to-teal-600 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
+                                        A
+                                    </div>
+                                    <span class="font-semibold text-gray-900 dark:text-white">Admin</span>
                                 </div>
-                                <div class="flex flex-col min-w-0">
-                                    <span class="text-xs text-gray-500 dark:text-gray-500">Author</span>
-                                    <span class="font-semibold text-gray-900 dark:text-white truncate">Admin</span>
-                                </div>
-                            </div>
 
-                            <div class="flex items-center gap-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-600 flex-shrink-0"
-                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                </svg>
-                                <div class="flex flex-col">
-                                    <span class="text-xs text-gray-500 dark:text-gray-500">Published</span>
-                                    <span class="font-semibold text-gray-900 dark:text-white">
+                                <!-- Date -->
+                                <div class="flex items-center gap-1.5">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-green-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                    </svg>
+                                    <span class="font-medium text-gray-900 dark:text-white">
                                         {{ $post->post_date ? \Carbon\Carbon::parse($post->post_date)->format('d M Y') : 'N/A' }}
                                     </span>
-
                                 </div>
-                            </div>
 
-                            <div class="flex items-center gap-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-600 flex-shrink-0"
-                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
-                                </svg>
-                                <div class="flex flex-col min-w-0">
-                                    <span class="text-xs text-gray-500 dark:text-gray-500">Category</span>
+                                <!-- Category -->
+                                <div class="flex items-center gap-1.5">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-green-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                                    </svg>
                                     <a href="{{ route('categories.show', $post->category->slug) }}"
-                                        class="font-semibold text-green-600 hover:text-green-700 dark:text-green-400 dark:hover:text-green-300 hover:underline transition-colors duration-300 truncate">
+                                        class="font-medium text-green-600 hover:text-green-700 dark:text-green-400 dark:hover:text-green-300 hover:underline transition-colors">
                                         {{ $post->category->name }}
                                     </a>
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- Content -->
-                        <div
-                            class="prose prose-sm md:prose-base lg:prose-lg max-w-none dark:prose-invert
-                                    prose-headings:text-gray-900 dark:prose-headings:text-white prose-headings:font-bold prose-headings:mb-4 prose-headings:mt-6
-                                    prose-h1:text-2xl md:prose-h1:text-3xl lg:prose-h1:text-4xl
-                                    prose-h2:text-xl md:prose-h2:text-2xl lg:prose-h2:text-3xl
-                                    prose-h3:text-lg md:prose-h3:text-xl lg:prose-h3:text-2xl
+                            <!-- Content -->
+                            <div class="prose prose-base lg:prose-lg max-w-none dark:prose-invert
+                                    prose-headings:text-gray-900 dark:prose-headings:text-white prose-headings:font-bold prose-headings:mb-3 prose-headings:mt-5
+                                    prose-h1:text-2xl lg:prose-h1:text-3xl
+                                    prose-h2:text-xl lg:prose-h2:text-2xl
+                                    prose-h3:text-lg lg:prose-h3:text-xl
                                     prose-p:text-gray-700 dark:prose-p:text-gray-300 prose-p:leading-relaxed prose-p:mb-4
                                     prose-a:text-green-600 dark:prose-a:text-green-400 prose-a:no-underline hover:prose-a:underline
-                                    prose-strong:text-gray-900 dark:prose-strong:text-white prose-strong:font-semibold
-                                    prose-ul:list-disc prose-ul:ml-6 prose-ul:mb-4 prose-ul:space-y-2
-                                    prose-ol:list-decimal prose-ol:ml-6 prose-ol:mb-4 prose-ol:space-y-2
-                                    prose-li:text-gray-700 dark:prose-li:text-gray-300 prose-li:leading-relaxed
-                                    prose-img:rounded-xl prose-img:shadow-lg prose-img:w-full prose-img:my-6
-                                    prose-blockquote:border-l-4 prose-blockquote:border-green-600 prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:my-6
-                                    prose-code:bg-gray-100 dark:prose-code:bg-gray-800 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-sm
-                                    prose-pre:bg-gray-100 dark:prose-pre:bg-gray-800 prose-pre:p-4 prose-pre:rounded-lg prose-pre:overflow-x-auto prose-pre:my-6
-                                    prose-table:w-full prose-table:my-6
-                                    prose-th:bg-gray-100 dark:prose-th:bg-gray-800 prose-th:p-3 prose-th:text-left prose-th:font-semibold
-                                    prose-td:border prose-td:border-gray-200 dark:prose-td:border-gray-700 prose-td:p-3
-                                    prose-hr:my-8 prose-hr:border-gray-300 dark:prose-hr:border-gray-600">
-                            <div class="text-justify leading-relaxed break-words">
-                                {!! $post->content !!}
+                                    prose-strong:text-gray-900 dark:prose-strong:text-white
+                                    prose-ul:list-disc prose-ul:ml-5 prose-ul:mb-4
+                                    prose-ol:list-decimal prose-ol:ml-5 prose-ol:mb-4
+                                    prose-li:text-gray-700 dark:prose-li:text-gray-300
+                                    prose-img:rounded-lg prose-img:shadow-md prose-img:w-full prose-img:my-4
+                                    prose-blockquote:border-l-4 prose-blockquote:border-green-600 prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:my-4
+                                    prose-code:bg-gray-100 dark:prose-code:bg-gray-800 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
+                                    prose-pre:bg-gray-100 dark:prose-pre:bg-gray-800 prose-pre:p-4 prose-pre:rounded-lg prose-pre:overflow-x-auto prose-pre:my-4">
+                                <div class="text-justify leading-relaxed break-words">
+                                    {!! $post->content !!}
+                                </div>
                             </div>
-                        </div>
 
-                        <!-- Share Section -->
-                        <div class="mt-8 md:mt-12 pt-6 md:pt-8 border-t border-gray-200 dark:border-gray-700">
-                            <div
-                                class="bg-gradient-to-r from-green-50 to-teal-50 dark:from-green-900/20 dark:to-teal-900/20 rounded-xl md:rounded-2xl p-4 md:p-6 shadow-md">
-                                <div class="flex flex-col gap-4">
-                                    <div class="flex items-center gap-3">
-                                        <div
-                                            class="w-12 h-12 rounded-full bg-gradient-to-r from-green-600 to-teal-600 flex items-center justify-center text-white shadow-lg flex-shrink-0">
-                                            <i class="fas fa-share-alt text-lg"></i>
+                            <!-- Share Section -->
+                            <div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
+                                <div class="bg-gradient-to-r from-green-50 to-teal-50 dark:from-green-900/10 dark:to-teal-900/10 rounded-lg p-4">
+                                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+
+                                        <!-- Share Info -->
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-10 h-10 rounded-full bg-gradient-to-r from-green-600 to-teal-600 flex items-center justify-center text-white flex-shrink-0">
+                                                <i class="fas fa-share-alt text-sm"></i>
+                                            </div>
+                                            <div>
+                                                <p class="text-xs text-gray-600 dark:text-gray-400">Bagikan artikel ini</p>
+                                                <p class="font-semibold text-sm text-gray-900 dark:text-white">Share to Social Media</p>
+                                            </div>
                                         </div>
-                                        <div class="min-w-0">
-                                            <p class="text-sm text-gray-600 dark:text-gray-400">Bagikan artikel ini</p>
-                                            <p class="font-semibold text-gray-900 dark:text-white">Share to Social Media
-                                            </p>
+
+                                        <!-- Share Buttons -->
+                                        <div class="flex items-center gap-2 sm:gap-3">
+                                            <!-- WhatsApp -->
+                                            <a href="https://wa.me/?text={{ urlencode(url()->current()) }}"
+                                               target="_blank"
+                                               class="w-10 h-10 rounded-lg bg-white dark:bg-gray-700 shadow hover:shadow-md transform hover:scale-110 transition-all flex items-center justify-center border border-gray-200 dark:border-gray-600">
+                                                <i class="fab fa-whatsapp text-green-500 text-2xl"></i>
+                                            </a>
+
+                                            <!-- Facebook -->
+                                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current()) }}"
+                                               target="_blank"
+                                               class="w-10 h-10 rounded-lg bg-white dark:bg-gray-700 shadow hover:shadow-md transform hover:scale-110 transition-all flex items-center justify-center border border-gray-200 dark:border-gray-600">
+                                                <i class="fab fa-facebook-f text-blue-600 text-xl"></i>
+                                            </a>
+
+                                            <!-- Twitter/X -->
+                                            <a href="https://twitter.com/intent/tweet?url={{ urlencode(url()->current()) }}"
+                                               target="_blank"
+                                               class="w-10 h-10 rounded-lg bg-white dark:bg-gray-700 shadow hover:shadow-md transform hover:scale-110 transition-all flex items-center justify-center border border-gray-200 dark:border-gray-600">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1227" fill="currentColor" class="w-5 h-5 text-black dark:text-white">
+                                                    <path d="M714.163 519.284 1160.89 0H1056.9L667.137 450.887 365.225 0H0l468.531 681.821L0 1226.37h104.005l409.383-474.164 320.53 474.164h365.225L714.137 519.284Zm-144.64 168.9-47.495-68.13L141.375 79.694h162.917l305.36 438.24 47.495 68.13 418.1 600.243H912.33L569.523 688.184Z" />
+                                                </svg>
+                                            </a>
+
+                                            <!-- Copy Link -->
+                                            <button onclick="copyToClipboard('{{ url()->current() }}')"
+                                                    class="w-10 h-10 rounded-lg bg-white dark:bg-gray-700 shadow hover:shadow-md transform hover:scale-110 transition-all flex items-center justify-center border border-gray-200 dark:border-gray-600">
+                                                <i class="fas fa-link text-gray-700 dark:text-gray-300 text-base"></i>
+                                            </button>
                                         </div>
-                                    </div>
-
-                                    <div class="flex items-center justify-center sm:justify-start gap-3 flex-wrap">
-                                        <!-- WhatsApp -->
-                                        <a href="https://wa.me/?text={{ urlencode(url()->current()) }}" target="_blank"
-                                            class="group relative w-12 h-12 rounded-xl bg-white dark:bg-gray-700 shadow-md hover:shadow-xl transform hover:scale-110 transition-all duration-300 flex items-center justify-center border border-gray-200 dark:border-gray-600">
-                                            <i class="fab fa-whatsapp text-green-500 text-3xl"></i>
-                                            <span
-                                                class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap z-10">
-                                                WhatsApp
-                                            </span>
-                                        </a>
-
-                                        <!-- Facebook -->
-                                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current()) }}"
-                                            target="_blank"
-                                            class="group relative w-12 h-12 rounded-xl bg-white dark:bg-gray-700 shadow-md hover:shadow-xl transform hover:scale-110 transition-all duration-300 flex items-center justify-center border border-gray-200 dark:border-gray-600">
-                                            <i class="fab fa-facebook-f text-blue-600 text-2xl"></i>
-                                            <span
-                                                class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap z-10">
-                                                Facebook
-                                            </span>
-                                        </a>
-
-                                        <!-- Twitter -->
-                                        <a href="https://twitter.com/intent/tweet?url={{ urlencode(url()->current()) }}"
-                                            target="_blank"
-                                            class="group relative w-12 h-12 rounded-xl bg-white dark:bg-gray-700 shadow-md hover:shadow-xl transform hover:scale-110 transition-all duration-300 flex items-center justify-center border border-gray-200 dark:border-gray-600">
-
-                                            <!-- X (Twitter Baru) ICON -->
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1227"
-                                                fill="currentColor"
-                                                class="w-6 h-6 text-black dark:text-white transition-colors duration-300">
-                                                <path
-                                                    d="M714.163 519.284 1160.89 0H1056.9L667.137 450.887 365.225 0H0l468.531 681.821L0 1226.37h104.005l409.383-474.164 320.53 474.164h365.225L714.137 519.284Zm-144.64 168.9-47.495-68.13L141.375 79.694h162.917l305.36 438.24 47.495 68.13 418.1 600.243H912.33L569.523 688.184Z" />
-                                            </svg>
-
-                                            <!-- Tooltip -->
-                                            <span
-                                                class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap z-10">
-                                                X (Twitter)
-                                            </span>
-                                        </a>
-
-
-                                        <!-- Copy Link -->
-                                        <button onclick="copyToClipboard('{{ url()->current() }}')"
-                                            class="group relative w-12 h-12 rounded-xl bg-white dark:bg-gray-700 shadow-md hover:shadow-xl transform hover:scale-110 transition-all duration-300 flex items-center justify-center border border-gray-200 dark:border-gray-600">
-                                            <i class="fas fa-link text-gray-700 dark:text-gray-300 text-xl"></i>
-                                            <span
-                                                class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap z-10">
-                                                Copy Link
-                                            </span>
-                                        </button>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
+                        </div>
                     </div>
                 </article>
             </div>
 
-
-            <!-- Sidebar -->
-            <div class="lg:col-span-1">
-                <livewire:user.blog.sidebar.sidebar-blog />
+            <!-- Sidebar (4 kolom) -->
+            <div class="lg:col-span-4 px-4 md:px-0 mt-6 lg:mt-0">
+                <div class="lg:sticky lg:top-6 space-y-4 pb-6 lg:pb-0">
+                    <livewire:user.blog.sidebar.sidebar-blog />
+                </div>
             </div>
+
         </div>
     </div>
 
     <script>
-        // Category toggle
-        document.getElementById('see-more-btn')?.addEventListener('click', function() {
-            document.getElementById('category-list-all')?.classList.remove('hidden');
-            document.getElementById('see-more-btn')?.classList.add('hidden');
-            document.getElementById('see-less-btn')?.classList.remove('hidden');
-        });
-
-        document.getElementById('see-less-btn')?.addEventListener('click', function() {
-            document.getElementById('category-list-all')?.classList.add('hidden');
-            document.getElementById('see-more-btn')?.classList.remove('hidden');
-            document.getElementById('see-less-btn')?.classList.add('hidden');
-        });
-
-        // Copy to clipboard function
         function copyToClipboard(text) {
             navigator.clipboard.writeText(text).then(function() {
                 const notification = document.createElement('div');
-                notification.className =
-                    'fixed top-4 right-4 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-fade-in-down';
+                notification.className = 'fixed top-4 right-4 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-fade-in';
                 notification.innerHTML = '✓ Link berhasil disalin!';
                 document.body.appendChild(notification);
-
-                setTimeout(() => {
-                    notification.remove();
-                }, 3000);
-            }, function(err) {
-                console.error('Could not copy text: ', err);
+                setTimeout(() => notification.remove(), 3000);
             });
         }
     </script>
 
     <style>
-        @keyframes fade-in-down {
-            0% {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        @keyframes fade-in {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
-        .animate-fade-in-down {
-            animation: fade-in-down 0.3s ease-out;
+        .animate-fade-in {
+            animation: fade-in 0.3s ease-out;
         }
     </style>
 </div>

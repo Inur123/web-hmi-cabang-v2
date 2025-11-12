@@ -9,7 +9,7 @@ use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 
 #[Layout('components.layouts.guest')]
-#[Title('Home')]
+#[Title('HMI Cabang Ponorogo')]
 class Home extends Component
 {
     public function render()
