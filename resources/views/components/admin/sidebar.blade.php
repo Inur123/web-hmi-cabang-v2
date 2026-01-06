@@ -4,7 +4,7 @@
     <!-- Logo -->
 <div class="flex items-center justify-center p-4 h-[77px] border-b border-gray-200">
     <div class="flex items-center space-x-2" :class="!sidebarOpen && 'justify-center w-full'">
-        <img src="{{ asset('images/logo-web.png') }}" alt="Logo HMI" class="h-8 w-auto rounded-full">
+        <img src="{{ asset('images/logo-cabang-v2.webp') }}" alt="Logo HMI" class="h-8 w-auto rounded-full">
         <span x-show="sidebarOpen" x-transition.opacity class="text-l font-bold text-gray-800">
             HMI Cabang Ponorogo
         </span>

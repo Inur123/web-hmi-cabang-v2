@@ -7,13 +7,13 @@
     {{-- Dynamic Title --}}
     <title>{{ $title ?? 'HMI Cabang Ponorogo' }}</title>
 
-    <link rel="icon" type="image/png" href="{{ asset('images/logo-web.png') }}?v={{ time() }}" />
+    <link rel="icon" type="image/png" href="{{ asset('images/logo-cabang-v2.webp') }}?v={{ time() }}" />
 
     {{-- Meta Tags untuk Sharing --}}
     @if(isset($post))
         <meta property="og:title" content="{{ $post->title }}">
         <meta property="og:description" content="{{ Str::limit(strip_tags($post->content), 150) }}">
-        <meta property="og:image" content="{{ $post->thumbnail ? asset('storage/' . $post->thumbnail) : asset('images/logo-web.png') }}">
+        <meta property="og:image" content="{{ $post->thumbnail ? asset('storage/' . $post->thumbnail) : asset('images/logo-cabang-v2.webp') }}">
         <meta property="og:url" content="{{ url()->current() }}">
         <meta property="og:type" content="article">
         <meta property="og:site_name" content="HMI Cabang Ponorogo">
@@ -22,11 +22,11 @@
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:title" content="{{ $post->title }}">
         <meta name="twitter:description" content="{{ Str::limit(strip_tags($post->content), 150) }}">
-        <meta name="twitter:image" content="{{ $post->thumbnail ? asset('storage/' . $post->thumbnail) : asset('images/logo-web.png') }}">
+        <meta name="twitter:image" content="{{ $post->thumbnail ? asset('storage/' . $post->thumbnail) : asset('images/logo-cabang-v2.webp') }}">
     @else
         <meta property="og:title" content="HMI Cabang Ponorogo">
         <meta property="og:description" content="Himpunan Mahasiswa Islam (HMI) Cabang Ponorogo adalah salah satu cabang organisasi mahasiswa Islam terbesar di Indonesia, yang berada di wilayah Ponorogo.">
-        <meta property="og:image" content="{{ asset('images/logo-web.png') }}">
+        <meta property="og:image" content="{{ asset('images/logo-cabang-v2.webp') }}">
         <meta property="og:url" content="{{ url()->current() }}">
         <meta property="og:type" content="website">
         <meta property="og:site_name" content="HMI Cabang Ponorogo">

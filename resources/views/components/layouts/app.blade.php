@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ $title ?? 'Dashboard - HMI Cabang Ponorogo' }}</title>
 
-    <link rel="icon" type="image/png" href="{{ asset('images/logo-web.png') }}?v={{ time() }}" />
-    <link rel="shortcut icon" type="image/png" href="{{ asset('images/logo-web.png') }}?v={{ time() }}" />
+    <link rel="icon" type="image/png" href="{{ asset('images/logo-cabang-v2.webp') }}?v={{ time() }}" />
+    <link rel="shortcut icon" type="image/png" href="{{ asset('images/logo-cabang-v2.webp') }}?v={{ time() }}" />
 
     @vite(['resources/css/app.css'])
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />

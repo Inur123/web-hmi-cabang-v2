@@ -107,7 +107,7 @@
     ">
                         </div>
                         <div class="relative flex justify-center">
-                            <img src="{{ asset('images/nanda-2.png') }}" alt="Ketua Umum HMI"
+                            <img src="{{ asset('images/nanda.webp') }}" alt="Ketua Umum HMI"
                                 class="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-full border-4 sm:border-8 border-white dark:border-gray-700 shadow-2xl object-cover relative z-10" />
                             <div class="absolute bottom-2 sm:bottom-4 right-2 sm:right-4 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-lg text-xs sm:text-sm font-bold z-20"
                                 style="background: linear-gradient(to right, #16a34a, #0d9488);">
@@ -202,7 +202,7 @@
                     <div class="absolute inset-0 rounded-3xl blur-3xl opacity-20 animate-pulse pointer-events-none"
                         style="background: linear-gradient(to bottom right, #16a34a, #0d9488);">
                     </div>
-                    <img src="{{ asset('images/logo-hmi.png') }}" alt="HMI Logo"
+                    <img src="{{ asset('images/logo-hmi.webp') }}" alt="HMI Logo"
                         class="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 relative z-10 object-contain" />
                 </div>
             </div>

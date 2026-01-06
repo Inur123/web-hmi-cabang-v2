@@ -21,28 +21,25 @@
             localStorage.theme = 'light';
         }
     }
-}"
-x-init="
-    // Sync state saat component init
+}" x-init="// Sync state saat component init
+darkMode = localStorage.theme === 'dark';
+// Listen untuk perubahan dari tab lain
+window.addEventListener('storage', (e) => {
+    if (e.key === 'theme') {
+        darkMode = e.newValue === 'dark';
+    }
+});
+// Listen untuk Livewire navigate
+document.addEventListener('livewire:navigated', () => {
     darkMode = localStorage.theme === 'dark';
-    // Listen untuk perubahan dari tab lain
-    window.addEventListener('storage', (e) => {
-        if (e.key === 'theme') {
-            darkMode = e.newValue === 'dark';
-        }
-    });
-    // Listen untuk Livewire navigate
-    document.addEventListener('livewire:navigated', () => {
-        darkMode = localStorage.theme === 'dark';
-    });
-"
-class="flex items-center justify-between px-6 py-4 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50 bg-white dark:bg-gray-800 shadow-md transition-colors duration-200">
+});"
+    class="flex items-center justify-between px-6 py-4 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50 bg-white dark:bg-gray-800 shadow-md transition-colors duration-200">
 
     <div class="hidden md:flex items-center justify-between w-full">
         <div class="flex items-center space-x-2 flex-1">
             <a href="/" wire:navigate>
                 <div class="p-2 rounded-lg">
-                    <img src="{{ asset('images/logo-web.png') }}" alt="Logo HMI" class="w-10 h-10 filter">
+                    <img src="{{ asset('images/logo-cabang-v2.webp') }}" alt="Logo HMI" class="w-10 h-10 filter">
                 </div>
             </a>
             <a href="/" wire:navigate>
@@ -124,6 +121,13 @@ class="flex items-center justify-between px-6 py-4 border-b border-gray-200 dark
                     </a>
                 </div>
             </div>
+            <a href="{{ route('komisariat.index') }}" wire:navigate
+                x-bind:class="isActive('/komisariat') ? 'text-green-600 dark:text-green-400 font-bold' :
+                    'text-gray-600 dark:text-gray-300'"
+                class="transition-colors duration-200">
+                Komisariat
+            </a>
+
         </div>
 
         <div class="flex items-center justify-end flex-1">
@@ -147,8 +151,6 @@ class="flex items-center justify-between px-6 py-4 border-b border-gray-200 dark
                         clip-rule="evenodd" />
                 </svg>
             </button>
-
-
         </div>
     </div>
 
@@ -157,7 +159,7 @@ class="flex items-center justify-between px-6 py-4 border-b border-gray-200 dark
         <div class="flex items-center">
             <a href="/" wire:navigate>
                 <div class="p-2 rounded-lg">
-                    <img src="{{ asset('images/logo-web.png') }}" alt="Logo HMI" class="w-10 h-10 filter">
+                    <img src="{{ asset('images/logo-cabang-v2.webp') }}" alt="Logo HMI" class="w-10 h-10 filter">
                 </div>
             </a>
         </div>
@@ -264,5 +266,12 @@ class="flex items-center justify-between px-6 py-4 border-b border-gray-200 dark
                 </a>
             </div>
         </div>
+        <a href="{{ route('komisariat.index') }}" wire:navigate
+            x-bind:class="isActive('/komisariat') ? 'text-green-600 dark:text-green-400 font-bold' :
+                'text-gray-600 dark:text-gray-300'"
+            class="block p-4 border-b border-gray-200 dark:border-gray-700 transition-colors duration-200">
+            Komisariat
+        </a>
+
     </div>
 </nav>

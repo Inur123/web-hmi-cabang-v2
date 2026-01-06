@@ -26,7 +26,7 @@
                 <div class="flex items-center mb-6">
                     <div class="relative">
                         <div class="absolute inset-0 bg-green-500 blur-xl opacity-30 rounded-full"></div>
-                        <img src="{{ asset('images/logo-web.png') }}" alt="Logo HMI"
+                        <img src="{{ asset('images/logo-cabang-v2.webp') }}" alt="Logo HMI"
                             class="w-16 h-16 sm:w-20 sm:h-20 relative z-10">
                     </div>
                     <div class="ml-4">

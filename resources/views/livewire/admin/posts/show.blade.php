@@ -113,20 +113,28 @@
                     <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
                         <i class="fas fa-images mr-2 text-teal-600"></i> Galeri ({{ $post->galleries->count() }})
                     </h3>
+
                     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                         @foreach ($post->galleries as $gallery)
                             <div
-                                class="group relative overflow-hidden rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                                <img src="{{ asset('storage/' . $gallery->image) }}" alt="Gallery"
-                                    class="w-full h-40 object-cover group-hover:scale-110 transition-transform duration-300">
-                                <div
-                                    class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition">
+                                class="group relative overflow-hidden rounded-lg shadow-sm hover:shadow-md transition-shadow bg-gray-100">
+
+                                <!-- Box ukuran tetap -->
+                                <div class="w-full h-40 flex items-center justify-center">
+                                    <img src="{{ asset('storage/' . $gallery->image) }}" alt="Gallery"
+                                        class="max-w-full max-h-full object-contain transition-transform duration-300 group-hover:scale-105"
+                                        onerror="this.src='{{ asset('images/no-foto.png') }}'" />
+                                </div>
+
+                                <!-- Overlay hover -->
+                                <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition">
                                 </div>
                             </div>
                         @endforeach
                     </div>
                 </div>
             @endif
+
 
             <!-- Action Buttons -->
             <div class="flex flex-col sm:flex-row gap-3 mt-10 pt-6 border-t border-gray-200">

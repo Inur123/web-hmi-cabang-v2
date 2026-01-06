@@ -37,7 +37,7 @@
                             </div>
                             <div
                                 class="relative z-10 w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full bg-white dark:bg-gray-800 flex items-center justify-center border-2 sm:border-4 border-white shadow-xl group-hover:scale-110 transition-transform duration-300 overflow-hidden">
-                                <img src="{{ asset('images/nanda-2.png') }}" alt="Nanda Dwi Yanuari"
+                                <img src="{{ asset('images/nanda.webp') }}" alt="Nanda Dwi Yanuari"
                                     class="w-full h-full object-cover rounded-full">
                             </div>
                         </div>

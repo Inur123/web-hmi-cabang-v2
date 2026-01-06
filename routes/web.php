@@ -11,6 +11,7 @@ use App\Livewire\Admin\Posts\Category;
 use App\Livewire\User\Blog\BlogDetail;
 use App\Livewire\User\Profile\Sejarah;
 use App\Livewire\User\Home as UserHome;
+use App\Livewire\User\Komisariat;
 use App\Livewire\Admin\Posts\PostComponent;
 use App\Livewire\User\Profile\Kepengurusan;
 use App\Livewire\User\Blog\Category\CategoryShow;
@@ -22,6 +23,7 @@ use App\Livewire\Admin\Activities\ActivityComponent;
 
 
 Route::get('/', UserHome::class)->name('home');
+Route::get('/komisariat', Komisariat::class)->name('komisariat.index');
 
 Route::get('/blog', BlogMenu::class)->name('blog');
 Route::get('/blog/{slug}', BlogDetail::class)->name('blog.show');

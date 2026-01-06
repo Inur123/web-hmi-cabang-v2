@@ -12,7 +12,7 @@
         <!-- Logo -->
         <div class="flex items-center justify-between p-4 h-[77px] border-b border-gray-200">
             <div class="flex items-center space-x-3">
-                <img src="{{ asset('images/logo-web.png') }}" alt="Logo HMI" class="h-9 w-auto rounded-full">
+                <img src="{{ asset('images/logo-cabang-v2.webp') }}" alt="Logo HMI" class="h-9 w-auto rounded-full">
                 <span class="text-l font-bold text-gray-800">HMI Cabang Ponorogo</span>
             </div>
             <button @click="sidebarOpen = false" class="text-gray-600 hover:text-gray-800 p-2">

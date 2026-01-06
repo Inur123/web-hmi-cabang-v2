@@ -35,11 +35,10 @@
 
                                 <!-- Author -->
                                 <div class="flex items-center gap-2">
-                                    <div
-    class="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0"
-    style="background: linear-gradient(to right, #16a34a, #0d9488);">
-    A
-</div>
+                                    <div class="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0"
+                                        style="background: linear-gradient(to right, #16a34a, #0d9488);">
+                                        A
+                                    </div>
 
                                     <span class="font-semibold text-gray-900 dark:text-white">Admin</span>
                                 </div>
@@ -74,6 +73,30 @@
                             <div class="content-article">
                                 {!! $post->content !!}
                             </div>
+                            <!-- Gallery Images -->
+                            @if ($post->galleries->count())
+                                <div class="mt-8">
+                                    <h4 class="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
+                                        Galeri Foto:
+                                    </h4>
+
+                                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                                        @foreach ($post->galleries as $gallery)
+                                            <div
+                                                class="bg-gray-100 dark:bg-gray-700 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-600 shadow">
+
+                                                <!-- Box ukuran tetap -->
+                                                <div class="w-full h-40 flex items-center justify-center">
+                                                    <img src="{{ asset('storage/' . $gallery->image) }}"
+                                                        alt="Gallery {{ $loop->iteration }}"
+                                                        class="max-w-full max-h-full object-contain" />
+                                                </div>
+
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            @endif
 
                             <!-- Tags (Tepat di bawah konten) -->
                             @if ($post->tags->count())
@@ -100,16 +123,17 @@
 
                                         <!-- Share Info -->
                                         <div class="flex items-center gap-3">
-    <div
-        class="w-10 h-10 rounded-full flex items-center justify-center text-white flex-shrink-0"
-        style="background: linear-gradient(to right, #16a34a, #0d9488);">
-        <i class="fas fa-share-alt text-sm"></i>
-    </div>
-    <div>
-        <p class="text-xs text-gray-600 dark:text-gray-400">Bagikan artikel ini</p>
-        <p class="font-semibold text-sm text-gray-900 dark:text-white">Share to Social Media</p>
-    </div>
-</div>
+                                            <div class="w-10 h-10 rounded-full flex items-center justify-center text-white flex-shrink-0"
+                                                style="background: linear-gradient(to right, #16a34a, #0d9488);">
+                                                <i class="fas fa-share-alt text-sm"></i>
+                                            </div>
+                                            <div>
+                                                <p class="text-xs text-gray-600 dark:text-gray-400">Bagikan artikel ini
+                                                </p>
+                                                <p class="font-semibold text-sm text-gray-900 dark:text-white">Share to
+                                                    Social Media</p>
+                                            </div>
+                                        </div>
 
 
                                         <!-- Share Buttons -->
