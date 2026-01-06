@@ -28,88 +28,95 @@
 
         {{-- LOGO GRID (Brand Showcase) --}}
         <div class="max-w-6xl mx-auto">
-
-            <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-8 sm:gap-10 place-items-center">
+            {{-- Mobile 1 kolom, tablet 3, desktop 5 --}}
+            <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-10 place-items-center">
 
                 {{-- 1 Syariah --}}
-                <a href="#"
-                    class="group flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-1">
+                <a href="#" target="_blank" rel="noopener noreferrer"
+                    class="group flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-1 w-full">
 
                     <div
                         class="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-full bg-white dark:bg-gray-800 shadow-md border border-gray-200 dark:border-gray-700 flex items-center justify-center overflow-hidden group-hover:shadow-xl group-hover:border-green-500 transition-all duration-300">
                         <img src="{{ asset('images/komisariat/kom-syariah.webp') }}" alt="Syariah"
-                            class="w-full h-full object-contain p-2 group-hover:scale-110 transition-transform duration-300" />
+                            class="w-full h-full object-contain p-3 group-hover:scale-110 transition-transform duration-300" />
                     </div>
 
                     <p
-                        class="mt-4 text-sm sm:text-base font-semibold text-gray-900 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors duration-300">
-                        Komisariat Syariah
+                        class="mt-4 text-sm sm:text-base font-semibold text-gray-900 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors duration-300 leading-tight">
+                        <span class="block">HMI Komisariat</span>
+                        <span class="block uppercase">SYARIAH UIN Ponorogo</span>
                     </p>
                 </a>
 
 
                 {{-- 2 Tarbiyah --}}
-                <a href="#"
-                    class="group flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-1">
+                <a href="#" target="_blank" rel="noopener noreferrer"
+                    class="group flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-1 w-full">
 
                     <div
                         class="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-full bg-white dark:bg-gray-800 shadow-md border border-gray-200 dark:border-gray-700 flex items-center justify-center overflow-hidden group-hover:shadow-xl group-hover:border-green-500 transition-all duration-300">
                         <img src="{{ asset('images/komisariat/kom-tarbiyah.webp') }}" alt="Tarbiyah"
-                            class="w-full h-full object-contain p-2 group-hover:scale-110 transition-transform duration-300" />
+                            class="w-full h-full object-contain p-3 group-hover:scale-110 transition-transform duration-300" />
                     </div>
 
                     <p
-                        class="mt-4 text-sm sm:text-base font-semibold text-gray-900 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors duration-300">
-                        Komisariat Tarbiyah
+                        class="mt-4 text-sm sm:text-base font-semibold text-gray-900 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors duration-300 leading-tight">
+                        <span class="block">HMI Komisariat</span>
+                        <span class="block uppercase text-sm">TARBIYAH UIN Ponorogo</span>
                     </p>
                 </a>
 
 
                 {{-- 3 Fakultas Hukum --}}
-                <a href="#"
-                    class="group flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-1">
+                <a href="#" target="_blank" rel="noopener noreferrer"
+                    class="group flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-1 w-full">
 
                     <div
                         class="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-full bg-white dark:bg-gray-800 shadow-md border border-gray-200 dark:border-gray-700 flex items-center justify-center overflow-hidden group-hover:shadow-xl group-hover:border-green-500 transition-all duration-300">
                         <img src="{{ asset('images/komisariat/kom-hukum.webp') }}" alt="Hukum"
-                            class="w-full h-full object-contain p-2 group-hover:scale-110 transition-transform duration-300" />
+                            class="w-full h-full object-contain p-3 group-hover:scale-110 transition-transform duration-300" />
                     </div>
 
                     <p
-                        class="mt-4 text-sm sm:text-base font-semibold text-gray-900 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors duration-300">
-                        Komisariat Hukum
+                        class="mt-4 text-sm sm:text-base font-semibold text-gray-900 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors duration-300 leading-tight">
+                        <span class="block">HMI Komisariat</span>
+                        <span class="block uppercase text-sm">HUKUM Unmuh Ponorogo</span>
                     </p>
                 </a>
 
 
                 {{-- 4 FITRAH --}}
-                <a href="#"
-                    class="group flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-1">
+                <a href="http://hmikomisariatfitrah.or.id/" target="_blank" rel="noopener noreferrer"
+                    class="group flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-1 w-full">
 
                     <div
                         class="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-full bg-white dark:bg-gray-800 shadow-md border border-gray-200 dark:border-gray-700 flex items-center justify-center overflow-hidden group-hover:shadow-xl group-hover:border-green-500 transition-all duration-300">
                         <img src="{{ asset('images/komisariat/kom-fitrah.webp') }}" alt="FITRAH"
-                            class="w-full h-full object-contain p-2 group-hover:scale-110 transition-transform duration-300" />
+                            class="w-full h-full object-contain p-3 group-hover:scale-110 transition-transform duration-300" />
                     </div>
 
                     <p
-                        class="mt-4 text-sm sm:text-base font-semibold text-gray-900 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors duration-300">
-                        Komisariat FITRAH
+                        class="mt-4 text-sm sm:text-base font-semibold text-gray-900 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors duration-300 leading-tight">
+                        <span class="block">HMI Komisariat</span>
+                        <span class="block uppercase text-sm">FITRAH Unmuh Ponorogo</span>
                     </p>
                 </a>
+
+
                 {{-- 5 Ronggo --}}
-                <a href="#"
-                    class="group flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-1">
+                <a href="#" target="_blank" rel="noopener noreferrer"
+                    class="group flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-1 w-full">
 
                     <div
                         class="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-full bg-white dark:bg-gray-800 shadow-md border border-gray-200 dark:border-gray-700 flex items-center justify-center overflow-hidden group-hover:shadow-xl group-hover:border-green-500 transition-all duration-300">
                         <img src="{{ asset('images/logo-hmi.webp') }}" alt="Ronggo"
-                            class="w-full h-full object-contain p-2 group-hover:scale-110 transition-transform duration-300" />
+                            class="w-full h-full object-contain p-3 group-hover:scale-110 transition-transform duration-300" />
                     </div>
 
                     <p
-                        class="mt-4 text-sm sm:text-base font-semibold text-gray-900 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors duration-300">
-                        Ronggo Djumeno
+                        class="mt-4 text-sm sm:text-base font-semibold text-gray-900 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors duration-300 leading-tight">
+                        <span class="block">HMI Komisariat</span>
+                        <span class="block uppercase text-sm">RONGGO DJUMENO</span>
                     </p>
                 </a>
 

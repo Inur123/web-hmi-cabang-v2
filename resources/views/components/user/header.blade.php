@@ -43,7 +43,12 @@ document.addEventListener('livewire:navigated', () => {
                 </div>
             </a>
             <a href="/" wire:navigate>
-                <span class="text-xl font-bold text-gray-900 dark:text-white">HMI CABANG PONOROGO</span>
+                <span
+                    class="text-xl font-bold bg-gradient-to-r from-green-600 via-green-500 to-yellow-400
+    text-transparent bg-clip-text">
+                    HMI CABANG PONOROGO
+                </span>
+
             </a>
         </div>
 
@@ -156,13 +161,18 @@ document.addEventListener('livewire:navigated', () => {
 
     {{-- MOBILE NAV --}}
     <div class="md:hidden flex items-center justify-between w-full">
-        <div class="flex items-center">
-            <a href="/" wire:navigate>
-                <div class="p-2 rounded-lg">
-                    <img src="{{ asset('images/logo-cabang-v2.webp') }}" alt="Logo HMI" class="w-10 h-10 filter">
-                </div>
+        <div class="flex items-center space-x-2">
+            <a href="/" wire:navigate class="flex items-center space-x-2">
+                <img src="{{ asset('images/logo-cabang-v2.webp') }}" alt="Logo HMI" class="w-10 h-10">
+
+                <span
+                    class="text-sm font-bold leading-tight bg-gradient-to-r from-green-600 via-green-500 to-yellow-400
+            text-transparent bg-clip-text">
+                    HMI <br> PONOROGO
+                </span>
             </a>
         </div>
+
 
         <div class="flex gap-3 items-center">
             <!-- Dark Mode Toggle (Mobile) -->

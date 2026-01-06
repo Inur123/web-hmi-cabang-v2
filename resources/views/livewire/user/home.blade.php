@@ -40,7 +40,7 @@
             <div>
                 <div
                     class="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-gradient-to-r from-green-100 to-teal-100 dark:from-green-900/30 dark:to-teal-900/30 rounded-full mb-3 sm:mb-4">
-                    <span class="text-green-700 dark:text-green-300 font-semibold text-xs sm:text-sm">Organisasi
+                    <span class="text-green-700 dark:text-green-300 font-semibold text-xs sm:text-sm">Himpunan
                         Mahasiswa Islam</span>
                 </div>
                 <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight bg-gradient-to-r from-green-600 to-teal-600 bg-clip-text text-transparent
@@ -172,7 +172,7 @@
                         </div>
                         <div
                             class="text-center p-3 sm:p-4 bg-white dark:bg-gray-800 rounded-lg sm:rounded-xl shadow-md border border-gray-200 dark:border-gray-700">
-                            <div class="text-xl sm:text-2xl font-bold text-teal-600 dark:text-teal-400">18</div>
+                            <div class="text-xl sm:text-2xl font-bold text-teal-600 dark:text-teal-400">5</div>
                             <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Komisariat</div>
                         </div>
                         <div

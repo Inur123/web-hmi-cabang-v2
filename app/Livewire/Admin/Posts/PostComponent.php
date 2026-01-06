@@ -2,16 +2,19 @@
 
 namespace App\Livewire\Admin\Posts;
 
-use Livewire\Component;
-use Livewire\WithFileUploads;
-use App\Models\Post;
-use App\Models\Category;
 use App\Models\Tag;
+use App\Models\Post;
+use Livewire\Component;
+use App\Models\Category;
 use App\Models\PostGallery;
-use Illuminate\Pagination\LengthAwarePaginator;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
+use Livewire\WithFileUploads;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Layout;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Pagination\LengthAwarePaginator;
+
 
 #[Layout('components.layouts.app')]
 #[Title('Post')]
@@ -27,7 +30,7 @@ class PostComponent extends Component
     public $status = 'inactive';
     public $thumbnailTemp;
     public $thumbnail;
-    public $content = ''; // Inisialisasi dengan string kosong
+    public $content = '';
     public $tags = [];
     public $tagsString = '';
     public $galleries = [];
@@ -86,7 +89,6 @@ class PostComponent extends Component
             'removedGalleries'
         ]);
 
-        // Reset content ke string kosong
         $this->content = '';
     }
 
@@ -99,16 +101,18 @@ class PostComponent extends Component
     public function edit($id)
     {
         $post = Post::with('tags', 'galleries')->findOrFail($id);
+
         $this->postId = $id;
         $this->title = $post->title;
         $this->category_id = $post->category_id;
         $this->status = $post->status;
-        $this->content = $post->content ?? ''; // Pastikan tidak null
+        $this->content = $post->content ?? '';
         $this->tags = $post->tags->pluck('name')->toArray();
         $this->tagsString = implode(', ', $this->tags);
         $this->galleries = $post->galleries->pluck('image')->toArray();
         $this->thumbnail = $post->thumbnail;
         $this->post_date = $post->post_date;
+
         $this->galleryInputs = [];
         $this->removedGalleries = [];
         $this->action = 'edit';
@@ -120,10 +124,34 @@ class PostComponent extends Component
         $this->action = 'show';
     }
 
+    /**
+     * ✅ Convert file upload ke webp dan simpan ke storage/public
+     */
+    private function convertToWebp($file, $folder)
+    {
+        $filename = uniqid() . '.webp';
+        $path = $folder . '/' . $filename;
+
+        $manager = new ImageManager(new Driver());
+
+        $image = $manager
+            ->read($file->getRealPath())
+            ->toWebp(80); // kualitas 80
+
+        Storage::disk('public')->put($path, (string) $image);
+
+        return $path;
+    }
+
     public function save()
     {
         $this->validate();
         $tagsArray = array_filter(array_map('trim', explode(',', $this->tagsString)));
+
+        // ✅ Thumbnail jadi WebP
+        $thumbnailPath = $this->thumbnailTemp
+            ? $this->convertToWebp($this->thumbnailTemp, 'posts/thumbnails')
+            : null;
 
         $post = Post::create([
             'title' => $this->title,
@@ -131,7 +159,7 @@ class PostComponent extends Component
             'status' => $this->status,
             'content' => $this->content,
             'post_date' => $this->post_date,
-            'thumbnail' => $this->thumbnailTemp ? $this->thumbnailTemp->store('posts/thumbnails', 'public') : null
+            'thumbnail' => $thumbnailPath,
         ]);
 
         $this->syncTags($post, $tagsArray);
@@ -147,11 +175,13 @@ class PostComponent extends Component
         $post = Post::findOrFail($this->postId);
         $tagsArray = array_filter(array_map('trim', explode(',', $this->tagsString)));
 
+        // ✅ Jika upload thumbnail baru → hapus thumbnail lama → convert & simpan webp baru
         if ($this->thumbnailTemp) {
             if ($post->thumbnail) {
                 Storage::disk('public')->delete($post->thumbnail);
             }
-            $post->thumbnail = $this->thumbnailTemp->store('posts/thumbnails', 'public');
+
+            $post->thumbnail = $this->convertToWebp($this->thumbnailTemp, 'posts/thumbnails');
         }
 
         $post->update([
@@ -160,7 +190,7 @@ class PostComponent extends Component
             'status' => $this->status,
             'content' => $this->content,
             'post_date' => $this->post_date,
-            'thumbnail' => $post->thumbnail
+            'thumbnail' => $post->thumbnail,
         ]);
 
         $this->syncTags($post, $tagsArray);
@@ -174,21 +204,30 @@ class PostComponent extends Component
     private function syncTags($post, $tagsArray)
     {
         $tagIds = [];
+
         foreach ($tagsArray as $tagName) {
             if (!empty($tagName)) {
                 $tag = Tag::firstOrCreate(['name' => $tagName]);
                 $tagIds[] = $tag->id;
             }
         }
+
         $post->tags()->sync($tagIds);
     }
 
+    /**
+     * ✅ Gallery upload juga otomatis jadi WebP
+     */
     private function saveGalleries($post)
     {
         foreach ($this->galleryInputs as $galleryImage) {
             if ($galleryImage) {
-                $path = $galleryImage->store('posts/gallery', 'public');
-                PostGallery::create(['post_id' => $post->id, 'image' => $path]);
+                $path = $this->convertToWebp($galleryImage, 'posts/gallery');
+
+                PostGallery::create([
+                    'post_id' => $post->id,
+                    'image' => $path
+                ]);
             }
         }
     }
@@ -197,13 +236,15 @@ class PostComponent extends Component
     {
         foreach ($this->removedGalleries as $path) {
             $gallery = PostGallery::where('post_id', $post->id)
-                                 ->where('image', $path)
-                                 ->first();
+                ->where('image', $path)
+                ->first();
+
             if ($gallery) {
                 Storage::disk('public')->delete($gallery->image);
                 $gallery->delete();
             }
         }
+
         $this->removedGalleries = [];
     }
 
@@ -222,6 +263,7 @@ class PostComponent extends Component
     {
         if (isset($this->galleries[$index])) {
             $this->removedGalleries[] = $this->galleries[$index];
+
             unset($this->galleries[$index]);
             $this->galleries = array_values($this->galleries);
         }
@@ -254,29 +296,27 @@ class PostComponent extends Component
     {
         $post = Post::with('tags', 'galleries')->findOrFail($id);
 
-        // Hapus relasi tag di pivot table
+        // detach tags
         $tags = $post->tags;
         $post->tags()->detach();
 
-        // Hapus tag yang tidak dimiliki post lain
         foreach ($tags as $tag) {
             if ($tag->posts()->count() === 0) {
                 $tag->delete();
             }
         }
 
-        // Hapus gallery terkait
+        // delete galleries
         foreach ($post->galleries as $gallery) {
             Storage::disk('public')->delete($gallery->image);
             $gallery->delete();
         }
 
-        // Hapus thumbnail jika ada
+        // delete thumbnail
         if ($post->thumbnail) {
             Storage::disk('public')->delete($post->thumbnail);
         }
 
-        // Hapus post
         $post->delete();
 
         session()->flash('success', 'Post berhasil dihapus!');
