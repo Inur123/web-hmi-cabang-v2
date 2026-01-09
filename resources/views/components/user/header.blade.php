@@ -161,12 +161,12 @@ class="flex items-center justify-between px-6 py-4 border-b border-gray-200 dark
                      x-transition:leave-start="opacity-100 scale-100"
                      x-transition:leave-end="opacity-0 scale-95"
                      class="absolute left-0 mt-2 w-56 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg z-50 overflow-hidden">
+<a href="{{ route('layanan.pedoman') }}" wire:navigate
+   x-bind:class="isActive('{{ parse_url(route('layanan.pedoman'), PHP_URL_PATH) }}') ? 'bg-green-50 dark:bg-green-900/30' : ''"
+   class="block px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border-b border-gray-200 dark:border-gray-700 transition-colors duration-200">
+    Pedoman Administrasi
+</a>
 
-                    <a href="/layanan/pedoman-administrasi" wire:navigate
-                       x-bind:class="isActive('/layanan/pedoman-administrasi') ? 'bg-green-50 dark:bg-green-900/30' : ''"
-                       class="block px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border-b border-gray-200 dark:border-gray-700 transition-colors duration-200">
-                        Pedoman Administrasi
-                    </a>
 
                     <a href="{{ route('permohonan') }}" wire:navigate
                        x-bind:class="isActive('{{ parse_url(route('permohonan'), PHP_URL_PATH) }}') ? 'bg-green-50 dark:bg-green-900/30' : ''"
@@ -356,11 +356,12 @@ class="flex items-center justify-between px-6 py-4 border-b border-gray-200 dark
                  x-transition:leave-end="opacity-0 max-h-0"
                  class="bg-gray-50 dark:bg-gray-700/50 max-h-64 overflow-y-auto">
 
-                <a href="/layanan/pedoman-administrasi" wire:navigate
-                   x-bind:class="isActive('/layanan/pedoman-administrasi') ? 'bg-green-100 dark:bg-green-800/50' : ''"
-                   class="block px-8 py-3 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 font-semibold border-b border-gray-200 dark:border-gray-600 transition-colors duration-200">
-                    Pedoman Administrasi
-                </a>
+              <a href="{{ route('layanan.pedoman') }}" wire:navigate
+   x-bind:class="isActive('{{ parse_url(route('layanan.pedoman'), PHP_URL_PATH) }}') ? 'bg-green-100 dark:bg-green-800/50' : ''"
+   class="block px-8 py-3 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 font-semibold border-b border-gray-200 dark:border-gray-600 transition-colors duration-200">
+    Pedoman Administrasi
+</a>
+
 
                 <a href="{{ route('permohonan') }}" wire:navigate
                    x-bind:class="isActive('{{ parse_url(route('permohonan'), PHP_URL_PATH) }}') ? 'bg-green-100 dark:bg-green-800/50' : ''"

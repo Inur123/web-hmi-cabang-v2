@@ -2,13 +2,20 @@
     <div class="container mx-auto">
         <!-- Header Section -->
         <div class="mb-12">
-            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-                {{ $category->name ?? 'Kategori' }}
+            <h1
+                class="text-4xl md:text-5xl font-bold mb-4 flex items-center gap-3
+             bg-gradient-to-r from-emerald-700 via-green-600 to-emerald-500
+             bg-clip-text text-transparent
+             dark:from-emerald-500 dark:via-green-400 dark:to-emerald-300">
+                <i class="fas fa-folder-open text-3xl md:text-4xl"></i>
+                <span>{{ $category->name ?? 'Kategori' }}</span>
             </h1>
+
             <p class="text-gray-600 dark:text-gray-400 text-lg">
                 {{ $category->description ?? "Kumpulan artikel pada kategori \"{$category->name}\"" }}
             </p>
         </div>
+
 
         <!-- Posts Grid -->
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -27,7 +34,7 @@
                                     class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700">
                             @endif
 
-                           <div class="absolute top-4 right-4">
+                            <div class="absolute top-4 right-4">
                                 <span
                                     class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-bold text-white shadow-lg transform group-hover:scale-110 transition-transform duration-300"
                                     style="background: linear-gradient(to right, #16a34a, #0d9488);">
@@ -42,7 +49,7 @@
                             <!-- Admin Badge + Tanggal -->
                             <div class="flex items-center gap-2 mb-3">
                                 <!-- Badge -->
-                                 <div class="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-xs shadow-md"
+                                <div class="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-xs shadow-md"
                                     style="background: linear-gradient(to right, #16a34a, #0d9488);">
                                     A
                                 </div>
