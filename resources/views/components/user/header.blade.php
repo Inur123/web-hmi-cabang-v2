@@ -126,11 +126,49 @@ document.addEventListener('livewire:navigated', () => {
                     </a>
                 </div>
             </div>
+            {{-- Dropdown Layanan --}}
+            <div class="relative" x-data="{ openLayanan: false }">
+                <span @click="openLayanan = !openLayanan"
+                    x-bind:class="(window.location.pathname.startsWith('/layanan')) ? 'text-green-600 dark:text-green-400 font-bold' :
+                    'text-gray-600 dark:text-gray-300'"
+                    class="flex items-center cursor-pointer transition-colors duration-200">
+                    Layanan
+                    <i :class="{ 'rotate-180': openLayanan }"
+                        class="fas fa-chevron-down ml-2 text-xs transition-transform duration-200"></i>
+                </span>
+
+                <div x-show="openLayanan" x-cloak @click.away="openLayanan = false"
+                    x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 scale-95"
+                    x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-150"
+                    x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
+                    class="absolute left-0 mt-2 w-56 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg z-50 overflow-hidden">
+                    <a href="/layanan/pedoman-administrasi" wire:navigate
+                        x-bind:class="isActive('/layanan/pedoman-administrasi') ? 'bg-green-50 dark:bg-green-900/30' : ''"
+                        class="block px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border-b border-gray-200 dark:border-gray-700 transition-colors duration-200">
+                        Pedoman Administrasi
+                    </a>
+                    <a href="/layanan/permohonan" wire:navigate
+                        x-bind:class="isActive('/layanan/permohonan') ? 'bg-green-50 dark:bg-green-900/30' : ''"
+                        class="block px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200">
+                        Permohonan
+                    </a>
+                </div>
+            </div>
             <a href="{{ route('komisariat.index') }}" wire:navigate
                 x-bind:class="isActive('/komisariat') ? 'text-green-600 dark:text-green-400 font-bold' :
                     'text-gray-600 dark:text-gray-300'"
                 class="transition-colors duration-200">
                 Komisariat
+            </a>
+
+
+
+            <a href="{{ route('aduan') }}" wire:navigate
+                x-bind:class="isActive('/aduan') ?
+                    'text-green-600 dark:text-green-400 font-bold' :
+                    'text-gray-600 dark:text-gray-300'"
+                class="transition-colors duration-200">
+                Aduan
             </a>
 
         </div>
@@ -276,12 +314,48 @@ document.addEventListener('livewire:navigated', () => {
                 </a>
             </div>
         </div>
+        <div class="border-b border-gray-200 dark:border-gray-700" x-data="{ openLayananMobile: false }">
+            <span @click="openLayananMobile = !openLayananMobile"
+                x-bind:class="(window.location.pathname.startsWith('/layanan')) ? 'text-green-600 dark:text-green-400 font-bold' :
+                'text-gray-600 dark:text-gray-300'"
+                class="flex items-center justify-between p-4 cursor-pointer transition-colors duration-200">
+                Layanan
+                <i :class="{ 'rotate-180': openLayananMobile }"
+                    class="fas fa-chevron-down text-xs transition-transform duration-200"></i>
+            </span>
+            <div x-show="openLayananMobile" x-cloak x-transition:enter="transition ease-out duration-200"
+                x-transition:enter-start="opacity-0 max-h-0" x-transition:enter-end="opacity-100 max-h-96"
+                x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 max-h-96"
+                x-transition:leave-end="opacity-0 max-h-0"
+                class="bg-gray-50 dark:bg-gray-700/50 max-h-64 overflow-y-auto">
+                <a href="/layanan/pedoman-administrasi" wire:navigate
+                    x-bind:class="isActive('/layanan/pedoman-administrasi') ? 'bg-green-100 dark:bg-green-800/50' : ''"
+                    class="block px-8 py-3 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 font-semibold border-b border-gray-200 dark:border-gray-600 transition-colors duration-200">
+                    Pedoman Administrasi
+                </a>
+                <a href="/layanan/permohonan" wire:navigate
+                    x-bind:class="isActive('/layanan/permohonan') ? 'bg-green-100 dark:bg-green-800/50' : ''"
+                    class="block px-8 py-3 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 font-semibold transition-colors duration-200">
+                    Permohonan
+                </a>
+            </div>
+        </div>
         <a href="{{ route('komisariat.index') }}" wire:navigate
             x-bind:class="isActive('/komisariat') ? 'text-green-600 dark:text-green-400 font-bold' :
                 'text-gray-600 dark:text-gray-300'"
             class="block p-4 border-b border-gray-200 dark:border-gray-700 transition-colors duration-200">
             Komisariat
         </a>
+
+
+        <a href="{{ route('aduan') }}" wire:navigate
+            x-bind:class="isActive('/aduan') ?
+                'text-green-600 dark:text-green-400 font-bold' :
+                'text-gray-600 dark:text-gray-300'"
+            class="block p-4 transition-colors duration-200">
+            Aduan
+        </a>
+
 
     </div>
 </nav>

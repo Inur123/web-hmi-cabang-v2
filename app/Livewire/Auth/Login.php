@@ -46,6 +46,7 @@ class Login extends Component
 
         // Verifikasi reCAPTCHA v3
         try {
+             /** @var \Illuminate\Http\Client\Response $response */
             $response = Http::timeout(5)->asForm()->post(
                 'https://www.google.com/recaptcha/api/siteverify',
                 [

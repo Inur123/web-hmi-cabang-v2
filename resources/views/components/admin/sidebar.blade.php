@@ -2,14 +2,14 @@
     class="fixed inset-y-0 left-0 z-50 bg-white shadow-lg transition-all duration-300 hidden lg:block">
 
     <!-- Logo -->
-<div class="flex items-center justify-center p-4 h-[77px] border-b border-gray-200">
-    <div class="flex items-center space-x-2" :class="!sidebarOpen && 'justify-center w-full'">
-        <img src="{{ asset('images/logo-cabang-v2.webp') }}" alt="Logo HMI" class="h-8 w-auto rounded-full">
-        <span x-show="sidebarOpen" x-transition.opacity class="text-l font-bold text-gray-800">
-            HMI Cabang Ponorogo
-        </span>
+    <div class="flex items-center justify-center p-4 h-[77px] border-b border-gray-200">
+        <div class="flex items-center space-x-2" :class="!sidebarOpen && 'justify-center w-full'">
+            <img src="{{ asset('images/logo-cabang-v2.webp') }}" alt="Logo HMI" class="h-8 w-auto rounded-full">
+            <span x-show="sidebarOpen" x-transition.opacity class="text-l font-bold text-gray-800">
+                HMI Cabang Ponorogo
+            </span>
+        </div>
     </div>
-</div>
 
     <!-- Menu -->
     <nav class="p-3 space-y-2 overflow-y-auto h-[calc(100vh-77px)]">
@@ -24,11 +24,11 @@
 
         <!-- Kegiatan -->
         <button type="button" @click="Livewire.navigate('{{ route('admin.activities') }}')"
-    class="w-full flex items-center rounded-lg transition cursor-pointer {{ request()->routeIs('admin.activities') ? 'bg-teal-600 text-white hover:bg-teal-700' : 'text-gray-700 hover:bg-gray-100' }}"
-    :class="sidebarOpen ? 'px-4 py-3 space-x-3' : 'justify-center p-3'">
-    <i class="fas fa-tasks text-lg" :class="sidebarOpen && 'w-6'"></i>
-    <span x-show="sidebarOpen" x-transition.opacity class="text-base font-medium">Kegiatan</span>
-</button>
+            class="w-full flex items-center rounded-lg transition cursor-pointer {{ request()->routeIs('admin.activities') ? 'bg-teal-600 text-white hover:bg-teal-700' : 'text-gray-700 hover:bg-gray-100' }}"
+            :class="sidebarOpen ? 'px-4 py-3 space-x-3' : 'justify-center p-3'">
+            <i class="fas fa-tasks text-lg" :class="sidebarOpen && 'w-6'"></i>
+            <span x-show="sidebarOpen" x-transition.opacity class="text-base font-medium">Kegiatan</span>
+        </button>
 
 
         <!-- Manajemen Posts Dropdown -->
@@ -62,6 +62,15 @@
 
             </div>
         </div>
+        <button type="button" @click="Livewire.navigate('{{ route('admin.aduan') }}')"
+            class="w-full flex items-center rounded-lg transition cursor-pointer
+    {{ request()->routeIs('admin.aduan') ? 'bg-teal-600 text-white hover:bg-teal-700' : 'text-gray-700 hover:bg-gray-100' }}"
+            :class="sidebarOpen ? 'px-4 py-3 space-x-3' : 'justify-center p-3'">
+            <i class="fas fa-bullhorn text-lg" :class="sidebarOpen && 'w-6'"></i>
+            <span x-show="sidebarOpen" x-transition.opacity class="text-base font-medium">
+                Aduan
+            </span>
+        </button>
 
 
     </nav>

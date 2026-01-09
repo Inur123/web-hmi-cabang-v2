@@ -1,27 +1,27 @@
 <?php
 
 use App\Livewire\Auth\Login;
-use Illuminate\Http\Request;
 use App\Livewire\Auth\Register;
-
-use App\Livewire\User\Blog\BlogMenu;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Livewire\Admin\Posts\Category;
-use App\Livewire\User\Blog\BlogDetail;
-use App\Livewire\User\Profile\Sejarah;
+
 use App\Livewire\User\Home as UserHome;
 use App\Livewire\User\Komisariat;
-use App\Livewire\Admin\Posts\PostComponent;
-use App\Livewire\User\Profile\Kepengurusan;
+use App\Livewire\User\Blog\BlogMenu;
+use App\Livewire\User\Blog\BlogDetail;
 use App\Livewire\User\Blog\Category\CategoryShow;
+use App\Livewire\User\Profile\Sejarah;
+use App\Livewire\User\Profile\Kepengurusan;
+use App\Livewire\User\Aduan\Aduan as UserAduan;
+
 use App\Livewire\Admin\Dashboard as AdminDashboard;
+use App\Livewire\Admin\Posts\PostComponent;
+use App\Livewire\Admin\Posts\Category as AdminCategory;
 use App\Livewire\Admin\Activities\ActivityComponent;
+use App\Livewire\Admin\Aduan\Aduan as AduanAdmin;
 
-
-
-
-
+// =======================
+// USER ROUTES
+// =======================
 Route::get('/', UserHome::class)->name('home');
 Route::get('/komisariat', Komisariat::class)->name('komisariat.index');
 
@@ -33,19 +33,19 @@ Route::get('/categories/{slug}', CategoryShow::class)->name('categories.show');
 Route::get('/profile/sejarah', Sejarah::class)->name('profile.sejarah');
 Route::get('/profile/kepengurusan', Kepengurusan::class)->name('profile.kepengurusan');
 
+Route::get('/aduan', UserAduan::class)->name('aduan');
+
 Route::get('/login', Login::class)->name('login');
 Route::get('/register', Register::class)->name('register');
 
 
-
-// Hanya untuk user yang sudah login
-Route::middleware('auth')->group(function () {
-    // Admin dashboard
-    Route::get('dashboard', AdminDashboard::class)->name('admin.dashboard');
-    Route::get('categories',Category::class)->name('admin.categories');
-    Route::get('posts', PostComponent::class)->name('admin.posts');
-    Route::get('activities', ActivityComponent::class)->name('admin.activities');
+// =======================
+// ADMIN ROUTES
+// =======================
+Route::prefix('admin')->middleware('auth')->group(function () {
+    Route::get('/dashboard', AdminDashboard::class)->name('admin.dashboard');
+    Route::get('/categories', AdminCategory::class)->name('admin.categories');
+    Route::get('/posts', PostComponent::class)->name('admin.posts');
+    Route::get('/activities', ActivityComponent::class)->name('admin.activities');
+    Route::get('/aduan', AduanAdmin::class)->name('admin.aduan');
 });
-
-
-
