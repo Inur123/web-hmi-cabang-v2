@@ -15,6 +15,10 @@ class Aduan extends Component
     public $search = '';
     public $page = 1;
 
+    // ✅ Untuk modal detail
+    public bool $openDetail = false;
+    public $detailAduan = null; // simpan model / array
+
     /** Reset pagination */
     public function resetPage()
     {
@@ -24,6 +28,27 @@ class Aduan extends Component
     public function updatingSearch()
     {
         $this->resetPage();
+    }
+
+    /** ✅ Show detail */
+    public function showDetail($id)
+    {
+        $this->detailAduan = AduanModel::find($id);
+
+        if (!$this->detailAduan) {
+            session()->flash('warning', 'Data aduan tidak ditemukan.');
+            $this->openDetail = false;
+            return;
+        }
+
+        $this->openDetail = true;
+    }
+
+    /** ✅ Close detail */
+    public function closeDetail()
+    {
+        $this->openDetail = false;
+        $this->detailAduan = null;
     }
 
     /** Delete aduan */
@@ -57,8 +82,8 @@ class Aduan extends Component
         if ($this->search) {
             $searchLower = strtolower($this->search);
             $query = $query->filter(function ($a) use ($searchLower) {
-                return str_contains(strtolower($a->nama_lengkap), $searchLower)
-                    || str_contains(strtolower($a->nomor_hp), $searchLower);
+                return str_contains(strtolower($a->nama_lengkap ?? ''), $searchLower)
+                    || str_contains(strtolower($a->nomor_hp ?? ''), $searchLower);
             });
         }
 
