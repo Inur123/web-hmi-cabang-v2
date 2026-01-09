@@ -14,13 +14,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     @livewireStyles
 </head>
 
 <body
     class="bg-gradient-to-br from-blue-100 via-indigo-100 to-purple-100 min-h-screen flex items-center justify-center">
-    <!-- Flash Message -->
-    <livewire:components.flash-message />
 
     <div class="flex w-full min-h-screen items-center justify-center">
         <div
@@ -30,6 +29,7 @@
     </div>
 
     @livewireScripts
+
 </body>
 
 </html>
