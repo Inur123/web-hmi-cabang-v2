@@ -7,15 +7,19 @@ use App\Models\Aduan as AduanModel;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Http;
 
 #[Layout('components.layouts.guest')]
-#[Title('Layanan Aduan')]
+#[Title('Aduan')]
 class Aduan extends Component
 {
     public $nama_lengkap = '';
     public $nomor_hp = '';
     public $alamat = '';
     public $isi_aduan = '';
+
+    // ✅ token reCAPTCHA v2
+    public $recaptchaToken = null;
 
     protected $rules = [
         // ✅ Nama hanya huruf & spasi (boleh titik dan koma jika mau)
@@ -54,6 +58,9 @@ class Aduan extends Component
             'not_regex:/<script\b[^>]*>(.*?)<\/script>/is',
             'not_regex:/javascript:/i',
         ],
+
+        // ✅ wajib recaptcha
+        'recaptchaToken' => 'required',
     ];
 
     protected $messages = [
@@ -75,6 +82,8 @@ class Aduan extends Component
         'isi_aduan.min' => 'Isi aduan minimal 10 karakter',
         'isi_aduan.max' => 'Isi aduan maksimal 1000 karakter',
         'isi_aduan.not_regex' => 'Isi aduan tidak boleh mengandung script atau kode berbahaya',
+
+        'recaptchaToken.required' => 'Silakan centang reCAPTCHA terlebih dahulu.',
     ];
 
     /**
@@ -94,11 +103,32 @@ class Aduan extends Component
     }
 
     /**
-     * ✅ Live validation saat user mengetik (optional tapi bagus)
+     * ✅ Live validation saat user mengetik (optional)
      */
     public function updated($propertyName)
     {
         $this->validateOnly($propertyName);
+    }
+
+    /** ✅ Verifikasi reCAPTCHA v2 */
+    private function verifyRecaptchaV2()
+    {
+        try {
+            /** @var \Illuminate\Http\Client\Response $response */
+            $response = Http::timeout(5)->asForm()->post(
+                'https://www.google.com/recaptcha/api/siteverify',
+                [
+                    'secret'   => config('services.recaptcha_v2.secret'),
+                    'response' => $this->recaptchaToken,
+                    'remoteip' => request()->ip(),
+                ]
+            );
+
+            $result = $response->object();
+            return ($result && ($result->success ?? false)) ? true : false;
+        } catch (\Exception $e) {
+            return false;
+        }
     }
 
     /** Submit aduan (store only) */
@@ -113,6 +143,13 @@ class Aduan extends Component
             return;
         }
 
+        // ✅ Verify Recaptcha v2
+        if (!$this->verifyRecaptchaV2()) {
+            $this->addError('recaptchaToken', 'Verifikasi reCAPTCHA gagal. Silakan ulangi.');
+            $this->recaptchaToken = null;
+            return;
+        }
+
         AduanModel::create([
             'nama_lengkap' => $this->nama_lengkap,
             'nomor_hp' => $this->nomor_hp,
@@ -120,9 +157,12 @@ class Aduan extends Component
             'isi_aduan' => $this->isi_aduan,
         ]);
 
-        $this->reset(['nama_lengkap', 'nomor_hp', 'alamat', 'isi_aduan']);
+        $this->reset(['nama_lengkap', 'nomor_hp', 'alamat', 'isi_aduan', 'recaptchaToken']);
 
         session()->flash('success', 'Aduan berhasil dikirim! Terima kasih atas masukannya.');
+
+        // ✅ Reset captcha client-side
+        $this->dispatch('reset-recaptcha');
     }
 
     public function render()
