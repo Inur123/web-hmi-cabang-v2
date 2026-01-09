@@ -15,14 +15,14 @@ class Logout extends Component
     {
         Auth::logout();
 
-        session()->invalidate();
-        session()->regenerateToken();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
 
         // Flash pesan sukses logout
         session()->flash('success', 'Berhasil logout!');
 
-        // SPA redirect ke login tanpa reload
-        return $this->redirectRoute('login', navigate: true);
+        // SPA redirect ke login tanpa reload - PASTI navigate
+        $this->redirect(route('login'), navigate: true);
     }
 
     public function render()
