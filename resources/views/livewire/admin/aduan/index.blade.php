@@ -212,7 +212,7 @@
 
                         <!-- Deskripsi -->
                         <div class="sm:col-span-2">
-                            <p class="text-[11px] uppercase tracking-wide text-gray-500 mb-2">Isi Aduan<< /p>
+                            <p class="text-[11px] uppercase tracking-wide text-gray-500 mb-2">Isi Aduan </p>
                                     <div
                                         class="rounded-xl border border-gray-200 bg-white p-4 text-sm text-gray-800  leading-relaxed">
                                         {{ trim($detailAduan->isi_aduan ?? '-') }}</div>

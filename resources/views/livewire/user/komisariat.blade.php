@@ -80,7 +80,7 @@
                     <p
                         class="mt-4 text-sm sm:text-base font-semibold text-gray-900 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors duration-300 leading-tight">
                         <span class="block">HMI Komisariat</span>
-                        <span class="block uppercase text-sm">HUKUM Unmuh Ponorogo</span>
+                        <span class="block uppercase text-sm">Fakultas HUKUM Unmuh Ponorogo</span>
                     </p>
                 </a>
 

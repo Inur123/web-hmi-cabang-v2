@@ -17,7 +17,7 @@
     </div>
 
     <div class="bg-white rounded-xl shadow overflow-hidden">
-        <div class="p-5 border-b">
+        <div class="p-5 border-b border-gray-300">
             <div class="flex items-center justify-between">
                 <div>
                     <div class="text-lg font-semibold text-gray-800">{{ $pedoman->nama }}</div>
